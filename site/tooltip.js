@@ -5,7 +5,11 @@ console.log("Hello Tooltip !!!!");
 
 console.log(document.getElementsByClassName("img-responsive")[1]);
 
-document.getElementsByClassName("img-responsive")[1].style.display = "none";
+
+
+//document.getElementsByClassName("img-responsive")[1].style.display = "none";
+
+document.getElementsByClassName("services-thumbnail")[0].style.display = "none";
 
 // var el = document.getElementsByClassName("img-responsive")[1];
 // var body = document.getElementsByTagName('body');
