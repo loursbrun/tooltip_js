@@ -27,7 +27,7 @@ elmt.style.textAlign = "center";
 document.body.style.backgroundColor = "green";
 //document.getElementsByClassName("services-thumbnail")[0].style.display = "none";
 
-document.getElementsByClassName("container").style.display = "none";
+document.getElementsByClassName("btn-class").style.display = "none";
 
 /*
 var buttonelement = document.getElementsByName("button");

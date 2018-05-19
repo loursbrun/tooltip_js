@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <button type="button" class="start-btn btn btn-secondary ">Start</button>
+                <button type="button" class="previous-btn btn btn-secondary">Previous</button>
+                <button type="button" class="next-btn btn btn-secondary">Next</button>
+                <button type="button" class="next-btn btn btn-secondary">next</button>
+        </nav>
+
+        
+
+
+
+    <style>
+        .container {
+              text-align: center;
+              position: absolute;
+              width: 200px;
+              height: 200px;
+              top :49%;
+              left:49%;
+              right: 49%;
+              bottom: 49%;
+  }    
+  .hl {
+    background: green;
+}
+    </style>
+
+<div class="container">
+
+
+ 
+  <div class="large-2 large-centered columns">
+        <ol>
+            <li title="Mon titre" data-content="Some content inside the popover content inside the popovercontent inside the popovercontent inside the popovercontent inside the popover">some</li>
+            <li title="Mon titre" data-content="Some content inside the popover content inside the popovercontent inside the popovercontent inside the popovercontent inside the popover">some</li>
+            <li title="Mon titre" data-content="Some content inside the popover content inside the popovercontent inside the popovercontent inside the popovercontent inside the popover">some</li>
+            <li title="Mon titre" data-content="Some content inside the popover content inside the popovercontent inside the popovercontent inside the popovercontent inside the popover">some</li>
+            <li title="Mon titre" data-content="Some content inside the popover content inside the popovercontent inside the popovercontent inside the popovercontent inside the popover">some</li>
+            <li title="Mon titre" data-content="Some content inside the popover content inside the popovercontent inside the popovercontent inside the popovercontent inside the popover">some</li>
+            <li title="Mon titre" data-content="Some content inside the popover content inside the popovercontent inside the popovercontent inside the popovercontent inside the popover">some</li>
+        </ol>
+        
+    </div>
+
+</div>
+
+
+<script>
+
+$(document).ready(function () {
+    var $items = $('ol').find('li');
+    var $btn = $('button');
+
+    $btn.click(function (e) {
+        e.preventDefault();
+        var $current = $items.filter('.hl').removeClass('hl'),
+            $next = $current.next();
+            $current.popover('hide');
+        if (!$next.length) {
+            $next = $items.first();
+        }
+        $next.addClass('hl');
+        $next.popover('show');
+    });
+});
+
+
+
+/*
+$('.element-1').popover('show');
+
+$('.element-1').on('hidden.bs.popover', function () {
+    $('.element-2').popover('show');
+    console.log("test");
+});
+
+$('.element-2').on('hidden.bs.popover', function () {
+    $('.element-3').popover('show');
+});
+*/
+
+
+</script>
+
+</body>
+</html>

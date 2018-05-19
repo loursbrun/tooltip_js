@@ -11,6 +11,17 @@
 </head>
 <body>
 
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <button type="button" class="start-btn btn btn-secondary ">Start</button>
+                <button type="button" class="previous-btn btn btn-secondary">Previous</button>
+                <button type="button" class="next-btn btn btn-secondary">Next</button>
+        </nav>
+
+        
+
+
+
     <style>
         .container {
               text-align: center;
@@ -35,21 +46,51 @@
 
 </div>
 
+<div > 
+
+</div>
+
 <script>
 
-$('.element-1').popover({
-  trigger: 'focus'
-})    
 
+
+
+console.log('clicked');
+
+
+
+
+// var timer = setInterval(startPopup, 5000);
+
+$( ".start-btn" ).click(function() {
+    $('.element-1').popover('show');
+    $('.element-2').popover('hide');
+    $('.element-3').popover('hide');
+});
+
+
+$( ".next-btn" ).click(function() {
+  startPopup();
+});
+
+$( ".previous-btn" ).click(function() {
+  startPopup();
+});
+
+
+
+/*
 $('.element-1').popover('show');
 
 $('.element-1').on('hidden.bs.popover', function () {
     $('.element-2').popover('show');
+    console.log("test");
 });
 
 $('.element-2').on('hidden.bs.popover', function () {
     $('.element-3').popover('show');
 });
+*/
 
 
 </script>
