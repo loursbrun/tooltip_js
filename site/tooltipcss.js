@@ -24,10 +24,10 @@ elmt.style.textAlign = "center";
 
 // on récupère l'élément
 
-document.body.style.backgroundColor = "red";
+document.body.style.backgroundColor = "green";
+//document.getElementsByClassName("services-thumbnail")[0].style.display = "none";
 
-
-document.getElementsByTagName('button').style = "none";
+document.getElementsByClassName("container").style.display = "none";
 
 /*
 var buttonelement = document.getElementsByName("button");
