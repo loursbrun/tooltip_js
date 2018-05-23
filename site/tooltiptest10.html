@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <button type="button" class="next-btn btn btn-secondary">next</button>
+        </nav>
+
+    <style>
+        .container {
+              text-align: center;
+              position: absolute;
+              width: 200px;
+              height: 200px;
+              top :49%;
+              left:49%;
+              right: 49%;
+              bottom: 49%;
+  }    
+  .hl {
+    background: green;
+}
+    </style>
+
+<div class="container">
+
+  <div class="large-2 large-centered columns">
+        <ol>
+            <h1 class="h1-class" title="Mon titre" data-content="Some content inside the popover content inside the popovercontent ">titre</h1>
+            <h2 class="h2-class" title="Mon titre" data-content="Some content inside the popover content inside the popovercontent ">some</h2>
+            <h3 class="h3-class" title="Mon titre" data-content="Some content inside the popover content inside the popovercontent ">some</h3>
+            <li class="li-class" title="Mon titre" data-content="Some content inside the popover content inside the popovercontent ">some</li>
+        </ol>
+    </div>
+</div>
+
+
+<script>
+
+$(document).ready(function () {
+
+    
+    $numberOfElements = 4;
+    var $items = new Array();
+
+    var $element1 = $('.h1-class');
+    $items[0] = $element1;
+
+    var $element2 = $('.h2-class');
+    $items[1] = $element2;
+
+    var $element3 = $('.h3-class');
+    $items[2] = $element3;
+
+    var $element4 = $('.li-class');
+    $items[3] = $element4;
+
+
+    for(var i = 0; i < $numberOfElements ; i++){
+        console.log($items[i]);
+    }
+
+    var $step = 0;
+    var $btn = $('button');
+
+    $btn.click(function (e) {
+
+    if($step >= $numberOfElements ){
+        $items[$numberOfElements - 1].popover('hide');
+        $step = 0; 
+    }
+    //console.log("Step :" + $step);
+    
+    $items[$step].popover('show');
+   
+    if ($step != 0) {
+    $items[$step-1].popover('hide');
+    } 
+
+    $step ++;
+
+
+});
+
+});
+
+
+
+</script>
+
+</body>
+</html>
