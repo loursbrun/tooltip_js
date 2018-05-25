@@ -36,7 +36,7 @@
   <div class="large-2 large-centered columns">
         <ol>
             <h1 class="h1-class" title="Mon titre" data-content="Some content inside the popover content inside the popovercontent ">titre</h1>
-            <h2 class="h2-class" title="Mon titre" data-content="Some content inside the popover content inside the popovercontent ">some</h2>
+            <h2 class="h2-class" >some</h2>
             <h3 class="h3-class" title="Mon titre" data-content="Some content inside the popover content inside the popovercontent ">some</h3>
             <li class="li-class" title="Mon titre" data-content="Some content inside the popover content inside the popovercontent ">some</li>
         </ol>
@@ -47,6 +47,13 @@
 <script>
 
 $(document).ready(function () {
+
+
+// Add dynamic attributs
+document.getElementsByClassName("h2-class")[0].setAttribute("title", "democlass"); 
+document.getElementsByClassName("h2-class")[0].setAttribute("data-content", "democlass"); 
+
+
 
     $numberOfElements = 4;
     var $items = new Array();
