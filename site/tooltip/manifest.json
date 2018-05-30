@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+
+  "name": "tooltip-extension",
+  "description": "Custom tool tip.",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "images/icon.png",
+    "default_popup": "index.html",
+    "default_title": "Show tool tips!"
+  },
+  "permissions": [
+    "activeTab",
+    "http://*/",
+    "storage"
+  ]
+}
