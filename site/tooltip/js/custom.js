@@ -12,16 +12,14 @@ $("#linxerForm").submit( function(e) {
 
      var jsonStr = $("#json-text").val();
 
-     logMessage("jvjvjkvjvjkvkjhv" + jsonStr);
+     logMessage("texte area is :" + jsonStr);
 
 
-     if( isValidJson(json) ){
-        logMessage("simple log");
+     if( isValidJson(jsonStr) ){
+        logMessage("json is valid");
      }
      else{
-      alert("please, provide a valid json");
-      logMessage("please, provide a valid json");
-     
+      logMessage("json is not valid");
      }
 
 });
@@ -32,20 +30,15 @@ function logMessage(msg){
     chrome.tabs.executeScript({code:"console.log('"+msg+"')"});
 }
 
-
 function isValidJson(json){
 
       try {
         JSON.parse(json);
-        console.log("try json");
     } catch (e) {
         //the json is not ok
         return false;
-        console.log("json is not valid");
     }
     return true;
-    console.log("json is valid");
     
-
 }
 
