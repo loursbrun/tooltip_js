@@ -5,14 +5,14 @@
 
 //Linxer.dbs.getLinks(); //lists the link stored in the database
 
-$("#linxerForm").submit( function(e) {
+$("#tooltipForm").submit( function(e) {
   e.preventDefault();
 
    //logMessage("simple log");
 
      var jsonStr = $("#json-text").val();
 
-     logMessage("texte area is :" + jsonStr);
+     //logMessage("texte area is :" + jsonStr);
 
 
      if( isValidJson(jsonStr) ){
