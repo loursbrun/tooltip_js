@@ -1,33 +1,51 @@
 //open database connection...
-Linxer.dbs.open();
+//Linxer.dbs.open();
 
-Linxer.dbs.createTable();
+//Linxer.dbs.createTable();
 
-Linxer.dbs.getLinks(); //lists the link stored in the database
+//Linxer.dbs.getLinks(); //lists the link stored in the database
 
 $("#linxerForm").submit( function(e) {
   e.preventDefault();
 
-     var url = $("#url").val();
-     if( isValidURL(url) ){
-         Linxer.dbs.addLink( url );
+   //logMessage("simple log");
 
-         $("#url").val('');
-         $("#submit").attr('disabled', true);
+     var jsonStr = $("#json-text").val();
+
+     logMessage("jvjvjkvjvjkvkjhv" + jsonStr);
+
+
+     if( isValidJson(json) ){
+        logMessage("simple log");
      }
      else{
-      alert("please, provide a valid url");
+      alert("please, provide a valid json");
+      logMessage("please, provide a valid json");
+     
      }
 
 });
 
-function isValidURL(url){
 
-      var RegExp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
- 
-      if(RegExp.test(url)){
-         return true;
-      }else{
-         return false;
-      }
+
+function logMessage(msg){
+    chrome.tabs.executeScript({code:"console.log('"+msg+"')"});
 }
+
+
+function isValidJson(json){
+
+      try {
+        JSON.parse(json);
+        console.log("try json");
+    } catch (e) {
+        //the json is not ok
+        return false;
+        console.log("json is not valid");
+    }
+    return true;
+    console.log("json is valid");
+    
+
+}
+
