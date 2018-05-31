@@ -14,9 +14,9 @@ $("#tooltipForm").submit( function(e) {
 
      //logMessage("texte area is :" + jsonStr);
 
-
      if( isValidJson(jsonStr) ){
         logMessage("json is valid");
+        addTooltips();
      }
      else{
       logMessage("json is not valid");
@@ -30,6 +30,13 @@ function logMessage(msg){
     chrome.tabs.executeScript({code:"console.log('"+msg+"')"});
 }
 
+function addTooltips(){
+
+    logMessage("add tooltip !!!");
+    changeBackgroundColor("red");
+    //document.body.style.backgroundColor = "red";
+}
+
 function isValidJson(json){
 
       try {
@@ -41,4 +48,21 @@ function isValidJson(json){
     return true;
     
 }
+
+/**
+ * Change the background color of the current page.
+ *
+ * @param {string} color The new background color.
+ */
+function changeBackgroundColor(color) {
+    var script = 'document.body.style.backgroundColor="' + color + '";';
+    // See https://developer.chrome.com/extensions/tabs#method-executeScript.
+    // chrome.tabs.executeScript allows us to programmatically inject JavaScript
+    // into a page. Since we omit the optional first argument "tabId", the script
+    // is inserted into the active tab of the current window, which serves as the
+    // default.
+    chrome.tabs.executeScript({
+      code: script
+    });
+  }
 
