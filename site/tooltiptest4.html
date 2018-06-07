@@ -13,7 +13,8 @@
 
 <div class="container">
   <h3>Popover Example</h3>
-  <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover content inside the popovercontent inside the popovercontent inside the popovercontent inside the popover">Toggle popover</a>
+  <a href="#" data-toggle="popover" title="" data-content="Some content inside the popover content inside the popovercontent inside the popovercontent inside the popovercontent inside the popover" data-original-title="Popover Header">Toggle popover</a>
+ <!--  <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover content inside the popovercontent inside the popovercontent inside the popovercontent inside the popover">Toggle popover</a> -->
 </div>
 
 <script>
@@ -27,3 +28,27 @@ $('.popover-dismiss').popover({
 
 </body>
 </html>
+
+
+
+
+
+
+
+<a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover content inside the popovercontent inside the popovercontent inside the popovercontent inside the popover">Toggle popover</a>
+                
+
+<script>
+    
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();   
+        });
+        $('.popover-dismiss').popover({
+          trigger: 'focus'
+        })
+        </script>
+
+
+
+
+

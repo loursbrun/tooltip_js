@@ -35,6 +35,24 @@ function addTooltips(){
     logMessage("add tooltip !!!");
     changeBackgroundColor("red");
     //document.body.style.backgroundColor = "red";
+
+   //document.getElementsByClassName("my-title").style
+   //document.getElementsByClassName("my-title").style.display = "none"; 
+
+
+   //chrome.tabs.executeScript({code:"console.log('"+msg+"')"});
+   //chrome.tabs.executeScript({code:"document.getElementsByClassName('my-title').style.display = 'none'"});
+
+   chrome.tabs.executeScript({code:"console.log('cocococ')"});
+
+   chrome.tabs.executeScript(null, {
+    code: 'document.getElementsByClassName("my-title")[0].style.display = "none"'//this line not working
+});
+
+   
+   //logMessage("json is not valid");
+   
+
 }
 
 function isValidJson(json){
