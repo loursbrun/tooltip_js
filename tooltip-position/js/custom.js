@@ -24,86 +24,27 @@ function logMessage(msg){
 function addTooltips(){
 
 
-chrome.tabs.executeScript({
-    code:'document.getElementsByClassName("center")[8].style.display = "none"'
-});
 // chrome.tabs.executeScript({
-//     code:'document.getElementsByClassName("center")[7].appendChild(document.createElement("DIV"))'
+//     code:'document.getElementsByClassName("center")[8].style.display = "none"'
 // });
 
 
-// chrome.tabs.executeScript({
-//     code:'g = document.createElement("div");'
-// });
+    // 1 - Ajout d'un attribut id pour identifier l'élément cible
+    chrome.tabs.executeScript({
+         code:'document.getElementsByClassName("services-title")[0].setAttribute("id", "tooltip-1")'
+    });
 
-// chrome.tabs.executeScript({
-//     code:'g.setAttribute("id", "Div1");'
-// });
-
-// chrome.tabs.executeScript({
-//     code:'document.getElementsByClassName("center")[7].appendChild(g)'
-// });
-
-
-// url prevenimmo : http://www.preventimmo.fr/urba/note-renseignement-durbanisme
-
-// Set arguments with add tooltip class number
-chrome.tabs.executeScript({
-    code:'document.getElementsByClassName("services-title")[0].setAttribute("id", "tooltip-1")'
-});
-
-//  chrome.tabs.executeScript({
-//      code:'document.getElementById("tooltip-1").setAttribute("title", "My first tootip !")'
-//  });
-
-//  chrome.tabs.executeScript({
-//     code:'document.getElementById("tooltip-1").setAttribute("data-content", "It is the content of the tooltip,it is the comment of the tooltip,it is the comment of the tooltip,it is the comment of the tooltip,it is the comment of the tooltip  ")'
-// });
-
-// chrome.tabs.executeScript({
-//     code:'document.getElementById("tooltip-1").setAttribute("data-toogle", "tooltip")'
-// });
-
-// chrome.tabs.executeScript({
-//     code:'document.getElementById("tooltip-1").tooltip("show"))'
-// });
-
-
-
-
-
-
-
-// // Add div before 
-// chrome.tabs.executeScript({
-//     code:'document.getElementById("tooltip-1").insertAdjacentHTML("beforebegin", "<div data-toggle=tooltip data-placement=left title=coco data-original-title=Dans85pourcentsdecasjenevoispasdetooltips>")'
-// });
-
-// // Add div after 
-// // chrome.tabs.executeScript({
-// //     code:'document.getElementById("tooltip-1").insertAdjacentHTML("afterend", "</div>")'
-// // });
-
-
-// // Add div before 
-// chrome.tabs.executeScript({
-//     code:'document.getElementById("tooltip-1").insertAdjacentHTML("beforebegin", "<div>two")'
-// });
-
-// // Add div after 
-// chrome.tabs.executeScript({
-//     code:'document.getElementById("tooltip-1").insertAdjacentHTML("afterend", "</div>")'
-// });
-
-
- 
-
-
-    // 1
+    // 2 - ajout du tooltil juste avant l'élémént cible
     chrome.tabs.executeScript({
         code:'document.getElementById("tooltip-1").insertAdjacentHTML("beforebegin", "<span id=tooltip-id-1 class=tooltiptext>Tooltip text</span>")'
     });
 
+    // 3 - On ajoute le style au tooltip
+    chrome.tabs.executeScript({
+          code:'document.getElementsByClassName("tooltiptext")[0].style.backgroundColor = "red"'
+     });
+
+    // 3 - On déplace le tooltip dans l'element cible
     chrome.tabs.executeScript({
         code:'document.getElementById("tooltip-1").appendChild(document.getElementById("tooltip-id-1")'
     });
