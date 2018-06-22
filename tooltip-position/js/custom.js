@@ -8,7 +8,21 @@ $("#tooltipForm").submit( function(e) {
      if( isValidJson(jsonStr) ){
         logMessage("json is valid");
 
-         // {"elementClassName":"services-title","indexElementClassName":"0"}
+         /*
+
+            {
+            "elementClassName":"icon-11-02",
+            "indexElementClassName":"0",
+            "tooltipText":"<h1>Mon Titre</h1>Ceci est mon premier commentaire de tooltip<br>Ceci est mon premier<br> commentaire de tooltip",
+            "backgroundColor":"grey",
+            "color":"white",
+            "width":"300px",
+            "height":"auto",
+            "marginTop":"-100px",
+            "marginLeft":"-50px"
+            }
+
+         */
 
          // Log first argument
          logMessage(jsonStr);
