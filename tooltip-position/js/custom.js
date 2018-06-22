@@ -37,6 +37,11 @@ function addTooltips(obj){
     logMessage(obj.indexElementClassName);
     logMessage(obj.tooltipText);
     logMessage(obj.backgroundColor);
+    logMessage(obj.color);
+    logMessage(obj.width);
+    logMessage(obj.height);
+    logMessage(obj.marginTop);
+    logMessage(obj.marginLeft);
     // 1 - Ajout d'un attribut id pour identifier l'élément cible
     chrome.tabs.executeScript({
          // code:'document.getElementsByClassName("services-title")[0].setAttribute("id", "tooltip-1")'
@@ -56,15 +61,15 @@ function addTooltips(obj){
      });
      // color
      chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext")[0].style.color = "white"'
+        code:'document.getElementsByClassName("tooltiptext")[0].style.color = "' + obj.color + '"'
      });
      // width
      chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext")[0].style.width = "300px"'
+        code:'document.getElementsByClassName("tooltiptext")[0].style.width = "' + obj.width + '"'
      });
      // height
      chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext")[0].style.height = "50px"'
+        code:'document.getElementsByClassName("tooltiptext")[0].style.height = "' + obj.height + '"'
      });
      // text-align
      chrome.tabs.executeScript({
@@ -88,10 +93,13 @@ function addTooltips(obj){
      });
      // margin-top
      chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext")[0].style.margin = "-50px 0 0 0"'
+        code:'document.getElementsByClassName("tooltiptext")[0].style.marginTop = "' + obj.marginTop + '"'
      });
-
-
+     // margin-top
+     chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("tooltiptext")[0].style.marginLeft = "' + obj.marginLeft + '"'
+     });
+     
 
     // 3 - On déplace le tooltip dans l'element cible
     chrome.tabs.executeScript({
