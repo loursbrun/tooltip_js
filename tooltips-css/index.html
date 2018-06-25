@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Titre de la page</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+
+<style>
+        #div-center {
+            background-color: transparent;
+            color: #ffffff;
+            font-size: 24px;
+            text-align: center;
+            position: absolute;
+            top :49%;
+            left:49%;
+            right: 49%;
+            bottom: 49%;
+        }
+        .arrow{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            opacity: 0.5;
+            margin-left: -50px;
+            margin-top: -50px;
+        }
+
+
+
+.arrow_box {
+	position: relative;
+	background: grey;
+    border: 4px solid darkgrey;
+    width: 200px;
+    border-radius: 6px;
+}
+.arrow_box:after, .arrow_box:before {
+    left: 100%;
+    /* right:100% */
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow_box:after {
+	border-color: rgba(213, 98, 209, 0);
+    border-left-color: grey;
+    /* border-right-color: grey; */
+	border-width: 10px;
+	margin-top: -10px;
+}
+.arrow_box:before {
+	border-color: rgba(123, 245, 17, 0);
+    border-left-color: darkgrey;
+    /* border-right-color: grey; */
+	border-width: 16px;
+	margin-top: -16px;
+}
+
+    </style>
+    
+<body>
+  
+        <div id="div-center">
+            <div class="arrow_box">
+                    <p class="logo">css arrow please! <br> css arrow please! css arrow please! css arrow please!</p>
+            </div>
+        </div>
+
+</body>
+</html>
