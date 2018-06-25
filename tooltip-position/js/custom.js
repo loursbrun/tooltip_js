@@ -10,16 +10,19 @@ $("#tooltipForm").submit( function(e) {
 
          /*
 
-            {
-            "elementClassName":"icon-11-02",
-            "indexElementClassName":"0",
+            http://www.preventimmo.fr/
+
+           {
+            "elementTagName":"span",
+            "indexElement":"5",
             "tooltipText":"<h1>Mon Titre</h1>Ceci est mon premier commentaire de tooltip<br>Ceci est mon premier<br> commentaire de tooltip",
             "backgroundColor":"grey",
             "color":"white",
             "width":"300px",
             "height":"auto",
             "marginTop":"-100px",
-            "marginLeft":"-50px"
+            "marginLeft":"-50px",
+            "fontSize":"20px"
             }
 
          */
@@ -29,8 +32,7 @@ $("#tooltipForm").submit( function(e) {
         
          var obj = JSON.parse(jsonStr);
          
-        // logMessage(obj.elementClassName);
-    
+        
 
         addTooltips(obj);
      }
@@ -47,8 +49,8 @@ function logMessage(msg){
 }
 
 function addTooltips(obj){
-    logMessage(obj.elementClassName);
-    logMessage(obj.indexElementClassName);
+    logMessage(obj.elementTagName);
+    logMessage(obj.indexElement);
     logMessage(obj.tooltipText);
     logMessage(obj.backgroundColor);
     logMessage(obj.color);
@@ -56,10 +58,10 @@ function addTooltips(obj){
     logMessage(obj.height);
     logMessage(obj.marginTop);
     logMessage(obj.marginLeft);
+    logMessage(obj.fontSize);
     // 1 - Ajout d'un attribut id pour identifier l'élément cible
     chrome.tabs.executeScript({
-         // code:'document.getElementsByClassName("services-title")[0].setAttribute("id", "tooltip-1")'
-         code:'document.getElementsByClassName("' + obj.elementClassName + '")[' + obj.indexElementClassName + '].setAttribute("id", "tooltip-1")'
+         code:'document.getElementsByTagName("' + obj.elementTagName + '")[' + obj.indexElement + '].setAttribute("id", "tooltip-1")'
     });
 
     // 2 - ajout du tooltil juste avant l'élémént cible
@@ -112,6 +114,11 @@ function addTooltips(obj){
      // margin-top
      chrome.tabs.executeScript({
         code:'document.getElementsByClassName("tooltiptext")[0].style.marginLeft = "' + obj.marginLeft + '"'
+     });
+
+      // font-size
+      chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("tooltiptext")[0].style.fontSize = "' + obj.fontSize + '"'
      });
      
 
