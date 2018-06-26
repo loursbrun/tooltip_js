@@ -75,6 +75,11 @@ function addTooltips(obj){
         code: 'var div=document.createElement("div"); document.getElementById("tooltip-id-1").appendChild(div); div.setAttribute("class", "arrowTooltipBorderTop")'
         
     });
+    // 3 - ajout du tooltip juste avant l'élémént cible
+    chrome.tabs.executeScript({
+        code: 'var div=document.createElement("div"); document.getElementById("tooltip-id-1").appendChild(div); div.setAttribute("class", "arrowTooltipTop")'
+        
+    });
 
     // 4 - On ajoute le style au tooltip 
 
@@ -141,9 +146,8 @@ function addTooltips(obj){
      });
 
 
-    // Custom Tootltip
+    /* ---  arrowTooltipBorderTop   ---*/
 
-    
      // bottom tooltiptext:after
     chrome.tabs.executeScript({
         code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.bottom = "100%"'
@@ -180,18 +184,65 @@ function addTooltips(obj){
     chrome.tabs.executeScript({
         code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.borderColor = "transparent"'
      });
-    
      // marginLeft tooltiptext:after '
     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.marginLeft = "-10px"'
+        code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.marginLeft = "-16px"'
      });
      // border-width tooltiptext:after '
     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.borderWidth = "20px"'
+        code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.borderWidth = "16px"'
      });
      // border-width tooltiptext:after '
     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.borderBottomColor = "grey"'
+        code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.borderBottomColor = "darkgrey"'
+     });
+
+
+     /* ---  arrowTooltipTop   ---*/
+    
+     // bottom tooltiptext:after
+    chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("arrowTooltipTop")[0].style.bottom = "100%"'
+     });
+     // left tooltiptext:after
+    chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("arrowTooltipTop")[0].style.left = "50%"'
+     });
+     // border solid tooltiptext:after
+    chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("arrowTooltipTop")[0].style.border = "solid transparent"'
+     });
+     // height tooltiptext:after
+    chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("arrowTooltipTop")[0].style.height = "0"'
+     });
+    // width tooltiptext:after
+    chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("arrowTooltipTop")[0].style.width = "0"'
+     });
+     // position tooltiptext:after
+    chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("arrowTooltipTop")[0].style.position = "absolute"'
+     });
+    // pointer-events tooltiptext:after
+    chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("arrowTooltipTop")[0].style.pointerEvents = "none"'
+     });
+     // borderColor tooltiptext:after '
+    chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("arrowTooltipTop")[0].style.borderColor = "transparent"'
+     });
+     // marginLeft tooltiptext:after '
+    chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("arrowTooltipTop")[0].style.marginLeft = "-10px"'
+     });
+     // border-width tooltiptext:after '
+    chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("arrowTooltipTop")[0].style.borderWidth = "10px"'
+     });
+     // border-width tooltiptext:after '
+    chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("arrowTooltipTop")[0].style.borderBottomColor = "grey"'
      });
 
 
