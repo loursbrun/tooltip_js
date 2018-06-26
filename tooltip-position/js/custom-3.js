@@ -66,7 +66,7 @@ function addTooltips(obj){
 
     // 2 - ajout du tooltil juste avant l'élémént cible
     chrome.tabs.executeScript({
-        code:'document.getElementById("tooltip-1").insertAdjacentHTML("beforebegin", "<div id=tooltip-id-1 class=tooltiptext>' + obj.tooltipText + '</div>")'
+        code:'document.getElementById("tooltip-1").insertAdjacentHTML("beforebegin", "<span id=tooltip-id-1 class=tooltiptext>' + obj.tooltipText + '</span>")'
     });
 
     // 3 - On ajoute le style au tooltip 
@@ -79,29 +79,6 @@ function addTooltips(obj){
      chrome.tabs.executeScript({
         code:'document.getElementsByClassName("tooltiptext")[0].style.color = "' + obj.color + '"'
      });
-      // font-size
-      chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext")[0].style.fontSize = "' + obj.fontSize + '"'
-     });
-     // text-align
-     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext")[0].style.textAlign = "center"'
-     });
-      // position
-      chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext")[0].style.position = "absolute"'
-     });
-      // border
-      chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext")[0].style.border = "4px solid darkgrey"'
-     });
-
-
-
-     
-
-
-
      // width
      chrome.tabs.executeScript({
         code:'document.getElementsByClassName("tooltiptext")[0].style.width = "' + obj.width + '"'
@@ -110,7 +87,10 @@ function addTooltips(obj){
      chrome.tabs.executeScript({
         code:'document.getElementsByClassName("tooltiptext")[0].style.height = "' + obj.height + '"'
      });
-     
+     // text-align
+     chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("tooltiptext")[0].style.textAlign = "center"'
+     });
      // border-radius
      chrome.tabs.executeScript({
         code:'document.getElementsByClassName("tooltiptext")[0].style.borderRadius = "6px"'
@@ -119,7 +99,10 @@ function addTooltips(obj){
      chrome.tabs.executeScript({
         code:'document.getElementsByClassName("tooltiptext")[0].style.padding = "5px 0"'
      });
-    
+     // position
+     chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("tooltiptext")[0].style.position = "absolute"'
+     });
      // position
      chrome.tabs.executeScript({
         code:'document.getElementsByClassName("tooltiptext")[0].style.zIndex = "1"'
@@ -133,67 +116,10 @@ function addTooltips(obj){
         code:'document.getElementsByClassName("tooltiptext")[0].style.marginLeft = "' + obj.marginLeft + '"'
      });
 
-
-    // Custom Tootltip
-
-    
-     // bottom tooltiptext:after
-    chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.bottom = "100%"'
+      // font-size
+      chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("tooltiptext")[0].style.fontSize = "' + obj.fontSize + '"'
      });
-     // left tooltiptext:after
-    chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.left = "50%"'
-     });
-     // border solid tooltiptext:after
-    chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.border = "solid"'
-     });
-     // border transparent tooltiptext:after
-    chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.border = "transparent"'
-     });
-     // content tooltiptext:after
-    chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.content = " "'
-     });
-     // height tooltiptext:after
-    chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.height = "0"'
-     });
-    // width tooltiptext:after
-    chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.width = "0"'
-     });
-     // position tooltiptext:after
-    chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.position = "absolute"'
-     });
-    // pointer-events tooltiptext:after
-    chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.pointerEvents = "none"'
-     });
-     // borderColor tooltiptext:after '
-    chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.borderColor = "rgba(213, 98, 209, 0)"'
-     });
-    // borderBottomColor tooltiptext:after '
-    chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.borderBottomColor = "grey"'
-     });
-     // marginLeft tooltiptext:after '
-    chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.marginLeft = "-10px"'
-     });
-     // border-width tooltiptext:after '
-    chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.borderWidth = "10px"'
-     });
-
-
-
-
-
      
 
     // 3 - On déplace le tooltip dans l'element cible
