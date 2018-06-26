@@ -64,12 +64,21 @@ function addTooltips(obj){
          code:'document.getElementsByTagName("' + obj.elementTagName + '")[' + obj.indexElement + '].setAttribute("id", "tooltip-1")'
     });
 
-    // 2 - ajout du tooltil juste avant l'élémént cible
+    // 2 - ajout du tooltip juste avant l'élémént cible
     chrome.tabs.executeScript({
         code:'document.getElementById("tooltip-1").insertAdjacentHTML("beforebegin", "<div id=tooltip-id-1 class=tooltiptext>' + obj.tooltipText + '</div>")'
     });
 
-    // 3 - On ajoute le style au tooltip 
+    // Create a div and set class
+   var new_row = document.createElement("div");
+   new_row.setAttribute("class", "aClassName" );
+
+    // 3 - ajout du tooltip juste avant l'élémént cible
+    chrome.tabs.executeScript({
+        code:'document.getElementById("tooltip-1").insertAdjacentHTML("beforebegin", "<div id=tooltip-id-1 class=tooltiptext>' + new_row + '</div>")'
+    });
+
+    // 4 - On ajoute le style au tooltip 
 
     // background color
      chrome.tabs.executeScript({
