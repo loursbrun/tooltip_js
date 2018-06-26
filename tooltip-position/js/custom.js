@@ -93,23 +93,12 @@ function addTooltips(obj){
     logMessage(obj.tooltips[0].marginTop);
 
 
-
-
-
-
-    // // 1 - Ajout d'un attribut id pour identifier l'élément cible
-    // chrome.tabs.executeScript({
-    //      code:'document.getElementsByTagName("' + obj.tooltips[0].elementTagName + '")[' + obj.tooltips[0].indexElement + '].setAttribute("id", "tooltip-1")'
-    // });
-
-    // // 2 - ajout du tooltip juste avant l'élémént cible
-    // chrome.tabs.executeScript({
-    //     code:'document.getElementById("tooltip-1").insertAdjacentHTML("beforebegin", "<div id=tooltip-id-1 class=tooltiptext>' + obj.tooltips[0].tooltipText + '</div>")'
-    // });
-
-     // 1 - Ajout d'un attribut id pour identifier l'élément cible
+    var currentTooltipNumber;
+    for(currentTooltipNumber=0; currentTooltipNumber<2; i++)
+    {
+  
      chrome.tabs.executeScript({
-        code:'document.getElementsByTagName("' + obj.tooltips[0].elementTagName + '")[' + obj.tooltips[0].indexElement + '].insertAdjacentHTML("beforebegin", "<div class=tooltiptext>' + obj.tooltips[0].tooltipText + '</div>")'
+        code:'document.getElementsByTagName("' + obj.tooltips[currentTooltipNumber].elementTagName + '")[' + obj.tooltips[currentTooltipNumber].indexElement + '].insertAdjacentHTML("beforebegin", "<div class=tooltiptext>' + obj.tooltips[currentTooltipNumber].tooltipText + '</div>")'
    });
 
 
@@ -215,11 +204,11 @@ function addTooltips(obj){
      });
      // margin-top
      chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext")[0].style.marginTop = "' + obj.tooltips[0].marginTop + '"'
+        code:'document.getElementsByClassName("tooltiptext")[0].style.marginTop = "' + obj.tooltips[currentTooltipNumber].marginTop + '"'
      });
      // margin-top
      chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext")[0].style.marginLeft = "' + obj.tooltips[0].marginLeft + '"'
+        code:'document.getElementsByClassName("tooltiptext")[0].style.marginLeft = "' + obj.tooltips[currentTooltipNumber].marginLeft + '"'
      });
 
 
@@ -669,6 +658,9 @@ function addTooltips(obj){
             code:'document.getElementsByClassName("arrowTooltipBorderBottom")[0].style.display = "block"'
          });
      }
+
+    }
+     // end of iteration
 
 
 
