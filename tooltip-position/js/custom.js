@@ -59,6 +59,7 @@ function addTooltips(obj){
     logMessage(obj.marginTop);
     logMessage(obj.marginLeft);
     logMessage(obj.fontSize);
+    logMessage(obj.arrowPosition);
     // 1 - Ajout d'un attribut id pour identifier l'élément cible
     chrome.tabs.executeScript({
          code:'document.getElementsByTagName("' + obj.elementTagName + '")[' + obj.indexElement + '].setAttribute("id", "tooltip-1")'
@@ -178,6 +179,9 @@ function addTooltips(obj){
 
      // bottom tooltiptext:after
     chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.display = "none"'
+    });
+    chrome.tabs.executeScript({
         code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.bottom = "100%"'
      });
      // left tooltiptext:after
@@ -229,6 +233,9 @@ function addTooltips(obj){
      /* ---  arrowTooltipTop   ---*/
     
      // bottom tooltiptext:after
+     chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("arrowTooltipTop")[0].style.display = "none"'
+    });
     chrome.tabs.executeScript({
         code:'document.getElementsByClassName("arrowTooltipTop")[0].style.bottom = "100%"'
      });
@@ -276,6 +283,9 @@ function addTooltips(obj){
 
      /* ---  arrowTooltipBorderBottom   ---*/
 
+    chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("arrowTooltipBorderBottom")[0].style.display = "none"'
+    });
      // bottom tooltiptext:after
     chrome.tabs.executeScript({
         code:'document.getElementsByClassName("arrowTooltipBorderBottom")[0].style.top = "100%"'
@@ -324,6 +334,9 @@ function addTooltips(obj){
 
      /* ---  arrowTooltipBottom   ---*/
     
+     chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("arrowTooltipBottom")[0].style.display = "none"'
+    });
      // bottom tooltiptext:after
     chrome.tabs.executeScript({
         code:'document.getElementsByClassName("arrowTooltipBottom")[0].style.top = "100%"'
@@ -372,6 +385,9 @@ function addTooltips(obj){
 
      /* ---  arrowTooltipBorderLeft   ---*/
 
+     chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("arrowTooltipBorderLeft")[0].style.display = "none"'
+    });
      // bottom tooltiptext:after
     chrome.tabs.executeScript({
         code:'document.getElementsByClassName("arrowTooltipBorderLeft")[0].style.top = "50%"'
@@ -420,6 +436,9 @@ function addTooltips(obj){
 
      /* ---  arrowTooltipLeft   ---*/
     
+     chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("arrowTooltipLeft")[0].style.display = "none"'
+    });
      // bottom tooltiptext:after
     chrome.tabs.executeScript({
         code:'document.getElementsByClassName("arrowTooltipLeft")[0].style.top = "50%"'
@@ -469,6 +488,9 @@ function addTooltips(obj){
 
       /* ---  arrowTooltipBorderRight   ---*/
 
+      chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("arrowTooltipBorderRight")[0].style.display = "none"'
+    });
      // bottom tooltiptext:after
     chrome.tabs.executeScript({
         code:'document.getElementsByClassName("arrowTooltipBorderRight")[0].style.top = "50%"'
@@ -517,6 +539,9 @@ function addTooltips(obj){
 
      /* ---  arrowTooltipRight   ---*/
     
+     chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("arrowTooltipRight")[0].style.display = "none"'
+    });
      // bottom tooltiptext:after
     chrome.tabs.executeScript({
         code:'document.getElementsByClassName("arrowTooltipRight")[0].style.top = "50%"'
@@ -561,6 +586,41 @@ function addTooltips(obj){
     chrome.tabs.executeScript({
         code:'document.getElementsByClassName("arrowTooltipRight")[0].style.borderRightColor = "grey"'
      });
+
+
+     // Hide arrow depend of the position
+     if(obj.arrowPosition == "left") {
+        chrome.tabs.executeScript({
+            code:'document.getElementsByClassName("arrowTooltipRight")[0].style.display = "block"'
+         });
+         chrome.tabs.executeScript({
+            code:'document.getElementsByClassName("arrowTooltipBorderRight")[0].style.display = "block"'
+         });
+     }
+     if(obj.arrowPosition == "right") {
+        chrome.tabs.executeScript({
+            code:'document.getElementsByClassName("arrowTooltipLeft")[0].style.display = "block"'
+         });
+         chrome.tabs.executeScript({
+            code:'document.getElementsByClassName("arrowTooltipBorderLeft")[0].style.display = "block"'
+         });
+     }
+     if(obj.arrowPosition == "top") {
+        chrome.tabs.executeScript({
+            code:'document.getElementsByClassName("arrowTooltipTop")[0].style.display = "block"'
+         });
+         chrome.tabs.executeScript({
+            code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.display = "block"'
+         });
+     }
+     if(obj.arrowPosition == "bottom") {
+        chrome.tabs.executeScript({
+            code:'document.getElementsByClassName("arrowTooltipBottom")[0].style.display = "block"'
+         });
+         chrome.tabs.executeScript({
+            code:'document.getElementsByClassName("arrowTooltipBorderBottom")[0].style.display = "block"'
+         });
+     }
 
 
 
