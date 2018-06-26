@@ -12,7 +12,7 @@ $("#tooltipForm").submit( function(e) {
 
             http://www.preventimmo.fr/
 
-           {
+            {
             "elementTagName":"span",
             "indexElement":"5",
             "tooltipText":"<h1>Mon Titre</h1>Ceci est mon premier commentaire de tooltip<br>Ceci est mon premier<br> commentaire de tooltip",
@@ -20,16 +20,42 @@ $("#tooltipForm").submit( function(e) {
             "color":"white",
             "width":"300px",
             "height":"auto",
-            "marginTop":"-100px",
+            "marginTop":"200px",
             "marginLeft":"-50px",
-            "fontSize":"20px"
+            "fontSize":"12px",
+            "arrowPosition":"top",
+            "tooltips":[ 
+            {
+                "elementTagName":"span",
+                "indexElement":"5",
+                "tooltipText":"<h1>Mon Titre</h1>Ceci est mon premier commentaire de tooltip<br>Ceci est mon premier<br> commentaire de tooltip",
+                "backgroundColor":"grey",
+                "color":"white",
+                "width":"300px",
+                "height":"auto",
+                "marginTop":"200px",
+                "marginLeft":"-50px",
+                "fontSize":"12px",
+                "arrowPosition":"top"
+            }, 
+            {
+                "elementTagName":"span",
+                "indexElement":"5",
+                "tooltipText":"<h1>Mon Titre</h1>Ceci est mon premier commentaire de tooltip<br>Ceci est mon premier<br> commentaire de tooltip",
+                "backgroundColor":"grey",
+                "color":"white",
+                "width":"300px",
+                "height":"auto",
+                "marginTop":"200px",
+                "marginLeft":"-50px",
+                "fontSize":"12px",
+                "arrowPosition":"top"
+            }
+            ]
             }
 
          */
 
-         // Log first argument
-         logMessage(jsonStr);
-        
          var obj = JSON.parse(jsonStr);
          
         
@@ -49,17 +75,24 @@ function logMessage(msg){
 }
 
 function addTooltips(obj){
-    logMessage(obj.elementTagName);
-    logMessage(obj.indexElement);
-    logMessage(obj.tooltipText);
-    logMessage(obj.backgroundColor);
-    logMessage(obj.color);
-    logMessage(obj.width);
-    logMessage(obj.height);
-    logMessage(obj.marginTop);
-    logMessage(obj.marginLeft);
-    logMessage(obj.fontSize);
-    logMessage(obj.arrowPosition);
+    logMessage(obj.tooltips[0].elementTagName);
+    logMessage(obj.tooltips[0].indexElement);
+    logMessage(obj.tooltips[0].tooltipText);
+    logMessage(obj.tooltips[0].backgroundColor);
+    logMessage(obj.tooltips[0].color);
+    logMessage(obj.tooltips[0].width);
+    logMessage(obj.tooltips[0].height);
+    logMessage(obj.tooltips[0].marginTop);
+    logMessage(obj.tooltips[0].marginLeft);
+    logMessage(obj.tooltips[0].fontSize);
+    logMessage(obj.tooltips[0].arrowPosition);
+    logMessage(obj.tooltips[0].marginTop);
+
+
+
+
+
+
     // 1 - Ajout d'un attribut id pour identifier l'élément cible
     chrome.tabs.executeScript({
          code:'document.getElementsByTagName("' + obj.elementTagName + '")[' + obj.indexElement + '].setAttribute("id", "tooltip-1")'
@@ -629,7 +662,7 @@ function addTooltips(obj){
 
     // 3 - On déplace le tooltip dans l'element cible
     chrome.tabs.executeScript({
-        code:'document.getElementById("tooltip-1").appendChild(document.getElementById("tooltip-id-1")'
+       // code:'document.getElementById("tooltip-1").appendChild(document.getElementById("tooltip-id-1")'
     });
 
 
