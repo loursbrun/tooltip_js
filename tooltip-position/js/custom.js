@@ -97,53 +97,58 @@ function addTooltips(obj){
 
 
 
-    // 1 - Ajout d'un attribut id pour identifier l'élément cible
-    chrome.tabs.executeScript({
-         code:'document.getElementsByTagName("' + obj.tooltips[0].elementTagName + '")[' + obj.tooltips[0].indexElement + '].setAttribute("id", "tooltip-1")'
-    });
+    // // 1 - Ajout d'un attribut id pour identifier l'élément cible
+    // chrome.tabs.executeScript({
+    //      code:'document.getElementsByTagName("' + obj.tooltips[0].elementTagName + '")[' + obj.tooltips[0].indexElement + '].setAttribute("id", "tooltip-1")'
+    // });
 
-    // 2 - ajout du tooltip juste avant l'élémént cible
-    chrome.tabs.executeScript({
-        code:'document.getElementById("tooltip-1").insertAdjacentHTML("beforebegin", "<div id=tooltip-id-1 class=tooltiptext>' + obj.tooltips[0].tooltipText + '</div>")'
-    });
+    // // 2 - ajout du tooltip juste avant l'élémént cible
+    // chrome.tabs.executeScript({
+    //     code:'document.getElementById("tooltip-1").insertAdjacentHTML("beforebegin", "<div id=tooltip-id-1 class=tooltiptext>' + obj.tooltips[0].tooltipText + '</div>")'
+    // });
+
+     // 1 - Ajout d'un attribut id pour identifier l'élément cible
+     chrome.tabs.executeScript({
+        code:'document.getElementsByTagName("' + obj.tooltips[0].elementTagName + '")[' + obj.tooltips[0].indexElement + '].insertAdjacentHTML("beforebegin", "<div class=tooltiptext>' + obj.tooltips[0].tooltipText + '</div>")'
+   });
 
 
     // 3 - arrowTooltipBorderTop
     chrome.tabs.executeScript({
-        code: 'var div=document.createElement("div"); document.getElementById("tooltip-id-1").appendChild(div); div.setAttribute("class", "arrowTooltipBorderTop")'
+        code: 'var div=document.createElement("div"); document.getElementsByClassName("tooltiptext")[0].appendChild(div); div.setAttribute("class", "arrowTooltipBorderTop")'
         
     });
     chrome.tabs.executeScript({
-        code: 'var div=document.createElement("div"); document.getElementById("tooltip-id-1").appendChild(div); div.setAttribute("class", "arrowTooltipTop")'
+        code: 'var div=document.createElement("div"); document.getElementsByClassName("tooltiptext")[0].appendChild(div); div.setAttribute("class", "arrowTooltipTop")'
         
     });
      // 3 - arrowTooltipBorderBottom
      chrome.tabs.executeScript({
-        code: 'var div=document.createElement("div"); document.getElementById("tooltip-id-1").appendChild(div); div.setAttribute("class", "arrowTooltipBorderBottom")'
+        code: 'var div=document.createElement("div"); document.getElementsByClassName("tooltiptext")[0].appendChild(div); div.setAttribute("class", "arrowTooltipBorderBottom")'
         
     });
     chrome.tabs.executeScript({
-        code: 'var div=document.createElement("div"); document.getElementById("tooltip-id-1").appendChild(div); div.setAttribute("class", "arrowTooltipBottom")'
+        code: 'var div=document.createElement("div"); document.getElementsByClassName("tooltiptext")[0].appendChild(div); div.setAttribute("class", "arrowTooltipBottom")'
         
     });
 
      // 3 - arrowTooltipBorderBottom
      chrome.tabs.executeScript({
-        code: 'var div=document.createElement("div"); document.getElementById("tooltip-id-1").appendChild(div); div.setAttribute("class", "arrowTooltipBorderLeft")'
+        code: 'var div=document.createElement("div"); document.getElementsByClassName("tooltiptext")[0].appendChild(div); div.setAttribute("class", "arrowTooltipBorderLeft")'
         
     });
     chrome.tabs.executeScript({
-        code: 'var div=document.createElement("div"); document.getElementById("tooltip-id-1").appendChild(div); div.setAttribute("class", "arrowTooltipLeft")'
+        code: 'var div=document.createElement("div"); document.getElementsByClassName("tooltiptext")[0].appendChild(div); div.setAttribute("class", "arrowTooltipLeft")'
         
     });
 
      // 3 - arrowTooltipBorderBottom
      chrome.tabs.executeScript({
-        code: 'var div=document.createElement("div"); document.getElementById("tooltip-id-1").appendChild(div); div.setAttribute("class", "arrowTooltipBorderRight")'
+        code: 'var div=document.createElement("div"); document.getElementsByClassName("tooltiptext")[0].appendChild(div); div.setAttribute("class", "arrowTooltipBorderRight")'
         
     });
     chrome.tabs.executeScript({
-        code: 'var div=document.createElement("div"); document.getElementById("tooltip-id-1").appendChild(div); div.setAttribute("class", "arrowTooltipRight")'
+        code: 'var div=document.createElement("div"); document.getElementsByClassName("tooltiptext")[0].appendChild(div); div.setAttribute("class", "arrowTooltipRight")'
         
     });
 
@@ -665,15 +670,6 @@ function addTooltips(obj){
          });
      }
 
-
-
-
-     
-
-    // 3 - On déplace le tooltip dans l'element cible
-    chrome.tabs.executeScript({
-       // code:'document.getElementById("tooltip-1").appendChild(document.getElementById("tooltip-id-1")'
-    });
 
 
 }
