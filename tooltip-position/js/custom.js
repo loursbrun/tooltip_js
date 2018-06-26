@@ -69,13 +69,11 @@ function addTooltips(obj){
         code:'document.getElementById("tooltip-1").insertAdjacentHTML("beforebegin", "<div id=tooltip-id-1 class=tooltiptext>' + obj.tooltipText + '</div>")'
     });
 
-    // Create a div and set class
-   var new_row = document.createElement("div");
-   new_row.setAttribute("class", "aClassName" );
 
     // 3 - ajout du tooltip juste avant l'élémént cible
     chrome.tabs.executeScript({
-        code:'document.getElementById("tooltip-1").insertAdjacentHTML("beforebegin", "<div id=tooltip-id-1 class=tooltiptext>' + new_row + '</div>")'
+        code: 'var div=document.createElement("div"); document.getElementById("tooltip-id-1").appendChild(div); div.setAttribute("class", "arrowTooltipBorderTop")'
+        
     });
 
     // 4 - On ajoute le style au tooltip 
