@@ -146,55 +146,52 @@ function addTooltips(obj){
     
      // bottom tooltiptext:after
     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.bottom = "100%"'
+        code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.bottom = "100%"'
      });
      // left tooltiptext:after
     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.left = "50%"'
+        code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.left = "50%"'
      });
      // border solid tooltiptext:after
     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.border = "solid"'
+        code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.border = "solid transparent"'
      });
      // border transparent tooltiptext:after
     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.border = "transparent"'
-     });
-     // content tooltiptext:after
-    chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.content = " "'
+        //code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.border = "transparent"'
      });
      // height tooltiptext:after
     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.height = "0"'
+        code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.height = "0"'
      });
     // width tooltiptext:after
     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.width = "0"'
+        code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.width = "0"'
      });
      // position tooltiptext:after
     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.position = "absolute"'
+        code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.position = "absolute"'
      });
     // pointer-events tooltiptext:after
     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.pointerEvents = "none"'
+        code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.pointerEvents = "none"'
      });
      // borderColor tooltiptext:after '
     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.borderColor = "rgba(213, 98, 209, 0)"'
+        code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.borderColor = "transparent"'
      });
-    // borderBottomColor tooltiptext:after '
-    chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.borderBottomColor = "grey"'
-     });
+    
      // marginLeft tooltiptext:after '
     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.marginLeft = "-10px"'
+        code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.marginLeft = "-10px"'
      });
      // border-width tooltiptext:after '
     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext:after")[0].style.borderWidth = "10px"'
+        code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.borderWidth = "20px"'
+     });
+     // border-width tooltiptext:after '
+    chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("arrowTooltipBorderTop")[0].style.borderBottomColor = "grey"'
      });
 
 
