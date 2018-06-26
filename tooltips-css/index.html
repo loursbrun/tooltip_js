@@ -52,7 +52,7 @@
 	position: absolute;
 	pointer-events: none;
     border-color: rgba(213, 98, 209, 0);
-    border-bottom-color: red; margin-left: -10px; /* Top*/   
+    border-bottom-color: grey; margin-left: -10px; /* Top*/   
     /* border-top-color: grey; margin-left: -10px;     Bottom*/
     /* border-left-color: grey; margin-top: -10px;     Left*/
     /* border-right-color: grey; margin-top: -10px;    Right*/
@@ -70,7 +70,7 @@
 	position: absolute;
 	pointer-events: none;
     border-color: rgba(123, 245, 17, 0);
-    border-bottom-color: green; margin-left: -16px; /* Top*/
+    border-bottom-color: darkgrey; margin-left: -16px; /* Top*/
     /*border-top-color: darkgrey; margin-left: -16px;  Bottom*/ 
     /* border-left-color: grey; margin-top: -16px;     Left*/
     /* border-right-color: grey; margin-top: -16px;    Right*/
@@ -113,6 +113,80 @@
     /* border-right-color: grey; margin-top: -16px;    Right*/
     border-width: 16px;
 }
+.arrowTooltipLeft {
+    /* bottom: 100%; left: 50%;  Top*/  
+    /* top: 100%; left: 50%;     Bottom*/
+     left:100% ; top: 50%;   /* Left*/
+    /* right:100% ; top: 50%;   Right*/
+	
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+    border-color: rgba(213, 98, 209, 0);
+    /* border-bottom-color: red; margin-left: -10px; Top*/   
+    /* border-top-color: grey; margin-left: -10px;    Bottom*/
+    border-left-color: grey; margin-top: -10px;     /*  Left*/
+    /* border-right-color: grey; margin-top: -10px;    Right*/
+	border-width: 10px;
+}
+.arrowTooltipBorderLeft {
+    /* bottom: 100%; left: 50%;  Top */ 
+    /* top: 100%; left: 50%;     Bottom*/
+    left:100% ; top: 50%;    /* Left*/
+    /* right:100% ; top: 50%;   Right*/
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+    border-color: rgba(123, 245, 17, 0);
+    /* border-bottom-color: green; margin-left: -16px;  Top*/
+    /* border-top-color: darkgrey; margin-left: -16px;  Bottom*/ 
+     border-left-color: darkgrey; margin-top: -16px;    /* Left*/
+    /* border-right-color: grey; margin-top: -16px;    Right*/
+    border-width: 16px;
+}
+.arrowTooltipRight {
+    /* bottom: 100%; left: 50%;  Top*/  
+    /* top: 100%; left: 50%;     Bottom*/
+    /* left:100% ; top: 50%;    Left*/
+     right:100% ; top: 50%;   /* Right*/
+	
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+    border-color: rgba(213, 98, 209, 0);
+    /* border-bottom-color: red; margin-left: -10px; Top*/   
+    /* border-top-color: grey; margin-left: -10px;    Bottom*/
+    /* border-left-color: grey; margin-top: -10px;     Left*/
+    border-right-color: grey; margin-top: -10px;    /* Right*/
+	border-width: 10px;
+}
+.arrowTooltipBorderRight {
+    /* bottom: 100%; left: 50%;  Top */ 
+    /* top: 100%; left: 50%;     Bottom*/
+    /* left:100% ; top: 50%;     Left*/
+    right:100% ; top: 50%;   /* Right*/
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+    border-color: rgba(123, 245, 17, 0);
+    /* border-bottom-color: green; margin-left: -16px;  Top*/
+    /* border-top-color: darkgrey; margin-left: -16px;  Bottom*/ 
+    /* border-left-color: darkgrey; margin-top: -16px;  Left*/
+    border-right-color: darkgrey; margin-top: -16px;   /* Right*/
+    border-width: 16px;
+}
 
     </style>
     
@@ -124,6 +198,10 @@
                 <div class="arrowTooltipTop"></div>
                 <div class="arrowTooltipBorderBottom"></div>
                 <div class="arrowTooltipBottom"></div>
+                <div class="arrowTooltipBorderLeft"></div>
+                <div class="arrowTooltipLeft"></div>
+                <div class="arrowTooltipBorderRight"></div>
+                <div class="arrowTooltipRight"></div>
                     <p class="logo">css arrow please! <br> css arrow please! css arrow please! css arrow please!</p>
             </div>
         </div>
