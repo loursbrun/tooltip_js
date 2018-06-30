@@ -45,6 +45,17 @@ $("#tooltipForm").submit( function(e) {
             },
             {
                 "elementTagName":"img",
+                "indexElement":"5",
+                "tooltipText":"<h1>Deusième titre</h1>Ceci est mon premier commentaire de tooltip<br>Ceci est mon premier<br> commentaire de tooltip",
+                "width":"200px",
+                "height":"auto",
+                "fontSize":"12px",
+                "arrowPosition":"top",
+                "marginLeft":"0px",
+                "marginTop":"100px"
+            },
+            {
+                "elementTagName":"img",
                 "indexElement":"11",
                 "tooltipText":"<h1>Troisième titre</h1>Ceci est mon premier commentaire de tooltip<br>Ceci est mon premier<br> commentaire de tooltip",
                 "width":"200px",
@@ -90,7 +101,7 @@ function addTooltips(obj){
 
 
     var currentTooltipNumber;
-    for(currentTooltipNumber=0; currentTooltipNumber<3; currentTooltipNumber++)
+    for(currentTooltipNumber=0; currentTooltipNumber<Object.keys(obj).length; currentTooltipNumber++)
     {
 
         logMessage("currentTooltipNumber" + currentTooltipNumber);
