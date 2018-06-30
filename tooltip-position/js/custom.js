@@ -66,7 +66,7 @@ $("#tooltipForm").submit( function(e) {
 
          /*
 
-            http://www.preventimmo.fr/
+            https://services.preventimmo.fr/ernt/index.php
 
       
 
@@ -78,52 +78,33 @@ $("#tooltipForm").submit( function(e) {
             "boxShadow":"0px 0px 22px 5px grey",
             "tooltips":[ 
             {
-                "elementTagName":"span",
-                "indexElement":"5",
-                "tooltipText":"<h4>Etape 1</h4>Ceci est mon premier commentaire de tooltip<br>Ceci est mon premier<br> commentaire de tooltip<br><br>",
+                "elementTagName":"",
+                "elementClassName":"",
+                "elementIdName":"espace_cli_onglet_ernt",
+                "indexElement":"",
+                "tooltipText":"<h3>ESRIS</h3> État des Servitudes ‘Risques’ et d’Information sur les Sols ». <br>Cette nouvelle appellation permet d’une part d’insister sur le caractère réglementaire des risques traités et bien évidemment de prendre en compte les secteurs d’information sur les sols, le premier secteur ayant été approuvé fin novembre dans les Yvelines.",
                 "width":"300px",
                 "height":"auto",
                 "fontSize":"12px",
                 "arrowPosition":"left",
                 "marginLeft":"0px",
                 "marginTop":"0px"
-            }, 
-            {
-                "elementTagName":"span",
-                "indexElement":"6",
-                "tooltipText":"<h4>Etape 2</h4>Ceci est mon premier commentaire de tooltip<br>Ceci est mon premier<br> commentaire de tooltip",
-                "width":"200px",
-                "height":"auto",
-                "fontSize":"12px",
-                "arrowPosition":"top",
-                "marginLeft":"0px",
-                "marginTop":"100px"
             },
             {
-                "elementTagName":"img",
-                "indexElement":"5",
-                "tooltipText":"<h4>Etape 3</h4>Ceci est mon premier commentaire de tooltip<br>Ceci est mon premier<br> commentaire de tooltip",
-                "width":"200px",
+                "elementTagName":"",
+                "elementClassName":"",
+                "elementIdName":"ernt_etape1_window",
+                "indexElement":"",
+                "tooltipText":"<h3>ESRIS</h3> État des Servitudes ‘Risques’ et d’Information sur les Sols ». <br>Cette nouvelle appellation permet d’une part d’insister sur le caractère réglementaire des risques traités et bien évidemment de prendre en compte les secteurs d’information sur les sols, le premier secteur ayant été approuvé fin novembre dans les Yvelines.",
+                "width":"300px",
                 "height":"auto",
                 "fontSize":"12px",
-                "arrowPosition":"top",
+                "arrowPosition":"left",
                 "marginLeft":"0px",
-                "marginTop":"100px"
-            },
-            {
-                "elementTagName":"img",
-                "indexElement":"11",
-                "tooltipText":"<h4>Etape 4</h4>Ceci est mon premier commentaire de tooltip<br>Ceci est mon premier<br> commentaire de tooltip",
-                "width":"200px",
-                "height":"auto",
-                "fontSize":"12px",
-                "arrowPosition":"top",
-                "marginLeft":"0px",
-                "marginTop":"100px"
+                "marginTop":"0px"
             }
             ]
             }
-
 
 
 
@@ -166,6 +147,8 @@ function addTooltips(obj){
 
         logMessage("currentTooltipNumber" + currentTooltipNumber);
         logMessage(obj.tooltips[currentTooltipNumber].elementTagName);
+        logMessage(obj.tooltips[currentTooltipNumber].elementClassName);
+        logMessage(obj.tooltips[currentTooltipNumber].elementIdName);
         logMessage(obj.tooltips[currentTooltipNumber].indexElement);
         logMessage(obj.tooltips[currentTooltipNumber].tooltipText);
         logMessage(obj.tooltips[currentTooltipNumber].width);
@@ -176,10 +159,24 @@ function addTooltips(obj){
         logMessage(obj.tooltips[currentTooltipNumber].marginTop);
 
 
-  
-     chrome.tabs.executeScript({
+     // Tag
+     if(obj.tooltips[currentTooltipNumber].elementTagName != ""){ logMessage("it is a TAG");
+        chrome.tabs.executeScript({
         code:'document.getElementsByTagName("' + obj.tooltips[currentTooltipNumber].elementTagName + '")[' + obj.tooltips[currentTooltipNumber].indexElement + '].insertAdjacentHTML("beforebegin", "<div class=tooltiptext>' + obj.tooltips[currentTooltipNumber].tooltipText + '</div>")'
-   });
+        });
+    } 
+    // Class
+    else if(obj.tooltips[currentTooltipNumber].elementClassName != ""){ logMessage("it is a Class");
+        chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("' + obj.tooltips[currentTooltipNumber].elementClassName + '")[' + obj.tooltips[currentTooltipNumber].indexElement + '].insertAdjacentHTML("beforebegin", "<div class=tooltiptext>' + obj.tooltips[currentTooltipNumber].tooltipText + '</div>")'
+        });
+    } 
+    // ID
+    else if(obj.tooltips[currentTooltipNumber].elementIdName != ""){ logMessage("it is an ID");
+        chrome.tabs.executeScript({
+        code:'document.getElementById("' + obj.tooltips[currentTooltipNumber].elementIdName + '").insertAdjacentHTML("beforebegin", "<div class=tooltiptext>' + obj.tooltips[currentTooltipNumber].tooltipText + '</div>")'
+        });
+    };
 
 
     // 3 - arrowTooltipBorderTop
