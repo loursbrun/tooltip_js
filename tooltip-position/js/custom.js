@@ -1,11 +1,61 @@
 
 
+var tootltipActive = false;
+var tooltipShowing = 0;
+var numberOfTooltips = 0;
+
 $("#tooltipForm").submit( function(e) {
   e.preventDefault();
+
+
+    if(tootltipActive){
+
+        logMessage("tootlip is now active");
+        
+
+
+
+
+        for(var currentTooltipShow = 0; currentTooltipShow < numberOfTooltips - 2; currentTooltipShow++)
+        {
+            
+
+
+            if(tooltipShowing == currentTooltipShow){
+                logMessage("Tooltip Show " + currentTooltipShow);
+            } else {
+                logMessage("Tooltip Hide" + currentTooltipShow);
+            }
+            
+            
+
+
+
+
+        };
+        tooltipShowing ++;
+        logMessage("tooltipShowing" + tooltipShowing);
+        if(tooltipShowing >= numberOfTooltips - 2){
+            logMessage("Reset" + tooltipShowing);
+            tooltipShowing = 0;
+            currentTooltipShow = 0;
+        }
+
+
+
+
+
+
+    } else {
+
+
+     
+
 
      var jsonStr = $("#json-text").val();
 
      if( isValidJson(jsonStr) ){
+        tootltipActive = true;
         logMessage("json is valid");
 
          /*
@@ -83,6 +133,9 @@ $("#tooltipForm").submit( function(e) {
       logMessage("json is not valid");
      }
 
+
+    }
+
 });
 
 
@@ -98,10 +151,11 @@ function addTooltips(obj){
     logMessage(obj.borderColor);
     logMessage(obj.boxShadow);
     
+    numberOfTooltips = Object.keys(obj).length;
 
 
     var currentTooltipNumber;
-    for(currentTooltipNumber=0; currentTooltipNumber<Object.keys(obj).length; currentTooltipNumber++)
+    for(currentTooltipNumber=0; currentTooltipNumber < numberOfTooltips; currentTooltipNumber++)
     {
 
         logMessage("currentTooltipNumber" + currentTooltipNumber);
@@ -697,6 +751,15 @@ function isValidJson(json){
     return true;
     
 }
+
+
+
+$("#next-button").click( function(e) {
+    e.preventDefault();
+  
+    logMessage("Next !!!");
+  
+  });
 
 
 
