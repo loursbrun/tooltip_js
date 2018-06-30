@@ -19,7 +19,7 @@ $("#tooltipForm").submit( function(e) {
             "color":"white",
             "backgroundColor":"rgb(59,59,59,0.9)",
             "borderColor":"white",
-            "boxShadow":"0px 0px 20px 4px grey",
+            "boxShadow":"0px 0px 22px 5px grey",
             "tooltips":[ 
             {
                 "elementTagName":"span",
@@ -178,7 +178,7 @@ function addTooltips(obj){
      });
       // border
       chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext")[' + currentTooltipNumber + '].style.border = "4px solid"'
+        code:'document.getElementsByClassName("tooltiptext")[' + currentTooltipNumber + '].style.border = "2px solid"'
      });
     // borderColor
     chrome.tabs.executeScript({
@@ -208,7 +208,7 @@ function addTooltips(obj){
      });
      // padding
      chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext")[' + currentTooltipNumber + '].style.padding = "5px 0"'
+        code:'document.getElementsByClassName("tooltiptext")[' + currentTooltipNumber + '].style.padding = "5px"'
      });
     
      // position
@@ -264,11 +264,11 @@ function addTooltips(obj){
      });
      // marginLeft tooltiptext:after '
     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("arrowTooltipBorderTop")[' + currentTooltipNumber + '].style.marginLeft = "-16px"'
+        code:'document.getElementsByClassName("arrowTooltipBorderTop")[' + currentTooltipNumber + '].style.marginLeft = "-13px"'
      });
      // border-width tooltiptext:after '
     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("arrowTooltipBorderTop")[' + currentTooltipNumber + '].style.borderWidth = "16px"'
+        code:'document.getElementsByClassName("arrowTooltipBorderTop")[' + currentTooltipNumber + '].style.borderWidth = "13px"'
      });
      // border-width tooltiptext:after '
     chrome.tabs.executeScript({
@@ -366,11 +366,11 @@ function addTooltips(obj){
      });
      // marginLeft tooltiptext:after '
     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("arrowTooltipBorderBottom")[' + currentTooltipNumber + '].style.marginLeft = "-16px"'
+        code:'document.getElementsByClassName("arrowTooltipBorderBottom")[' + currentTooltipNumber + '].style.marginLeft = "-13px"'
      });
      // border-width tooltiptext:after '
     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("arrowTooltipBorderBottom")[' + currentTooltipNumber + '].style.borderWidth = "16px"'
+        code:'document.getElementsByClassName("arrowTooltipBorderBottom")[' + currentTooltipNumber + '].style.borderWidth = "13px"'
      });
      // border-width tooltiptext:after '
     chrome.tabs.executeScript({
@@ -468,11 +468,11 @@ function addTooltips(obj){
      });
      // marginLeft tooltiptext:after '
     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("arrowTooltipBorderLeft")[' + currentTooltipNumber + '].style.marginTop = "-16px"'
+        code:'document.getElementsByClassName("arrowTooltipBorderLeft")[' + currentTooltipNumber + '].style.marginTop = "-13px"'
      });
      // border-width tooltiptext:after '
     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("arrowTooltipBorderLeft")[' + currentTooltipNumber + '].style.borderWidth = "16px"'
+        code:'document.getElementsByClassName("arrowTooltipBorderLeft")[' + currentTooltipNumber + '].style.borderWidth = "13px"'
      });
      // border-width tooltiptext:after '
     chrome.tabs.executeScript({
@@ -571,11 +571,11 @@ function addTooltips(obj){
      });
      // marginLeft tooltiptext:after '
     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("arrowTooltipBorderRight")[' + currentTooltipNumber + '].style.marginTop = "-16px"'
+        code:'document.getElementsByClassName("arrowTooltipBorderRight")[' + currentTooltipNumber + '].style.marginTop = "-13px"'
      });
      // border-width tooltiptext:after '
     chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("arrowTooltipBorderRight")[' + currentTooltipNumber + '].style.borderWidth = "16px"'
+        code:'document.getElementsByClassName("arrowTooltipBorderRight")[' + currentTooltipNumber + '].style.borderWidth = "13px"'
      });
      // border-width tooltiptext:after '
     chrome.tabs.executeScript({
