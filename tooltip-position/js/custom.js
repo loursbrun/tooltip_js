@@ -217,9 +217,11 @@ function addTooltips(obj){
         code: 'var div=document.createElement("div"); document.getElementsByClassName("tooltiptext")[' + currentTooltipNumber + '].appendChild(div); div.setAttribute("class", "arrowTooltipRight")'
         
     });
+    
 
     // 4 - On ajoute le style au tooltip 
 
+    
     // background color
      chrome.tabs.executeScript({
           code:'document.getElementsByClassName("tooltiptext")[' + currentTooltipNumber + '].style.backgroundColor = "' + obj.backgroundColor + '"'
@@ -279,9 +281,9 @@ function addTooltips(obj){
         code:'document.getElementsByClassName("tooltiptext")[' + currentTooltipNumber + '].style.padding = "5px"'
      });
     
-     // position
+     // position z-index
      chrome.tabs.executeScript({
-        code:'document.getElementsByClassName("tooltiptext")[' + currentTooltipNumber + '].style.zIndex = "1"'
+        code:'document.getElementsByClassName("tooltiptext")[' + currentTooltipNumber + '].style.zIndex = "1000"'
      });
      // margin-top
      chrome.tabs.executeScript({
