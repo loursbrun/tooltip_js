@@ -23,8 +23,14 @@ $("#tooltipForm").submit( function(e) {
 
             if(tooltipShowing == currentTooltipShow){
                 logMessage("Tooltip Show " + currentTooltipShow);
+                chrome.tabs.executeScript({
+                    code:'document.getElementsByClassName("tooltiptext")[' + currentTooltipShow + '].style.display = "block"'
+                 });
             } else {
                 logMessage("Tooltip Hide" + currentTooltipShow);
+                chrome.tabs.executeScript({
+                    code:'document.getElementsByClassName("tooltiptext")[' + currentTooltipShow + '].style.display = "none"'
+                 });
             }
             
             
@@ -74,7 +80,7 @@ $("#tooltipForm").submit( function(e) {
             {
                 "elementTagName":"span",
                 "indexElement":"5",
-                "tooltipText":"<h4>Premier titre</h4>Ceci est mon premier commentaire de tooltip<br>Ceci est mon premier<br> commentaire de tooltip<br><br>",
+                "tooltipText":"<h4>Etape 1</h4>Ceci est mon premier commentaire de tooltip<br>Ceci est mon premier<br> commentaire de tooltip<br><br>",
                 "width":"300px",
                 "height":"auto",
                 "fontSize":"12px",
@@ -85,7 +91,7 @@ $("#tooltipForm").submit( function(e) {
             {
                 "elementTagName":"span",
                 "indexElement":"6",
-                "tooltipText":"<h1>Deusième titre</h1>Ceci est mon premier commentaire de tooltip<br>Ceci est mon premier<br> commentaire de tooltip",
+                "tooltipText":"<h4>Etape 2</h4>Ceci est mon premier commentaire de tooltip<br>Ceci est mon premier<br> commentaire de tooltip",
                 "width":"200px",
                 "height":"auto",
                 "fontSize":"12px",
@@ -96,7 +102,7 @@ $("#tooltipForm").submit( function(e) {
             {
                 "elementTagName":"img",
                 "indexElement":"5",
-                "tooltipText":"<h1>Deusième titre</h1>Ceci est mon premier commentaire de tooltip<br>Ceci est mon premier<br> commentaire de tooltip",
+                "tooltipText":"<h4>Etape 3</h4>Ceci est mon premier commentaire de tooltip<br>Ceci est mon premier<br> commentaire de tooltip",
                 "width":"200px",
                 "height":"auto",
                 "fontSize":"12px",
@@ -107,7 +113,7 @@ $("#tooltipForm").submit( function(e) {
             {
                 "elementTagName":"img",
                 "indexElement":"11",
-                "tooltipText":"<h1>Troisième titre</h1>Ceci est mon premier commentaire de tooltip<br>Ceci est mon premier<br> commentaire de tooltip",
+                "tooltipText":"<h4>Etape 4</h4>Ceci est mon premier commentaire de tooltip<br>Ceci est mon premier<br> commentaire de tooltip",
                 "width":"200px",
                 "height":"auto",
                 "fontSize":"12px",
