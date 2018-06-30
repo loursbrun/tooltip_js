@@ -17,13 +17,14 @@ $("#tooltipForm").submit( function(e) {
             {
             "fontSize":"14px",
             "color":"white",
-            "backgroundColor":"grey",
-            "borderColor":"darkgrey",
+            "backgroundColor":"rgb(59,59,59,0.9)",
+            "borderColor":"white",
+            "boxShadow":"0px 0px 20px 4px grey",
             "tooltips":[ 
             {
                 "elementTagName":"span",
                 "indexElement":"5",
-                "tooltipText":"<h1>Premier titre</h1>Ceci est mon premier commentaire de tooltip<br>Ceci est mon premier<br> commentaire de tooltip",
+                "tooltipText":"<h4>Premier titre</h4>Ceci est mon premier commentaire de tooltip<br>Ceci est mon premier<br> commentaire de tooltip<br><br>",
                 "width":"300px",
                 "height":"auto",
                 "fontSize":"12px",
@@ -84,6 +85,7 @@ function addTooltips(obj){
     logMessage(obj.color);
     logMessage(obj.backgroundColor);
     logMessage(obj.borderColor);
+    logMessage(obj.boxShadow);
     
 
 
@@ -154,6 +156,10 @@ function addTooltips(obj){
      chrome.tabs.executeScript({
           code:'document.getElementsByClassName("tooltiptext")[' + currentTooltipNumber + '].style.backgroundColor = "' + obj.backgroundColor + '"'
      });
+      // boxshadow color
+      chrome.tabs.executeScript({
+        code:'document.getElementsByClassName("tooltiptext")[' + currentTooltipNumber + '].style.boxShadow = "' + obj.boxShadow + '"'
+   });
      // color
      chrome.tabs.executeScript({
         code:'document.getElementsByClassName("tooltiptext")[' + currentTooltipNumber + '].style.color = "' + obj.color + '"'
