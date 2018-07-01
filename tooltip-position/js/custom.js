@@ -162,6 +162,93 @@ $("#tooltipForm").submit( function(e) {
 
 
 
+
+
+
+
+
+            https://services.preventimmo.fr/urba/index.php
+
+
+{
+            "fontSize":"14px",
+            "color":"grey",
+            "backgroundColor":"white",
+            "borderColor":"#88cc00",
+            "boxShadow":"0px 0px 22px 5px grey",
+            "tooltips":[ 
+            {
+                "elementTagName":"tr",
+                "elementClassName":"",
+                "elementIdName":"",
+                "indexElement":"1",
+                "tooltipText":"<h1 style='color:#88cc00'><b>Étape 1</b></h1> Sélectionnez 'Créer un nouveau dossier' <br> pour réutiliser ultérieurement ces informations (ex: plusieurs biens à la même adresse).<div style='text-align:center; background-color:#88cc00; bottom: 0px; margin-top: 10px; margin-left: -5px; margin-right: -5px; margin-bottom: -5px;'><span style = 'height:20px; width: 20px; margin: 5px ; background-color: #99e600; border-radius:50%; display: inline-block;'></span><span style = 'height:18px; width: 18px; margin: 5px ; border: solid 2px #99e600; background-color: transparent; border-radius:50%; display: inline-block;'></span><span style = 'height:18px; width: 18px; margin: 5px ; border: solid 2px #99e600; background-color: transparent; border-radius:50%; display: inline-block;'></span><span style = 'height:18px; width: 18px; margin: 5px ; border: solid 2px #99e600; background-color: transparent; border-radius:50%; display: inline-block;'></span><span style = 'height:18px; width: 18px; margin: 5px ; border: solid 2px #99e600; background-color: transparent; border-radius:50%; display: inline-block;'></span></div>",
+                "width":"300px",
+                "height":"auto",
+                "fontSize":"12px",
+                "arrowPosition":"top",
+                "marginLeft":"100px",
+                "marginTop":"30px"
+            },
+            {
+                "elementTagName":"tr",
+                "elementClassName":"",
+                "elementIdName":"",
+                "indexElement":"2",
+                "tooltipText":"<h1 style='color:#88cc00'><b>Étape 2</b></h1> Sélectionnez 'Créer un nouveau dossier' <br> pour réutiliser ultérieurement ces informations (ex: plusieurs biens à la même adresse).<div style='text-align:center; background-color:#88cc00; bottom: 0px; margin-top: 10px; margin-left: -5px; margin-right: -5px; margin-bottom: -5px;'><span style = 'height:20px; width: 20px; margin: 5px ; background-color: #99e600; border-radius:50%; display: inline-block;'></span><span style = 'height:20px; width: 20px; margin: 5px ; background-color: #99e600; border-radius:50%; display: inline-block;'></span><span style = 'height:18px; width: 18px; margin: 5px ; border: solid 2px #99e600; background-color: transparent; border-radius:50%; display: inline-block;'></span><span style = 'height:18px; width: 18px; margin: 5px ; border: solid 2px #99e600; background-color: transparent; border-radius:50%; display: inline-block;'></span><span style = 'height:18px; width: 18px; margin: 5px ; border: solid 2px #99e600; background-color: transparent; border-radius:50%; display: inline-block;'></span></div>",
+                "width":"300px",
+                "height":"auto",
+                "fontSize":"12px",
+                "arrowPosition":"top",
+                "marginLeft":"100px",
+                "marginTop":"60px"
+            }
+            ,
+            {
+                "elementTagName":"tr",
+                "elementClassName":"",
+                "elementIdName":"",
+                "indexElement":"3",
+                "tooltipText":"<h1 style='color:#88cc00'><b>Étape 3</b></h1> Sélectionnez 'Créer un nouveau dossier' <br> pour réutiliser ultérieurement ces informations (ex: plusieurs biens à la même adresse).<div style='text-align:center; background-color:#88cc00; bottom: 0px; margin-top: 10px; margin-left: -5px; margin-right: -5px; margin-bottom: -5px;'><span style = 'height:20px; width: 20px; margin: 5px ; background-color: #99e600; border-radius:50%; display: inline-block;'></span><span style = 'height:20px; width: 20px; margin: 5px ; background-color: #99e600; border-radius:50%; display: inline-block;'></span><span style = 'height:20px; width: 20px; margin: 5px ; background-color: #99e600; border-radius:50%; display: inline-block;'></span><span style = 'height:18px; width: 18px; margin: 5px ; border: solid 2px #99e600; background-color: transparent; border-radius:50%; display: inline-block;'></span><span style = 'height:18px; width: 18px; margin: 5px ; border: solid 2px #99e600; background-color: transparent; border-radius:50%; display: inline-block;'></span></div>",
+                "width":"300px",
+                "height":"auto",
+                "fontSize":"12px",
+                "arrowPosition":"top",
+                "marginLeft":"100px",
+                "marginTop":"60px"
+            },
+            {
+                "elementTagName":"tr",
+                "elementClassName":"",
+                "elementIdName":"",
+                "indexElement":"4",
+                "tooltipText":"<h1 style='color:#88cc00'><b>Étape 4</b></h1> Sélectionnez 'Créer un nouveau dossier' <br> pour réutiliser ultérieurement ces informations (ex: plusieurs biens à la même adresse).<div style='text-align:center; background-color:#88cc00; bottom: 0px; margin-top: 10px; margin-left: -5px; margin-right: -5px; margin-bottom: -5px;'><span style = 'height:20px; width: 20px; margin: 5px ; background-color: #99e600; border-radius:50%; display: inline-block;'></span><span style = 'height:20px; width: 20px; margin: 5px ; background-color: #99e600; border-radius:50%; display: inline-block;'></span><span style = 'height:20px; width: 20px; margin: 5px ; background-color: #99e600; border-radius:50%; display: inline-block;'></span><span style = 'height:20px; width: 20px; margin: 5px ; background-color: #99e600; border-radius:50%; display: inline-block;'></span><span style = 'height:18px; width: 18px; margin: 5px ; border: solid 2px #99e600; background-color: transparent; border-radius:50%; display: inline-block;'></span></div>",
+                "width":"300px",
+                "height":"auto",
+                "fontSize":"12px",
+                "arrowPosition":"top",
+                "marginLeft":"100px",
+                "marginTop":"60px"
+            },
+            {
+                "elementTagName":"tr",
+                "elementClassName":"",
+                "elementIdName":"",
+                "indexElement":"5",
+                "tooltipText":"<h1 style='color:#88cc00'><b>Étape 5</b></h1> Sélectionnez 'Créer un nouveau dossier' <br> pour réutiliser ultérieurement ces informations (ex: plusieurs biens à la même adresse).<div style='text-align:center; background-color:#88cc00; bottom: 0px; margin-top: 10px; margin-left: -5px; margin-right: -5px; margin-bottom: -5px;'><span style = 'height:20px; width: 20px; margin: 5px ; background-color: #99e600; border-radius:50%; display: inline-block;'></span><span style = 'height:20px; width: 20px; margin: 5px ; background-color: #99e600; border-radius:50%; display: inline-block;'></span><span style = 'height:20px; width: 20px; margin: 5px ; background-color: #99e600; border-radius:50%; display: inline-block;'></span><span style = 'height:20px; width: 20px; margin: 5px ; background-color: #99e600; border-radius:50%; display: inline-block;'></span><span style = 'height:20px; width: 20px; margin: 5px ; background-color: #99e600; border-radius:50%; display: inline-block;'></span></div>",
+                "width":"300px",
+                "height":"auto",
+                "fontSize":"12px",
+                "arrowPosition":"top",
+                "marginLeft":"100px",
+                "marginTop":"60px"
+            }
+            ]
+            }
+
+
+
+
          */
 
          var obj = JSON.parse(jsonStr);
