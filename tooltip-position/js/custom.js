@@ -42,6 +42,7 @@ $("#tooltipForm").submit( function(e) {
         };
         tooltipShowing ++;
         logMessage("tooltipShowing" + tooltipShowing);
+        
         if(tooltipShowing >= numberOfTooltips ){
             logMessage("Reset" + tooltipShowing);
             tooltipShowing = 0;
@@ -129,6 +130,32 @@ $("#tooltipForm").submit( function(e) {
                 "arrowPosition":"top",
                 "marginLeft":"20px",
                 "marginTop":"280px"
+            },
+            {
+                "elementTagName":"",
+                "elementClassName":"",
+                "elementIdName":"ernt_etape1_window_content",
+                "indexElement":"",
+                "tooltipText":"<h3>Transaction</h3>Vous pouvez sélectionner le type de transaction concernée, de manière à obtenir un rapport personnalisé.",
+                "width":"300px",
+                "height":"auto",
+                "fontSize":"12px",
+                "arrowPosition":"top",
+                "marginLeft":"120px",
+                "marginTop":"124px"
+            },
+            {
+                "elementTagName":"",
+                "elementClassName":"",
+                "elementIdName":"ernt_etape1_window_content",
+                "indexElement":"",
+                "tooltipText":"<h3>Vendeur</h3>Vous <strong> devez </strong> saisir le vendeur, bailleur ou donateur.  <br><i>Nom et prénom de la personne physique ou morale</i>",
+                "width":"300px",
+                "height":"auto",
+                "fontSize":"12px",
+                "arrowPosition":"top",
+                "marginLeft":"120px",
+                "marginTop":"154px"
             }
             ]
             }
