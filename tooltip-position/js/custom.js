@@ -11,12 +11,13 @@ $("#tooltipForm").submit( function(e) {
     if(tootltipActive){
 
         logMessage("tootlip is now active");
+        logMessage("number of tooltip:" + numberOfTooltips);
         
 
 
 
 
-        for(var currentTooltipShow = 0; currentTooltipShow < numberOfTooltips - 2; currentTooltipShow++)
+        for(var currentTooltipShow = 0; currentTooltipShow < numberOfTooltips ; currentTooltipShow++)
         {
             
 
@@ -41,7 +42,7 @@ $("#tooltipForm").submit( function(e) {
         };
         tooltipShowing ++;
         logMessage("tooltipShowing" + tooltipShowing);
-        if(tooltipShowing >= numberOfTooltips - 2){
+        if(tooltipShowing >= numberOfTooltips ){
             logMessage("Reset" + tooltipShowing);
             tooltipShowing = 0;
             currentTooltipShow = 0;
@@ -82,26 +83,52 @@ $("#tooltipForm").submit( function(e) {
                 "elementClassName":"",
                 "elementIdName":"espace_cli_onglet_ernt",
                 "indexElement":"",
-                "tooltipText":"<h3>ESRIS</h3> État des Servitudes ‘Risques’ et d’Information sur les Sols ». <br>Cette nouvelle appellation permet d’une part d’insister sur le caractère réglementaire des risques traités et bien évidemment de prendre en compte les secteurs d’information sur les sols, le premier secteur ayant été approuvé fin novembre dans les Yvelines.",
+                "tooltipText":"<h3>ESRIS</h3> État des Servitudes ‘Risques’ et d’Information sur les Sols. <br>Cette nouvelle appellation permet d’une part d’insister sur le caractère réglementaire des risques traités et bien évidemment de prendre en compte les secteurs d’information sur les sols, le premier secteur ayant été approuvé fin novembre dans les Yvelines.",
                 "width":"300px",
                 "height":"auto",
                 "fontSize":"12px",
-                "arrowPosition":"left",
-                "marginLeft":"0px",
-                "marginTop":"0px"
+                "arrowPosition":"top",
+                "marginLeft":"-60px",
+                "marginTop":"80px"
             },
             {
                 "elementTagName":"",
                 "elementClassName":"",
-                "elementIdName":"ernt_etape1_window",
+                "elementIdName":"espace_cli_onglet_eps",
                 "indexElement":"",
-                "tooltipText":"<h3>ESRIS</h3> État des Servitudes ‘Risques’ et d’Information sur les Sols ». <br>Cette nouvelle appellation permet d’une part d’insister sur le caractère réglementaire des risques traités et bien évidemment de prendre en compte les secteurs d’information sur les sols, le premier secteur ayant été approuvé fin novembre dans les Yvelines.",
+                "tooltipText":"<h3>ERPS</h3> État des risques de pollution des sols <br>Ce diagnostic permet d’informer le futur occupant des risques auxquels le bien est exposé comme par exemple une pollution chimique du sol, pétrolier, …",
                 "width":"300px",
                 "height":"auto",
                 "fontSize":"12px",
-                "arrowPosition":"left",
-                "marginLeft":"0px",
-                "marginTop":"0px"
+                "arrowPosition":"top",
+                "marginLeft":"100px",
+                "marginTop":"15px"
+            },
+            {
+                "elementTagName":"",
+                "elementClassName":"",
+                "elementIdName":"espace_cli_onglet_urba",
+                "indexElement":"",
+                "tooltipText":"<h3>URBA</h3> Ensemble des documments d'urbanisme <br><ul style='text-align:left'><li>NRU - Note de renseignement d'urbanisme</li><li>DP - Droit de préemption</li><li>ESRIS - État des Servitudes Risques et d'Informations sur les Sols</li><li>ERPS - État des Risques de Pollution des Sols</li></ul>",
+                "width":"500px",
+                "height":"auto",
+                "fontSize":"12px",
+                "arrowPosition":"top",
+                "marginLeft":"145px",
+                "marginTop":"15px"
+            },
+            {
+                "elementTagName":"",
+                "elementClassName":"window-titleBar",
+                "elementIdName":"",
+                "indexElement":"0",
+                "tooltipText":"<h3>État d'avancement</h3> Vous avez 5 étapes pour finaliser votre dossier<br><br><br>",
+                "width":"200px",
+                "height":"auto",
+                "fontSize":"12px",
+                "arrowPosition":"top",
+                "marginLeft":"20px",
+                "marginTop":"280px"
             }
             ]
             }
