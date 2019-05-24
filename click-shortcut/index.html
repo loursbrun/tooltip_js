@@ -8,9 +8,9 @@
     <button onclick="deleteData()">Delete</button>
     <button onclick="logData()">Log</button>
 
-     <br/>
-     <br/>
-     <br/>
+    <br />
+    <br />
+    <br />
 
     <button id="btn-1-id" type="button">Button 1</button>
     <button id="btn-2-id" type="button">Button 2</button>
@@ -25,21 +25,60 @@
 
     <script>
 
+        let myObject = { 'btn-1-id': 2, 'btn-2-id': 2, 'BUTTON[4]': 3, "txt-1-id": 43, "txt-1-id": 1, "txt-2-class": 0, "P[2]": 23, "txt-4-class": 2 }
+
+       
+        var output = '';
+        for (var property in myObject) {
+            output += '<li>' + property + ': ' + myObject[property] + '</li> ';
+        }
+       
+
+        var myLayer = document.createElement('div');
+        myLayer.id = 'bookingLayer';
+        myLayer.style.position = 'absolute';
+        myLayer.style.right = '10px';
+        myLayer.style.top = '10px';
+        myLayer.style.width = '300px';
+        myLayer.style.height = '300px';
+        myLayer.style.padding = '10px';
+        myLayer.style.background = '#d6d4d4';
+
+        htmlString = '<h2>local path cookie</h2>' + output;
+
+
+
+        myLayer.innerHTML = htmlString;
+        document.body.appendChild(myLayer);
+
+
+
+
+        console.log(window.location.pathname);
+
+
+
+
         function saveData() {
-            localStorage.setItem('name', 'Lours');
-            var myName = localStorage.getItem('name');
-            myName
+            localStorage.setItem('myObject', JSON.stringify(myObject));
         }
 
         function deleteData() {
-            localStorage.removeItem('name');
-            var myName = localStorage.getItem('name');
-            console.log(myName);
+            localStorage.removeItem('myObject');
         }
 
         function logData() {
-            var myName = localStorage.getItem('name');
-            console.log(myName);
+            var myObject = localStorage.getItem('myObject');
+            console.log(myObject);
+
+
+            if (myObject !== null) {
+                var newObj = JSON.parse(myObject);
+                console.log(newObj);
+                console.log(newObj.one);
+            }
+
+
         }
 
 
@@ -50,32 +89,30 @@
 
 
 
+        document.addEventListener("click", function (eventArgs) {
 
+            const elementId = eventArgs.target.id;
+            const elementClassName = eventArgs.target.classList[0];
 
-        // document.addEventListener("click", function (eventArgs) {
+            if (!elementId && !elementClassName && eventArgs.target.nodeName !== "HTML") {
 
-        //     const elementId = eventArgs.target.id;
-        //     const elementClassName = eventArgs.target.classList[0];
+                const elementInnerTxt = eventArgs.target.innerHTML;
+                const elementArray = document.getElementsByTagName(eventArgs.target.nodeName);
 
-        //     if (!elementId && !elementClassName && eventArgs.target.nodeName !== "HTML") {
+                for (let i = 0; i < elementArray.length; i++) {
 
-        //         const elementInnerTxt = eventArgs.target.innerHTML;
-        //         const elementArray = document.getElementsByTagName(eventArgs.target.nodeName);
-
-        //         for (let i = 0; i < elementArray.length; i++) {
-
-        //             if (elementArray[i].innerHTML == elementInnerTxt) {
-        //                 console.log(eventArgs.target.nodeName + " Array[" + i + "]");
-        //             }
-        //         }
-        //     } else    
-        //     if (eventArgs.target.id) {
-        //             console.log(eventArgs.target.id);
-        //     } else
-        //     if (eventArgs.target.classList) {
-        //                 console.log(eventArgs.target.classList[0])
-        //     }
-        // });
+                    if (elementArray[i].innerHTML == elementInnerTxt) {
+                        console.log(eventArgs.target.nodeName + "[" + i + "]");
+                    }
+                }
+            } else
+                if (eventArgs.target.id) {
+                    console.log(eventArgs.target.id);
+                } else
+                    if (eventArgs.target.classList) {
+                        console.log(eventArgs.target.classList[0])
+                    }
+        });
 
 
     </script>
