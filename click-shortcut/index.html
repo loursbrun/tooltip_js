@@ -33,7 +33,7 @@
         
         localStorage.getItem(pathName)?dataObject = JSON.parse(localStorage.getItem(pathName)) : dataObject = {} ;
 
-        if(location.search.split('delete=')[1] == "true" || dataObject != {} ) {
+        if(location.search.split('delete=')[1] == "true" && dataObject != {} ) {
             localStorage.removeItem(pathName);
         }
 
