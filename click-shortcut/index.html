@@ -1,31 +1,51 @@
 <!DOCTYPE html>
 <html>
+
 <body>
 
-    <p>
-        Hey,
-        <p>there!</p>
-    </p>
+    <button id="btn-1-id" type="button">Button 1</button>
+    <button id="btn-2-id" type="button">Button 2</button>
+    <button type="button">Button 2</button>
 
 
-<script>
+    <p id="txt-1-id">Text 1</p>
+    <p class="txt-2-class">Text 2</p>
+    <p >Text 3</p>
+    <p class="txt-4-class">Text 4</p>
 
 
-document.addEventListener("click", function (eventArgs) {
-    var target = eventArgs.target;
-    var elementToLookFor = "p";
-    while (target !== null) {
-        if (target.tagName.toLowerCase() === elementToLookFor) {
-            // Do magic stuff with the paragraph
-            console.log(target);
-        }
-        target = target.parentElement;
-    }
-});
+    <script>
+
+
+        document.addEventListener("click", function (eventArgs) {
+            //console.log(eventArgs.target);
+
+            const elementId  = eventArgs.target.id;
+            const elementClassName  = eventArgs.target.classList[0];
+
+            if(!elementId && !elementClassName ){
+                // console.log(eventArgs.target);
+                // console.log(eventArgs.target.nodeName);
+                 console.log(document.getElementsByTagName(eventArgs.target.nodeName));
+               
+
+
+            } else
+            if(eventArgs.target.id) {
+                console.log(eventArgs.target.id);
+            } else
+            if (eventArgs.target.classList) {
+                console.log(eventArgs.target.classList[0])
+            } 
+
+
+          
+        });
 
 
 
-</script>
+    </script>
 
 </body>
+
 </html>
