@@ -3,6 +3,15 @@
 
 <body>
 
+
+    <button onclick="saveData()">Save</button>
+    <button onclick="deleteData()">Delete</button>
+    <button onclick="logData()">Log</button>
+
+     <br/>
+     <br/>
+     <br/>
+
     <button id="btn-1-id" type="button">Button 1</button>
     <button id="btn-2-id" type="button">Button 2</button>
     <button type="button">Button 2</button>
@@ -16,30 +25,57 @@
 
     <script>
 
-        document.addEventListener("click", function (eventArgs) {
-           
-            const elementId = eventArgs.target.id;
-            const elementClassName = eventArgs.target.classList[0];
+        function saveData() {
+            localStorage.setItem('name', 'Lours');
+            var myName = localStorage.getItem('name');
+            myName
+        }
 
-            if (!elementId && !elementClassName && eventArgs.target.nodeName !== "HTML") {
+        function deleteData() {
+            localStorage.removeItem('name');
+            var myName = localStorage.getItem('name');
+            console.log(myName);
+        }
 
-                const elementInnerTxt = eventArgs.target.innerHTML;
-                const elementArray = document.getElementsByTagName(eventArgs.target.nodeName);
+        function logData() {
+            var myName = localStorage.getItem('name');
+            console.log(myName);
+        }
 
-                for (let i = 0; i < elementArray.length; i++) {
 
-                    if (elementArray[i].innerHTML == elementInnerTxt) {
-                        console.log(eventArgs.target.nodeName + " Array[" + i + "]");
-                    }
-                }
-            } else    
-            if (eventArgs.target.id) {
-                    console.log(eventArgs.target.id);
-            } else
-            if (eventArgs.target.classList) {
-                        console.log(eventArgs.target.classList[0])
-            }
-        });
+
+
+
+
+
+
+
+
+
+        // document.addEventListener("click", function (eventArgs) {
+
+        //     const elementId = eventArgs.target.id;
+        //     const elementClassName = eventArgs.target.classList[0];
+
+        //     if (!elementId && !elementClassName && eventArgs.target.nodeName !== "HTML") {
+
+        //         const elementInnerTxt = eventArgs.target.innerHTML;
+        //         const elementArray = document.getElementsByTagName(eventArgs.target.nodeName);
+
+        //         for (let i = 0; i < elementArray.length; i++) {
+
+        //             if (elementArray[i].innerHTML == elementInnerTxt) {
+        //                 console.log(eventArgs.target.nodeName + " Array[" + i + "]");
+        //             }
+        //         }
+        //     } else    
+        //     if (eventArgs.target.id) {
+        //             console.log(eventArgs.target.id);
+        //     } else
+        //     if (eventArgs.target.classList) {
+        //                 console.log(eventArgs.target.classList[0])
+        //     }
+        // });
 
 
     </script>
