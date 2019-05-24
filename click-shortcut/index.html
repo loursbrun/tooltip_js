@@ -31,7 +31,7 @@
     <script>
 
         //let dataObject = { 'btn-1-id': 2, 'btn-2-id': 2, 'BUTTON[4]': 3, "txt-1-id": 43, "txt-1-id": 1, "txt-2-class": 0, "P[2]": 23 };
-        let dataObject = { 'btn-1-id': 2 }
+        let dataObject = {};
         let pathName =  window.location.pathname;
        
 
@@ -63,12 +63,9 @@
         myLayer.innerHTML = htmlString;
         document.body.appendChild(myLayer);
 
-
-
-
-
         function saveData() {
             localStorage.setItem(pathName, JSON.stringify(dataObject));
+            console.log("DataObject: " + JSON.stringify(dataObject));
         }
 
         function deleteData() {
@@ -88,15 +85,13 @@
 
         }
 
-        function updateDataBobject(newValue) {
+        function updateDataObject(newValue) {
 
+            if(dataObject[newValue] == null) { dataObject[newValue] = 0 ;} ;
+
+            dataObject[newValue] = dataObject[newValue] + 1;
 
             
-            newDataObject = { 'btn-1-id': 2, 'btn-2-id': 2, 'BUTTON[4]': 3, "txt-1-id": 43, "txt-1-id": 1, "txt-2-class": 0, "P[2]": 23 };
-
-            console.log("newValue:" + newValue);
-
-            dataObject = newDataObject; 
 
  
             saveData();
@@ -119,17 +114,17 @@
 
                     if (elementArray[i].innerHTML == elementInnerTxt) {
                         //console.log(eventArgs.target.nodeName + "[" + i + "]");
-                        updateDataBobject(eventArgs.target.nodeName + "[" + i + "]");
+                        updateDataObject(eventArgs.target.nodeName + "[" + i + "]");
                     }
                 }
             } else
                 if (eventArgs.target.id) {
                           //console.log(eventArgs.target.id);
-                          updateDataBobject(eventArgs.target.id + "_id");
+                          updateDataObject(eventArgs.target.id + "_id");
                 } else
                     if (eventArgs.target.classList) {
                           //console.log(eventArgs.target.classList[0])
-                          updateDataBobject(eventArgs.target.classList[0] + "_name");
+                          updateDataObject(eventArgs.target.classList[0] + "_name");
                     }
         });
 
