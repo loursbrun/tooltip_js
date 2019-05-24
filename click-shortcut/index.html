@@ -22,39 +22,44 @@
     <p>Text 3</p>
     <p class="txt-4-class">Text 4</p>
 
-
     <script>
 
-        let myObject = { 'btn-1-id': 2, 'btn-2-id': 2, 'BUTTON[4]': 3, "txt-1-id": 43, "txt-1-id": 1, "txt-2-class": 0, "P[2]": 23, "txt-4-class": 2 }
-
+        let myObject = { 'btn-1-id': 2, 'btn-2-id': 2, 'BUTTON[4]': 3, "txt-1-id": 43, "txt-1-id": 1, "txt-2-class": 0, "P[2]": 23 }
+        let pathName =  window.location.pathname;
        
+
         var output = '';
         for (var property in myObject) {
-            output += '<li>' + property + ': ' + myObject[property] + '</li> ';
+            output += '<tr ><td style="border-bottom: 1px solid #BFBEBE;">' + property + '</td><td>' + myObject[property] + '</td></tr> ';
         }
-       
-
         var myLayer = document.createElement('div');
         myLayer.id = 'bookingLayer';
         myLayer.style.position = 'absolute';
         myLayer.style.right = '10px';
         myLayer.style.top = '10px';
         myLayer.style.width = '300px';
-        myLayer.style.height = '300px';
+        myLayer.style.height = 'auto';
         myLayer.style.padding = '10px';
         myLayer.style.background = '#d6d4d4';
-
-        htmlString = '<h2>local path cookie</h2>' + output;
-
-
-
+        htmlString = ` 
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2" style=" background-color: #333;color: #fff;">${pathName}</th>
+                </tr>
+            </thead>
+            <tbody>
+               ${output}
+            </tbody>
+        </table>
+        `;
         myLayer.innerHTML = htmlString;
         document.body.appendChild(myLayer);
 
 
 
 
-        console.log(window.location.pathname);
+        
 
 
 
