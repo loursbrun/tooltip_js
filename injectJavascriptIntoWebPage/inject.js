@@ -7,7 +7,7 @@
 	div.style.position = 'fixed';
 	div.style.top = 0;
 	div.style.right = 0;
-	div.textContent = 'Injected!';
+	div.textContent = 'Injected! 2222';
 	document.body.appendChild(div);
 
 	//alert('inserted self... giggity');

@@ -1,5 +1,5 @@
 {
-  "name": "Injecta",
+  "name": "InjectJavascriptExtension",
   "version": "0.0.1",
   "manifest_version": 2,
   "description": "Injecting stuff",
