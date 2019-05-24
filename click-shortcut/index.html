@@ -10,38 +10,36 @@
 
     <p id="txt-1-id">Text 1</p>
     <p class="txt-2-class">Text 2</p>
-    <p >Text 3</p>
+    <p>Text 3</p>
     <p class="txt-4-class">Text 4</p>
 
 
     <script>
 
-
         document.addEventListener("click", function (eventArgs) {
-            //console.log(eventArgs.target);
+           
+            const elementId = eventArgs.target.id;
+            const elementClassName = eventArgs.target.classList[0];
 
-            const elementId  = eventArgs.target.id;
-            const elementClassName  = eventArgs.target.classList[0];
+            if (!elementId && !elementClassName && eventArgs.target.nodeName !== "HTML") {
 
-            if(!elementId && !elementClassName ){
-                // console.log(eventArgs.target);
-                // console.log(eventArgs.target.nodeName);
-                 console.log(document.getElementsByTagName(eventArgs.target.nodeName));
-               
+                const elementInnerTxt = eventArgs.target.innerHTML;
+                const elementArray = document.getElementsByTagName(eventArgs.target.nodeName);
 
+                for (let i = 0; i < elementArray.length; i++) {
 
-            } else
-            if(eventArgs.target.id) {
-                console.log(eventArgs.target.id);
+                    if (elementArray[i].innerHTML == elementInnerTxt) {
+                        console.log(eventArgs.target.nodeName + " Array[" + i + "]");
+                    }
+                }
+            } else    
+            if (eventArgs.target.id) {
+                    console.log(eventArgs.target.id);
             } else
             if (eventArgs.target.classList) {
-                console.log(eventArgs.target.classList[0])
-            } 
-
-
-          
+                        console.log(eventArgs.target.classList[0])
+            }
         });
-
 
 
     </script>
