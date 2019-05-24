@@ -4,9 +4,7 @@
 <body>
 
 
-    <button onclick="saveData()">Save</button>
-    <button onclick="deleteData()">Delete</button>
-    <button onclick="logData()">Log</button>
+   
 
     <br />
     <br />
@@ -22,15 +20,24 @@
     <p>Text 3</p>
     <p class="txt-4-class">Text 4</p>
 
+
+
+    <button onclick="saveData()">Save</button>
+    <button onclick="deleteData()">Delete</button>
+    <button onclick="logData()">Log</button>
+
+
+
     <script>
 
-        let myObject = { 'btn-1-id': 2, 'btn-2-id': 2, 'BUTTON[4]': 3, "txt-1-id": 43, "txt-1-id": 1, "txt-2-class": 0, "P[2]": 23 }
+        //let dataObject = { 'btn-1-id': 2, 'btn-2-id': 2, 'BUTTON[4]': 3, "txt-1-id": 43, "txt-1-id": 1, "txt-2-class": 0, "P[2]": 23 };
+        let dataObject = { 'btn-1-id': 2 }
         let pathName =  window.location.pathname;
        
 
         var output = '';
-        for (var property in myObject) {
-            output += '<tr ><td style="border-bottom: 1px solid #BFBEBE;">' + property + '</td><td>' + myObject[property] + '</td></tr> ';
+        for (var property in dataObject) {
+            output += '<tr ><td style="border-bottom: 1px solid #BFBEBE;">' + property + '</td><td>' + dataObject[property] + '</td></tr> ';
         }
         var myLayer = document.createElement('div');
         myLayer.id = 'bookingLayer';
@@ -59,37 +66,41 @@
 
 
 
-        
-
-
-
 
         function saveData() {
-            localStorage.setItem('myObject', JSON.stringify(myObject));
+            localStorage.setItem(pathName, JSON.stringify(dataObject));
         }
 
         function deleteData() {
-            localStorage.removeItem('myObject');
+            localStorage.removeItem(pathName);
         }
 
         function logData() {
-            var myObject = localStorage.getItem('myObject');
-            console.log(myObject);
+            var dataObject = localStorage.getItem(pathName);
+            console.log("test:" + dataObject);
 
 
-            if (myObject !== null) {
-                var newObj = JSON.parse(myObject);
+            if (dataObject !== null) {
+                var newObj = JSON.parse(dataObject);
                 console.log(newObj);
                 console.log(newObj.one);
             }
 
-
         }
 
+        function updateDataBobject(newValue) {
 
 
+            
+            newDataObject = { 'btn-1-id': 2, 'btn-2-id': 2, 'BUTTON[4]': 3, "txt-1-id": 43, "txt-1-id": 1, "txt-2-class": 0, "P[2]": 23 };
 
+            console.log("newValue:" + newValue);
 
+            dataObject = newDataObject; 
+
+ 
+            saveData();
+        }
 
 
 
@@ -107,15 +118,18 @@
                 for (let i = 0; i < elementArray.length; i++) {
 
                     if (elementArray[i].innerHTML == elementInnerTxt) {
-                        console.log(eventArgs.target.nodeName + "[" + i + "]");
+                        //console.log(eventArgs.target.nodeName + "[" + i + "]");
+                        updateDataBobject(eventArgs.target.nodeName + "[" + i + "]");
                     }
                 }
             } else
                 if (eventArgs.target.id) {
-                    console.log(eventArgs.target.id);
+                          //console.log(eventArgs.target.id);
+                          updateDataBobject(eventArgs.target.id + "_id");
                 } else
                     if (eventArgs.target.classList) {
-                        console.log(eventArgs.target.classList[0])
+                          //console.log(eventArgs.target.classList[0])
+                          updateDataBobject(eventArgs.target.classList[0] + "_name");
                     }
         });
 
