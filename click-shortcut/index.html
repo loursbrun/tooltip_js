@@ -19,21 +19,34 @@
     <p class="txt-2-class">Text 2</p>
     <p>Text 3</p>
     <p class="txt-4-class">Text 4</p>
-
-    <button id="delete_btn" onclick="deleteData()">Reset</button>
     
     <script>
+
+      
+
+       
+
 
         //let dataObject = { 'btn-1-id': 2, 'btn-2-id': 2, 'BUTTON[4]': 3, "txt-1-id": 43, "txt-1-id": 1, "txt-2-class": 0, "P[2]": 23 };
         let pathName =  window.location.pathname;
         let dataObject = {};
+        
         localStorage.getItem(pathName)?dataObject = JSON.parse(localStorage.getItem(pathName)) : dataObject = {} ;
+
+        if(location.search.split('delete=')[1] == "true" || dataObject != {} ) {
+            localStorage.removeItem(pathName);
+        }
+
+        let showInfo = false;
+        if(location.search.split('show=')[1] == "true" ) {
+            showInfo = true;
+        }
 
       
         //console.log(dataObject);
     
        
-
+        if(showInfo) {
         var output = '';
         for (var property in dataObject) {
             output += '<tr ><td style="border-bottom: 1px solid #BFBEBE;">' + property + '</td><td>' + dataObject[property] + '</td></tr> ';
@@ -61,16 +74,15 @@
         `;
         myLayer.innerHTML = htmlString;
         document.body.appendChild(myLayer);
+        }
+
+
+
+
 
         function saveData() {
             localStorage.setItem(pathName, JSON.stringify(dataObject));
             //console.log("DataObject: " + JSON.stringify(dataObject));
-            location.reload();
-        }
-
-        function deleteData() {
-            dataObject = {};
-            localStorage.removeItem(pathName);
             location.reload();
         }
 
