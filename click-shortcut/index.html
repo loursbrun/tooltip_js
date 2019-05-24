@@ -12,7 +12,7 @@
 
     <button id="btn-1-id" type="button">Button 1</button>
     <button id="btn-2-id" type="button">Button 2</button>
-    <button type="button">Button 2</button>
+    <button type="button">Button 3</button>
 
 
     <p id="txt-1-id">Text 1</p>
@@ -20,19 +20,18 @@
     <p>Text 3</p>
     <p class="txt-4-class">Text 4</p>
 
-
-
-    <button onclick="saveData()">Save</button>
-    <button onclick="deleteData()">Delete</button>
-    <button onclick="logData()">Log</button>
-
-
-
+    <button id="delete_btn" onclick="deleteData()">Reset</button>
+    
     <script>
 
         //let dataObject = { 'btn-1-id': 2, 'btn-2-id': 2, 'BUTTON[4]': 3, "txt-1-id": 43, "txt-1-id": 1, "txt-2-class": 0, "P[2]": 23 };
-        let dataObject = {};
         let pathName =  window.location.pathname;
+        let dataObject = {};
+        localStorage.getItem(pathName)?dataObject = JSON.parse(localStorage.getItem(pathName)) : dataObject = {} ;
+
+      
+        //console.log(dataObject);
+    
        
 
         var output = '';
@@ -65,24 +64,14 @@
 
         function saveData() {
             localStorage.setItem(pathName, JSON.stringify(dataObject));
-            console.log("DataObject: " + JSON.stringify(dataObject));
+            //console.log("DataObject: " + JSON.stringify(dataObject));
+            location.reload();
         }
 
         function deleteData() {
+            dataObject = {};
             localStorage.removeItem(pathName);
-        }
-
-        function logData() {
-            var dataObject = localStorage.getItem(pathName);
-            console.log("test:" + dataObject);
-
-
-            if (dataObject !== null) {
-                var newObj = JSON.parse(dataObject);
-                console.log(newObj);
-                console.log(newObj.one);
-            }
-
+            location.reload();
         }
 
         function updateDataObject(newValue) {
@@ -91,9 +80,6 @@
 
             dataObject[newValue] = dataObject[newValue] + 1;
 
-            
-
- 
             saveData();
         }
 
@@ -119,8 +105,8 @@
                 }
             } else
                 if (eventArgs.target.id) {
-                          //console.log(eventArgs.target.id);
-                          updateDataObject(eventArgs.target.id + "_id");
+                          //console.log(eventArgs.target.id);delete_btn
+                          if(eventArgs.target.id != "delete_btn") { updateDataObject(eventArgs.target.id + "_id");}
                 } else
                     if (eventArgs.target.classList) {
                           //console.log(eventArgs.target.classList[0])
