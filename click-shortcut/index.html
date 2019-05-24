@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <p>
+        Hey,
+        <p>there!</p>
+    </p>
+
+
+<script>
+
+
+document.addEventListener("click", function (eventArgs) {
+    var target = eventArgs.target;
+    var elementToLookFor = "p";
+    while (target !== null) {
+        if (target.tagName.toLowerCase() === elementToLookFor) {
+            // Do magic stuff with the paragraph
+            console.log(target);
+        }
+        target = target.parentElement;
+    }
+});
+
+
+
+</script>
+
+</body>
+</html>
