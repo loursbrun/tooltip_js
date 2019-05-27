@@ -191,18 +191,34 @@
 
 
 
-
-
 			function myFunc(evt) {
 				console.log(evt.target.elementNameParam);
 
-
+             
 				if (evt.target.elementNameParam.includes('_classList_')) {
-					console.log("C'est une class name ! ");
+					var className = evt.target.elementNameParam  ; 
+					var classNameWords = className.split('_classList_');
+					console.log(classNameWords[0]);
+					console.log(parseInt(classNameWords[1]));
+				
+
+					console.log(document.getElementsByClassName("cs-nav-item")[parseInt(classNameWords[1])]);
+					
+
 				} else if (evt.target.elementNameParam.includes('_nodeName_')) {
-					console.log("C'est _nodeName_! ");
+					var nodeName = evt.target.elementNameParam  ; 
+					var nodeNameWords = nodeName.split('_nodeName_');
+					console.log(nodeNameWords[0]);
+					console.log(parseInt(nodeNameWords[1]));
+
+
 				} else if (evt.target.elementNameParam.includes('_id')) {
 					console.log("C'est un ID ! ");
+					var idName = evt.target.elementNameParam  ; 
+					var idNameWords = nodeName.split('_id');
+					console.log(idNameWords[0]);
+					
+
 				}
 
 				// console.log(document.getElementsByClassName("cs-nav-item")[2]);
