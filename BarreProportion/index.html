@@ -5,14 +5,8 @@
     body {
         background-color: grey;
     }
-    #barreTopContainer {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 20px;
-        z-index: 10;
-    }
+
+    
 
     ul {
         list-style-type: none;
@@ -27,12 +21,12 @@
     }
 
     .liBarreStat {
-     
+
         float: left;
     }
 
     .liBarreStat a {
-       
+
         float: left;
     }
 
@@ -62,8 +56,8 @@
 
 <body>
 
-  
-    
+
+
 
     <p id="demo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor libero magna, ut dignissim
         neque facilisis finibus. Praesent rutrum velit vitae lacus dignissim, sed laoreet lorem imperdiet. Phasellus id
@@ -284,48 +278,84 @@
 
 
     function addTopBarreStat(array) {
-     
-       
+
+
         function compare(x, y) {
-    return x - y;
-}
+            return x - y;
+        }
 
-var nombres = array;
-nombres.sort(compare);
+        var nombres = array;
+        nombres.sort(compare);
 
-function compare(x, y) {
-    return y - x;
-}
+        function compare(x, y) {
+            return y - x;
+        }
 
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
-        let somme  = nombres.reduce(reducer);
-        let coeficient = 100 / somme ; 
-        
+        let somme = nombres.reduce(reducer);
+        let coeficient = 100 / somme;
+
         var barreTopContainer = document.createElement("ul"); //  <ul id="topBarreUl">
-            barreTopContainer.setAttribute("id", "barreTopContainer");
-            document.body.appendChild(barreTopContainer);
+        barreTopContainer.setAttribute("id", "barreTopContainer");
+
+        /* 
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 20px;
+        z-index: 10;
+        */
+        barreTopContainer.style.position = "fixed";
+        barreTopContainer.style.top = "0";
+        barreTopContainer.style.left = "0";
+        barreTopContainer.style.width = "100%";
+        barreTopContainer.style.height = "20px";
+        barreTopContainer.style.zIndex = 10;
+
+
+
+        document.body.appendChild(barreTopContainer);
         var topBarreUl = document.createElement("ul"); //  <ul id="topBarreUl">
-            barreTopContainer.appendChild(topBarreUl);
-        
+        barreTopContainer.appendChild(topBarreUl);
+
 
         for (var i = 0; i < nombres.length; i++) {
-           
-            
+
             var li = document.createElement("li");
             var a = document.createElement("a");
             li.classList.add("liBarreStat");
-            a.appendChild(document.createTextNode( Math.round(nombres[i] * coeficient) + "%"));
+            a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "%"));
             a.setAttribute("id", "Div1");
             li.style.background = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
             li.style.width = nombres[i] * coeficient + "%";
             li.appendChild(a);
             topBarreUl.appendChild(li);
 
-            document.body.style.marginTop = "30px" ; 
+            document.body.style.marginTop = "30px";
         }
     }
 
-    addTopBarreStat([10, 60, 300, 15, 100]);
+    
+
+    let pathName = window.location.pathname;
+    let dataObject = {};
+
+    localStorage.getItem(pathName) ? dataObject = JSON.parse(localStorage.getItem(pathName)) : dataObject = {};
+
+    console.log(dataObject);
+
+    var newArray = [];
+    var string1 = "";
+
+    for (var property1 in dataObject) {
+        console.log(dataObject[property1]);
+        newArray.push(dataObject[property1]);
+    }
+
+    addTopBarreStat(newArray);
+
+    
 
 
 
