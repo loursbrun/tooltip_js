@@ -295,20 +295,46 @@
 
 
     function addTopBarreStat(array) {
+     
+       
+        function compare(x, y) {
+    return x - y;
+}
+
+var nombres = array;
+nombres.sort(compare);
+
+function compare(x, y) {
+    return y - x;
+}
+
+
+
+
+
+        
+        const reducer = (accumulator, currentValue) => accumulator + currentValue;
+        let somme  = nombres.reduce(reducer);
+        let coeficient = 100 / somme ; 
+        console.log("Coeficient : " +  coeficient);
+
+        console.log("Somme:" + nombres.reduce(reducer));
+
+
 
         var ul = document.getElementById("topBarreUl");
-        //console.log(array);
+        console.log(nombres);
 
 
-        for (var i = 0; i < array.length; i++) {
-            console.log(array[i]);
+        for (var i = 0; i < nombres.length; i++) {
+            console.log(nombres[i]);
             var li = document.createElement("li");
             var a = document.createElement("a");
             li.classList.add("liBarreStat");
-            a.appendChild(document.createTextNode(array[i] + "%"));
+            a.appendChild(document.createTextNode( Math.round(nombres[i] * coeficient) + "%"));
             a.setAttribute("id", "Div1");
             li.style.background = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
-            li.style.width = array[i] + "%";
+            li.style.width = nombres[i] * coeficient + "%";
             li.appendChild(a);
             ul.appendChild(li);
 
@@ -316,12 +342,9 @@
         }
 
 
-
-
-
     }
 
-    addTopBarreStat([50, 30, 10, 10]);
+    addTopBarreStat([10, 340, 300, 15, 100]);
 
 
 
