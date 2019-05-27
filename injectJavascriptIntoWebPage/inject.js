@@ -27,7 +27,7 @@
 		localStorage.removeItem(pathName);
 	}
 
-	let showInfo = true;
+	let showInfo = false;
 	if (location.search.split('show=')[1] == "true") {
 		showInfo = true;
 	}
@@ -90,20 +90,16 @@
 			}
 		} else
 			if (eventArgs.target.id) {
-				if (eventArgs.target.id != "delete_btn") { 
-					updateDataObject(eventArgs.target.id + "_id"); 
+				if (eventArgs.target.id != "delete_btn") {
+					updateDataObject(eventArgs.target.id + "_id");
 					console.log(updateDataObject(eventArgs.target.id + "_id"));
 				}
 			} else
 				if (eventArgs.target.classList) {
-
 					// console.log(document.getElementsByClassName("cs-nav-item"));
 					// console.log(document.getElementsByClassName("cs-nav-item").length);
 					// console.log(eventArgs.target.innerHTML);
 					// console.log(eventArgs);
-
-					
-
 					const elementInnerTxt = eventArgs.target.innerHTML;
 					const elementArray = document.getElementsByClassName(eventArgs.target.classList);
 					for (let i = 0; i < elementArray.length; i++) {
@@ -112,15 +108,86 @@
 							updateDataObject(eventArgs.target.classList[0] + "[" + i + "]");
 						}
 					}
-
 					//updateDataObject(eventArgs.target.classList[0] + "_name");
 					//console.log(eventArgs.target);
 
-
-
-
 				}
 	});
+
+
+
+	// Add barre
+	function addTopBarreStat(array) {
+
+
+        function compare(x, y) {
+            return x - y;
+        }
+        var nombres = array;
+        nombres.sort(compare);
+
+        function compare(x, y) {
+            return y - x;
+        }
+
+        const reducer = (accumulator, currentValue) => accumulator + currentValue;
+        let somme = nombres.reduce(reducer);
+        let coeficient = 100 / somme;
+
+        var barreTopContainer = document.createElement("ul"); //  <ul id="topBarreUl">
+        barreTopContainer.style.margin = "0";
+        barreTopContainer.style.padding = "0";
+        barreTopContainer.setAttribute("id", "barreTopContainer");
+        barreTopContainer.style.position = "fixed";
+        barreTopContainer.style.top = "0";
+        barreTopContainer.style.left = "0";
+        barreTopContainer.style.width = "100%";
+        barreTopContainer.style.height = "20px";
+        barreTopContainer.style.zIndex = 10;
+
+        document.body.appendChild(barreTopContainer);
+        var topBarreUl = document.createElement("ul"); //  <ul id="topBarreUl">
+            topBarreUl.style.listStyleType = "none";
+            topBarreUl.style.margin = "0";
+            topBarreUl.style.padding = "0";
+            topBarreUl.style.overflow = "hidden";
+            topBarreUl.style.cursor = "pointer";
+
+        barreTopContainer.appendChild(topBarreUl);
+
+        for (var i = 0; i < nombres.length; i++) {
+
+            var li = document.createElement("li");
+			var a = document.createElement("a");
+			a.style.color = "white";
+            li.style.color = "white";
+            li.classList.add("liBarreStat");
+            li.style.fontFamily = "Arial, Helvetica, sans-serif";
+            li.style.cssFloat = "left";
+            a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "%"));
+            a.setAttribute("id", "Div1");
+            li.style.background = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
+            li.style.width = nombres[i] * coeficient + "%";
+            li.appendChild(a);
+            topBarreUl.appendChild(li);
+            document.body.style.marginTop = "30px";
+        }
+	}
+	
+
+	var newArray = [];
+    var string1 = "";
+
+    for (var property1 in dataObject) {
+        console.log(dataObject[property1]);
+        newArray.push(dataObject[property1]);
+    }
+
+    addTopBarreStat(newArray);
+
+
+
+
 
 
 
