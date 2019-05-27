@@ -62,18 +62,7 @@
 
 <body>
 
-    <div id="barreTopContainer">
-
-        <ul id="topBarreUl">
-
-
-
-           <!-- <li style="background-color: pink; width : 30% "><a href="#news">30%</a></li> -->
-           
-        </ul>
-
-    </div>
-
+  
     
 
     <p id="demo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor libero magna, ut dignissim
@@ -311,16 +300,17 @@ function compare(x, y) {
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
         let somme  = nombres.reduce(reducer);
         let coeficient = 100 / somme ; 
-        var barreTopDiv = document.getElementById("barreTopContainer");
+        
+        var barreTopContainer = document.createElement("ul"); //  <ul id="topBarreUl">
+            barreTopContainer.setAttribute("id", "barreTopContainer");
+            document.body.appendChild(barreTopContainer);
         var topBarreUl = document.createElement("ul"); //  <ul id="topBarreUl">
-            barreTopDiv.appendChild(topBarreUl);
+            barreTopContainer.appendChild(topBarreUl);
         
 
         for (var i = 0; i < nombres.length; i++) {
            
             
-
-
             var li = document.createElement("li");
             var a = document.createElement("a");
             li.classList.add("liBarreStat");
@@ -335,7 +325,7 @@ function compare(x, y) {
         }
     }
 
-    addTopBarreStat([10, 340, 300, 15, 100]);
+    addTopBarreStat([10, 60, 300, 15, 100]);
 
 
 
