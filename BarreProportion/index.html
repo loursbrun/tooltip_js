@@ -5,7 +5,7 @@
     body {
         background-color: grey;
     }
-    .barreTopContainer {
+    #barreTopContainer {
         position: fixed;
         top: 0;
         left: 0;
@@ -62,7 +62,7 @@
 
 <body>
 
-    <div class="barreTopContainer">
+    <div id="barreTopContainer">
 
         <ul id="topBarreUl">
 
@@ -308,26 +308,19 @@ function compare(x, y) {
     return y - x;
 }
 
-
-
-
-
-        
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
         let somme  = nombres.reduce(reducer);
         let coeficient = 100 / somme ; 
-        console.log("Coeficient : " +  coeficient);
-
-        console.log("Somme:" + nombres.reduce(reducer));
-
-
-
-        var ul = document.getElementById("topBarreUl");
-        console.log(nombres);
-
+        var barreTopDiv = document.getElementById("barreTopContainer");
+        var topBarreUl = document.createElement("ul"); //  <ul id="topBarreUl">
+            barreTopDiv.appendChild(topBarreUl);
+        
 
         for (var i = 0; i < nombres.length; i++) {
-            console.log(nombres[i]);
+           
+            
+
+
             var li = document.createElement("li");
             var a = document.createElement("a");
             li.classList.add("liBarreStat");
@@ -336,12 +329,10 @@ function compare(x, y) {
             li.style.background = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
             li.style.width = nombres[i] * coeficient + "%";
             li.appendChild(a);
-            ul.appendChild(li);
+            topBarreUl.appendChild(li);
 
             document.body.style.marginTop = "30px" ; 
         }
-
-
     }
 
     addTopBarreStat([10, 340, 300, 15, 100]);
