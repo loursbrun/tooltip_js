@@ -1,48 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-<style>
-    body {
-        background-color: grey;
-    }
-
-    li {
-        float: left;
-    }
-
-    .liBarreStat {
-
-        float: left;
-    }
-
-    .liBarreStat a {
-
-        float: left;
-    }
-
-    .liBarreStat a {
-        font-family: Arial, Helvetica, sans-serif;
-        display: block;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        padding: 2px;
-    }
-
-    li a {
-        font-family: Arial, Helvetica, sans-serif;
-        display: block;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        padding: 2px;
-    }
-
-    li a:hover {
-        background-color: #111;
-        cursor: pointer;
-    }
-</style>
 
 <body>
 
@@ -273,7 +231,6 @@
         function compare(x, y) {
             return x - y;
         }
-
         var nombres = array;
         nombres.sort(compare);
 
@@ -288,35 +245,13 @@
         var barreTopContainer = document.createElement("ul"); //  <ul id="topBarreUl">
         barreTopContainer.style.margin = "0";
         barreTopContainer.style.padding = "0";
-
-        /*
-        list-style-type: none;
-                margin: 0;
-                padding: 0;
-                overflow: hidden;
-                cursor: pointer;
-
-        */
-
-        
         barreTopContainer.setAttribute("id", "barreTopContainer");
-
-        /* 
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 20px;
-        z-index: 10;
-        */
         barreTopContainer.style.position = "fixed";
         barreTopContainer.style.top = "0";
         barreTopContainer.style.left = "0";
         barreTopContainer.style.width = "100%";
         barreTopContainer.style.height = "20px";
         barreTopContainer.style.zIndex = 10;
-
-
 
         document.body.appendChild(barreTopContainer);
         var topBarreUl = document.createElement("ul"); //  <ul id="topBarreUl">
@@ -328,31 +263,30 @@
 
         barreTopContainer.appendChild(topBarreUl);
 
-
         for (var i = 0; i < nombres.length; i++) {
 
             var li = document.createElement("li");
             var a = document.createElement("a");
+            li.style.color = "white";
             li.classList.add("liBarreStat");
+            li.style.fontFamily = "Arial, Helvetica, sans-serif";
+            li.style.cssFloat = "left";
             a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "%"));
             a.setAttribute("id", "Div1");
             li.style.background = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
             li.style.width = nombres[i] * coeficient + "%";
             li.appendChild(a);
             topBarreUl.appendChild(li);
-
             document.body.style.marginTop = "30px";
         }
     }
-
-    
 
     let pathName = window.location.pathname;
     let dataObject = {};
 
     localStorage.getItem(pathName) ? dataObject = JSON.parse(localStorage.getItem(pathName)) : dataObject = {};
 
-    console.log(dataObject);
+    //console.log(dataObject);
 
     var newArray = [];
     var string1 = "";
