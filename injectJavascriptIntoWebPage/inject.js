@@ -27,7 +27,7 @@
 		localStorage.removeItem(pathName);
 	}
 
-	let showInfo = false;
+	let showInfo = true;
 	if (location.search.split('show=')[1] == "true") {
 		showInfo = true;
 	}
