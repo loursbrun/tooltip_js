@@ -29,7 +29,7 @@
 
 
 
-	let showInfo = false;
+	let showInfo = true;
 	if (location.search.split('show=')[1] == "true") {
 		showInfo = true;
 	}
@@ -86,8 +86,8 @@
 			const elementArray = document.getElementsByTagName(eventArgs.target.nodeName);
 			for (let i = 0; i < elementArray.length; i++) {
 				if (elementArray[i].innerHTML == elementInnerTxt ) {
-					updateDataObject(eventArgs.target.nodeName + "[" + i + "]");
-					console.log(updateDataObject(eventArgs.target.nodeName + "[" + i + "]"));
+					updateDataObject(eventArgs.target.nodeName + "_nodeName_" + i );
+					console.log(updateDataObject(eventArgs.target.nodeName + "_nodeName_" + i ));
 				}
 			}
 		} else
@@ -108,7 +108,7 @@
 						if (elementArray[i].innerHTML == elementInnerTxt && eventArgs.target.classList[0] != "liBarreStat" ) {
 							console.log(eventArgs.target.classList + "[" + i + "]");
 							console.log("********" + eventArgs.target.classList[0]);
-							updateDataObject(eventArgs.target.classList[0] + "[" + i + "]");
+							updateDataObject(eventArgs.target.classList[0] + "_classList_" + i );
 						}
 					}
 					//updateDataObject(eventArgs.target.classList[0] + "_name");
@@ -175,22 +175,31 @@
 
 		for (var i = 0; i < nombres.length; i++) {
 
+
 			var li = document.createElement("li");
 
+			//
+			console.log("Hello ! " + values[i]);
 			var elementName = values[i];
+			
+
 
 			li.addEventListener("click", function (event) {
-				console.log("Hello ! " + elementName);
+				
+				
 
 
+				if(elementName.includes('_classList_')) {
+					console.log("C'est une class name ! ");
+				} else if(elementName.includes('_nodeName_')) {
+					console.log("C'est _nodeName_! ");
+				} else if(elementName.includes('_id')) {
+					console.log("C'est un ID ! ");
+				}
 
-				fullNameArr[0] // First
-				fullNameArr[1] // Last
+			
 
-
-
-
-				console.log(document.getElementsByClassName("cs-nav-item")[2]);
+				// console.log(document.getElementsByClassName("cs-nav-item")[2]);
 
 
 
@@ -203,7 +212,7 @@
 		li.classList.add("liBarreStat");
 		li.style.fontFamily = "Arial, Helvetica, sans-serif";
 		li.style.cssFloat = "left";
-		a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "% " + elementName));
+		a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "% " + values[i]));
 		a.setAttribute("id", "Div1");
 		li.style.background = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
 		li.style.width = nombres[i] * coeficient + "%";
