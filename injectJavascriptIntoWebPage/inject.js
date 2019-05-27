@@ -27,6 +27,8 @@
 		localStorage.removeItem(pathName);
 	}
 
+	
+
 	let showInfo = false;
 	if (location.search.split('show=')[1] == "true") {
 		showInfo = true;
@@ -120,71 +122,85 @@
 	function addTopBarreStat(array) {
 
 
-        function compare(x, y) {
-            return x - y;
-        }
-        var nombres = array;
-        nombres.sort(compare);
+		var nombres = [];
+		var values = [];
+		
 
-        function compare(x, y) {
-            return y - x;
-        }
+		for (var property1 in array) {
+			//console.log(array[property1]);
+			nombres.push(array[property1]);
+			values.push(property1);
+			
+		}
 
-        const reducer = (accumulator, currentValue) => accumulator + currentValue;
-        let somme = nombres.reduce(reducer);
-        let coeficient = 100 / somme;
+		function compare(x, y) {
+			return x - y;
+		}
+		//var nombres = array;
+		//nombres.sort(compare);
 
-        var barreTopContainer = document.createElement("ul"); //  <ul id="topBarreUl">
-        barreTopContainer.style.margin = "0";
-        barreTopContainer.style.padding = "0";
-        barreTopContainer.setAttribute("id", "barreTopContainer");
-        barreTopContainer.style.position = "fixed";
-        barreTopContainer.style.top = "0";
-        barreTopContainer.style.left = "0";
-        barreTopContainer.style.width = "100%";
-        barreTopContainer.style.height = "20px";
-        barreTopContainer.style.zIndex = 10;
 
-        document.body.appendChild(barreTopContainer);
-        var topBarreUl = document.createElement("ul"); //  <ul id="topBarreUl">
-            topBarreUl.style.listStyleType = "none";
-            topBarreUl.style.margin = "0";
-            topBarreUl.style.padding = "0";
-            topBarreUl.style.overflow = "hidden";
-            topBarreUl.style.cursor = "pointer";
 
-        barreTopContainer.appendChild(topBarreUl);
 
-        for (var i = 0; i < nombres.length; i++) {
+		function compare(x, y) {
+			return y - x;
+		}
 
-            var li = document.createElement("li");
+		const reducer = (accumulator, currentValue) => accumulator + currentValue;
+		let somme = nombres.reduce(reducer);
+		let coeficient = 100 / somme;
+
+		var barreTopContainer = document.createElement("ul"); //  <ul id="topBarreUl">
+		barreTopContainer.style.margin = "0";
+		barreTopContainer.style.padding = "0";
+		barreTopContainer.setAttribute("id", "barreTopContainer");
+		barreTopContainer.style.position = "fixed";
+		barreTopContainer.style.top = "0";
+		barreTopContainer.style.left = "0";
+		barreTopContainer.style.width = "100%";
+		barreTopContainer.style.height = "20px";
+		barreTopContainer.style.zIndex = 10;
+
+		document.body.appendChild(barreTopContainer);
+		var topBarreUl = document.createElement("ul"); //  <ul id="topBarreUl">
+		topBarreUl.style.listStyleType = "none";
+		topBarreUl.style.margin = "0";
+		topBarreUl.style.padding = "0";
+		topBarreUl.style.overflow = "hidden";
+		topBarreUl.style.cursor = "pointer";
+
+		barreTopContainer.appendChild(topBarreUl);
+
+		for (var i = 0; i < nombres.length; i++) {
+
+			var li = document.createElement("li");
 			var a = document.createElement("a");
 			a.style.color = "white";
-            li.style.color = "white";
-            li.classList.add("liBarreStat");
-            li.style.fontFamily = "Arial, Helvetica, sans-serif";
-            li.style.cssFloat = "left";
-            a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "%"));
-            a.setAttribute("id", "Div1");
-            li.style.background = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
-            li.style.width = nombres[i] * coeficient + "%";
-            li.appendChild(a);
-            topBarreUl.appendChild(li);
-            document.body.style.marginTop = "30px";
-        }
+			li.style.color = "white";
+			li.classList.add("liBarreStat");
+			li.style.fontFamily = "Arial, Helvetica, sans-serif";
+			li.style.cssFloat = "left";
+			a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "%" + values[i]));
+			a.setAttribute("id", "Div1");
+			li.style.background = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
+			li.style.width = nombres[i] * coeficient + "%";
+			li.appendChild(a);
+			topBarreUl.appendChild(li);
+			document.body.style.marginTop = "30px";
+		}
 	}
-	
 
-	var newArray = [];
-    var string1 = "";
 
-    for (var property1 in dataObject) {
-        console.log(dataObject[property1]);
-        newArray.push(dataObject[property1]);
-    }
+	// var newArray = [];
+	// var string1 = "";
 
-    addTopBarreStat(newArray);
+	// for (var property1 in dataObject) {
+	//     console.log(dataObject[property1]);
+	//     newArray.push(dataObject[property1]);
+	// }
 
+
+	addTopBarreStat(dataObject);
 
 
 
