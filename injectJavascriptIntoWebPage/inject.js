@@ -27,7 +27,7 @@
 		localStorage.removeItem(pathName);
 	}
 
-	
+
 
 	let showInfo = false;
 	if (location.search.split('show=')[1] == "true") {
@@ -81,11 +81,11 @@
 	document.addEventListener("click", function (eventArgs) {
 		const elementId = eventArgs.target.id;
 		const elementClassName = eventArgs.target.classList[0];
-		if (!elementId && !elementClassName && eventArgs.target.nodeName !== "HTML") {
+		if (!elementId && !elementClassName && eventArgs.target.nodeName !== "HTML" ) {
 			const elementInnerTxt = eventArgs.target.innerHTML;
 			const elementArray = document.getElementsByTagName(eventArgs.target.nodeName);
 			for (let i = 0; i < elementArray.length; i++) {
-				if (elementArray[i].innerHTML == elementInnerTxt) {
+				if (elementArray[i].innerHTML == elementInnerTxt ) {
 					updateDataObject(eventArgs.target.nodeName + "[" + i + "]");
 					console.log(updateDataObject(eventArgs.target.nodeName + "[" + i + "]"));
 				}
@@ -105,8 +105,9 @@
 					const elementInnerTxt = eventArgs.target.innerHTML;
 					const elementArray = document.getElementsByClassName(eventArgs.target.classList);
 					for (let i = 0; i < elementArray.length; i++) {
-						if (elementArray[i].innerHTML == elementInnerTxt) {
+						if (elementArray[i].innerHTML == elementInnerTxt && eventArgs.target.classList[0] != "liBarreStat" ) {
 							console.log(eventArgs.target.classList + "[" + i + "]");
+							console.log("********" + eventArgs.target.classList[0]);
 							updateDataObject(eventArgs.target.classList[0] + "[" + i + "]");
 						}
 					}
@@ -124,13 +125,13 @@
 
 		var nombres = [];
 		var values = [];
-		
+
 
 		for (var property1 in array) {
 			//console.log(array[property1]);
 			nombres.push(array[property1]);
 			values.push(property1);
-			
+
 		}
 
 		function compare(x, y) {
@@ -149,7 +150,7 @@
 		const reducer = (accumulator, currentValue) => accumulator + currentValue;
 		let somme = nombres.reduce(reducer);
 		let coeficient = 100 / somme;
-	    
+
 
 		var barreTopContainer = document.createElement("ul"); //  <ul id="topBarreUl">
 		barreTopContainer.style.margin = "0";
@@ -177,9 +178,14 @@
 			var li = document.createElement("li");
 
 			var elementName = values[i];
-			
-			li.addEventListener("click", function( event ) {
+
+			li.addEventListener("click", function (event) {
 				console.log("Hello ! " + elementName);
+
+
+
+				fullNameArr[0] // First
+				fullNameArr[1] // Last
 
 
 
@@ -189,23 +195,23 @@
 
 
 
-			  }, false);
+		}, false);
 
-			var a = document.createElement("a");
-			a.style.color = "white";
-			li.style.color = "white";
-			li.classList.add("liBarreStat");
-			li.style.fontFamily = "Arial, Helvetica, sans-serif";
-			li.style.cssFloat = "left";
-			a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "% " +elementName ));
-			a.setAttribute("id", "Div1");
-			li.style.background = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
-			li.style.width = nombres[i] * coeficient + "%";
-			li.appendChild(a);
-			topBarreUl.appendChild(li);
-			document.body.style.marginTop = "30px";
-		}
+		var a = document.createElement("a");
+		a.style.color = "white";
+		li.style.color = "white";
+		li.classList.add("liBarreStat");
+		li.style.fontFamily = "Arial, Helvetica, sans-serif";
+		li.style.cssFloat = "left";
+		a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "% " + elementName));
+		a.setAttribute("id", "Div1");
+		li.style.background = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
+		li.style.width = nombres[i] * coeficient + "%";
+		li.appendChild(a);
+		topBarreUl.appendChild(li);
+		document.body.style.marginTop = "30px";
 	}
+}
 
 
 	// var newArray = [];
@@ -226,4 +232,4 @@
 
 
 
-})();
+}) ();
