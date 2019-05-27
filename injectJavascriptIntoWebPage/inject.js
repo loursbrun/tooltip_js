@@ -149,6 +149,7 @@
 		const reducer = (accumulator, currentValue) => accumulator + currentValue;
 		let somme = nombres.reduce(reducer);
 		let coeficient = 100 / somme;
+	    
 
 		var barreTopContainer = document.createElement("ul"); //  <ul id="topBarreUl">
 		barreTopContainer.style.margin = "0";
@@ -174,13 +175,29 @@
 		for (var i = 0; i < nombres.length; i++) {
 
 			var li = document.createElement("li");
+
+			var elementName = values[i];
+			
+			li.addEventListener("click", function( event ) {
+				console.log("Hello ! " + elementName);
+
+
+
+
+				console.log(document.getElementsByClassName("cs-nav-item")[2]);
+
+
+
+
+			  }, false);
+
 			var a = document.createElement("a");
 			a.style.color = "white";
 			li.style.color = "white";
 			li.classList.add("liBarreStat");
 			li.style.fontFamily = "Arial, Helvetica, sans-serif";
 			li.style.cssFloat = "left";
-			a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "%" + values[i]));
+			a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "% " +elementName ));
 			a.setAttribute("id", "Div1");
 			li.style.background = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
 			li.style.width = nombres[i] * coeficient + "%";
