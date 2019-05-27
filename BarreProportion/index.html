@@ -6,16 +6,6 @@
         background-color: grey;
     }
 
-    
-
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        cursor: pointer;
-    }
-
     li {
         float: left;
     }
@@ -296,6 +286,19 @@
         let coeficient = 100 / somme;
 
         var barreTopContainer = document.createElement("ul"); //  <ul id="topBarreUl">
+        barreTopContainer.style.margin = "0";
+        barreTopContainer.style.padding = "0";
+
+        /*
+        list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                cursor: pointer;
+
+        */
+
+        
         barreTopContainer.setAttribute("id", "barreTopContainer");
 
         /* 
@@ -317,6 +320,12 @@
 
         document.body.appendChild(barreTopContainer);
         var topBarreUl = document.createElement("ul"); //  <ul id="topBarreUl">
+            topBarreUl.style.listStyleType = "none";
+            topBarreUl.style.margin = "0";
+            topBarreUl.style.padding = "0";
+            topBarreUl.style.overflow = "hidden";
+            topBarreUl.style.cursor = "pointer";
+
         barreTopContainer.appendChild(topBarreUl);
 
 
