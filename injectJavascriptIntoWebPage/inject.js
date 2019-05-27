@@ -81,13 +81,13 @@
 	document.addEventListener("click", function (eventArgs) {
 		const elementId = eventArgs.target.id;
 		const elementClassName = eventArgs.target.classList[0];
-		if (!elementId && !elementClassName && eventArgs.target.nodeName !== "HTML" ) {
+		if (!elementId && !elementClassName && eventArgs.target.nodeName !== "HTML") {
 			const elementInnerTxt = eventArgs.target.innerHTML;
 			const elementArray = document.getElementsByTagName(eventArgs.target.nodeName);
 			for (let i = 0; i < elementArray.length; i++) {
-				if (elementArray[i].innerHTML == elementInnerTxt ) {
-					updateDataObject(eventArgs.target.nodeName + "_nodeName_" + i );
-					console.log(updateDataObject(eventArgs.target.nodeName + "_nodeName_" + i ));
+				if (elementArray[i].innerHTML == elementInnerTxt) {
+					updateDataObject(eventArgs.target.nodeName + "_nodeName_" + i);
+					console.log(updateDataObject(eventArgs.target.nodeName + "_nodeName_" + i));
 				}
 			}
 		} else
@@ -105,10 +105,10 @@
 					const elementInnerTxt = eventArgs.target.innerHTML;
 					const elementArray = document.getElementsByClassName(eventArgs.target.classList);
 					for (let i = 0; i < elementArray.length; i++) {
-						if (elementArray[i].innerHTML == elementInnerTxt && eventArgs.target.classList[0] != "liBarreStat" ) {
+						if (elementArray[i].innerHTML == elementInnerTxt && eventArgs.target.classList[0] != "liBarreStat") {
 							console.log(eventArgs.target.classList + "[" + i + "]");
 							console.log("********" + eventArgs.target.classList[0]);
-							updateDataObject(eventArgs.target.classList[0] + "_classList_" + i );
+							updateDataObject(eventArgs.target.classList[0] + "_classList_" + i);
 						}
 					}
 					//updateDataObject(eventArgs.target.classList[0] + "_name");
@@ -181,46 +181,60 @@
 			//
 			console.log("Hello ! " + values[i]);
 			var elementName = values[i];
-			
 
 
-			li.addEventListener("click", function (event) {
-				
-				
-
-
-				if(elementName.includes('_classList_')) {
-					console.log("C'est une class name ! ");
-				} else if(elementName.includes('_nodeName_')) {
-					console.log("C'est _nodeName_! ");
-				} else if(elementName.includes('_id')) {
-					console.log("C'est un ID ! ");
-				}
 
 			
 
-				// console.log(document.getElementsByClassName("cs-nav-item")[2]);
+			li.addEventListener('click', myFunc, false);
+			li.elementNameParam = elementName;
 
 
 
 
-		}, false);
 
-		var a = document.createElement("a");
-		a.style.color = "white";
-		li.style.color = "white";
-		li.classList.add("liBarreStat");
-		li.style.fontFamily = "Arial, Helvetica, sans-serif";
-		li.style.cssFloat = "left";
-		a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "% " + values[i]));
-		a.setAttribute("id", "Div1");
-		li.style.background = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
-		li.style.width = nombres[i] * coeficient + "%";
-		li.appendChild(a);
-		topBarreUl.appendChild(li);
-		document.body.style.marginTop = "30px";
+			function myFunc(evt) {
+				console.log(evt.target.elementNameParam);
+			}
+
+
+
+
+
+
+			// li.addEventListener("click", function (event) {
+
+			// 	console.log(this);
+
+			// 	if (elementName.includes('_classList_')) {
+			// 		console.log("C'est une class name ! ");
+			// 	} else if (elementName.includes('_nodeName_')) {
+			// 		console.log("C'est _nodeName_! ");
+			// 	} else if (elementName.includes('_id')) {
+			// 		console.log("C'est un ID ! ");
+			// 	}
+
+			// 	// console.log(document.getElementsByClassName("cs-nav-item")[2]);
+
+
+			// }, false);
+
+			var a = document.createElement("a");
+			a.style.color = "white";
+			a.style.pointerEvents = "none";
+			li.style.color = "white";
+			li.classList.add("liBarreStat");
+			li.style.fontFamily = "Arial, Helvetica, sans-serif";
+			li.style.cssFloat = "left";
+			a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "% " + values[i]));
+			a.setAttribute("id", "Div1");
+			li.style.background = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
+			li.style.width = nombres[i] * coeficient + "%";
+			li.appendChild(a);
+			topBarreUl.appendChild(li);
+			document.body.style.marginTop = "30px";
+		}
 	}
-}
 
 
 	// var newArray = [];
@@ -241,4 +255,4 @@
 
 
 
-}) ();
+})();
