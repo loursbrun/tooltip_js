@@ -184,8 +184,6 @@
 
 
 
-
-
 			li.addEventListener('click', myFunc, false);
 			li.elementNameParam = elementName;
 
@@ -202,7 +200,9 @@
 					console.log(parseInt(classNameWords[1]));
 				
 
-					console.log(document.getElementsByClassName("cs-nav-item")[parseInt(classNameWords[1])]);
+					console.log(document.getElementsByClassName(classNameWords[0])[parseInt(classNameWords[1])]);
+					var rect = document.getElementsByClassName(classNameWords[0])[parseInt(classNameWords[1])].getBoundingClientRect();
+					console.log(rect.top, rect.right, rect.bottom, rect.left);
 					
 
 				} else if (evt.target.elementNameParam.includes('_nodeName_')) {
@@ -211,12 +211,23 @@
 					console.log(nodeNameWords[0]);
 					console.log(parseInt(nodeNameWords[1]));
 
+					console.log(document.getElementsByTagName(nodeNameWords[0])[parseInt(nodeNameWords[1])]);
+					var rect = document.getElementsByTagName(nodeNameWords[0])[parseInt(nodeNameWords[1])].getBoundingClientRect();
+					console.log(rect.top, rect.right, rect.bottom, rect.left);
+
+					
+
 
 				} else if (evt.target.elementNameParam.includes('_id')) {
 					console.log("C'est un ID ! ");
 					var idName = evt.target.elementNameParam  ; 
-					var idNameWords = nodeName.split('_id');
-					console.log(idNameWords[0]);
+					var idNameWords = idName.replace('_id','');
+					console.log(idNameWords);
+
+
+					 console.log(document.getElementById(idNameWords));
+					 var rect = document.getElementById(idNameWords).getBoundingClientRect();
+					 console.log(rect.top, rect.right, rect.bottom, rect.left);
 					
 
 				}
