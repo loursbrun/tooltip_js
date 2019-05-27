@@ -2,11 +2,15 @@
 <html>
 
 <style>
+    body {
+        background-color: grey;
+    }
     .barreTopContainer {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
+        height: 20px;
         z-index: 10;
     }
 
@@ -70,7 +74,7 @@
 
     </div>
 
-    <h1>My First JavaScript</h1>
+    
 
     <p id="demo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor libero magna, ut dignissim
         neque facilisis finibus. Praesent rutrum velit vitae lacus dignissim, sed laoreet lorem imperdiet. Phasellus id
@@ -307,6 +311,8 @@
             li.style.width = array[i] + "%";
             li.appendChild(a);
             ul.appendChild(li);
+
+            document.body.style.marginTop = "30px" ; 
         }
 
 
