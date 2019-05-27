@@ -29,7 +29,7 @@
 
 
 
-	let showInfo = true;
+	let showInfo = false;
 	if (location.search.split('show=')[1] == "true") {
 		showInfo = true;
 	}
@@ -184,7 +184,7 @@
 
 
 
-			
+
 
 			li.addEventListener('click', myFunc, false);
 			li.elementNameParam = elementName;
@@ -195,29 +195,22 @@
 
 			function myFunc(evt) {
 				console.log(evt.target.elementNameParam);
+
+
+				if (evt.target.elementNameParam.includes('_classList_')) {
+					console.log("C'est une class name ! ");
+				} else if (evt.target.elementNameParam.includes('_nodeName_')) {
+					console.log("C'est _nodeName_! ");
+				} else if (evt.target.elementNameParam.includes('_id')) {
+					console.log("C'est un ID ! ");
+				}
+
+				// console.log(document.getElementsByClassName("cs-nav-item")[2]);
+
+
 			}
 
 
-
-
-
-
-			// li.addEventListener("click", function (event) {
-
-			// 	console.log(this);
-
-			// 	if (elementName.includes('_classList_')) {
-			// 		console.log("C'est une class name ! ");
-			// 	} else if (elementName.includes('_nodeName_')) {
-			// 		console.log("C'est _nodeName_! ");
-			// 	} else if (elementName.includes('_id')) {
-			// 		console.log("C'est un ID ! ");
-			// 	}
-
-			// 	// console.log(document.getElementsByClassName("cs-nav-item")[2]);
-
-
-			// }, false);
 
 			var a = document.createElement("a");
 			a.style.color = "white";
