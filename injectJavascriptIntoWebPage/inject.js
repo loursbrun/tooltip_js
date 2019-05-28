@@ -161,7 +161,7 @@
 		barreTopContainer.style.left = "0";
 		barreTopContainer.style.width = "100%";
 		barreTopContainer.style.height = "20px";
-		barreTopContainer.style.zIndex = 10;
+		barreTopContainer.style.zIndex = 200;
 
 		document.body.appendChild(barreTopContainer);
 		var topBarreUl = document.createElement("ul"); //  <ul id="topBarreUl">
@@ -184,12 +184,12 @@
 
 
 
-			li.addEventListener('click', myFunc, false);
+			li.addEventListener('click', findElement, false);
 			li.elementNameParam = elementName;
 
 
 
-			function myFunc(evt) {
+			function findElement(evt) {
 				console.log(evt.target.elementNameParam);
 
              
@@ -203,6 +203,7 @@
 					console.log(document.getElementsByClassName(classNameWords[0])[parseInt(classNameWords[1])]);
 					var rect = document.getElementsByClassName(classNameWords[0])[parseInt(classNameWords[1])].getBoundingClientRect();
 					console.log(rect.top, rect.right, rect.bottom, rect.left);
+					showGreyFiltre(rect.top, rect.right, rect.bottom, rect.left);
 					
 
 				} else if (evt.target.elementNameParam.includes('_nodeName_')) {
@@ -214,6 +215,7 @@
 					console.log(document.getElementsByTagName(nodeNameWords[0])[parseInt(nodeNameWords[1])]);
 					var rect = document.getElementsByTagName(nodeNameWords[0])[parseInt(nodeNameWords[1])].getBoundingClientRect();
 					console.log(rect.top, rect.right, rect.bottom, rect.left);
+					showGreyFiltre(rect.top, rect.right, rect.bottom, rect.left);
 
 					
 
@@ -228,6 +230,7 @@
 					 console.log(document.getElementById(idNameWords));
 					 var rect = document.getElementById(idNameWords).getBoundingClientRect();
 					 console.log(rect.top, rect.right, rect.bottom, rect.left);
+					 showGreyFiltre(rect.top, rect.right, rect.bottom, rect.left);
 					
 
 				}
@@ -235,7 +238,76 @@
 				// console.log(document.getElementsByClassName("cs-nav-item")[2]);
 
 
+				function showGreyFiltre(top, right, bottom, left) {
+					// left square
+					document.body.innerHTML +=`<div 
+					style="
+						position:absolute;
+						top:0;
+						left: 0px;
+						width:${left}px;
+						height:${document.body.scrollHeight - 20}px;
+						opacity:0.2;
+						z-index:100;
+						background:#000;
+						pointer-events: none;
+						">
+					</div>`;
+
+					// Right square
+					document.body.innerHTML +=`<div 
+					style="
+						position:absolute;
+						top:0;
+						left: ${right}px;
+						width:100%;
+						height:${document.body.scrollHeight - 20}px;
+						opacity:0.2;
+						z-index:101;
+						background:#000;
+						pointer-events: none;
+						">
+					</div>`;
+
+					// top square
+					document.body.innerHTML +=`<div 
+					style="
+						position:absolute;
+						top:0px;
+						left: ${left}px;
+						width: ${right - left}px;
+						height:${top}px;
+						opacity:0.2;
+						z-index:101;
+						background:#000;
+						pointer-events: none;
+						">
+					</div>`;
+
+					// bottom square
+					document.body.innerHTML +=`<div 
+					style="
+						position:absolute;
+						top: ${bottom}px;
+						left: ${left}px;
+						width: ${right - left}px;
+						height:${document.body.scrollHeight - bottom}px;
+						opacity:0.2;
+						z-index:101;
+						background:#000;
+						pointer-events: none;
+						">
+					</div>`;
+	
+	
+	
+				}
+
+
 			}
+
+
+			
 
 
 
@@ -264,6 +336,8 @@
 	//     console.log(dataObject[property1]);
 	//     newArray.push(dataObject[property1]);
 	// }
+
+	
 
 
 	addTopBarreStat(dataObject);
