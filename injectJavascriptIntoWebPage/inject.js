@@ -8,12 +8,12 @@
 	div.style.top = 0;
 	div.style.right = 0;
 	div.style.position = 'absolute';
-	div.textContent = 'Injected! 333';
+	div.textContent = 'Injected!';
 	document.body.appendChild(div);
 
 	//alert('inserted self... giggity');
 
-	console.log("******  Injected !!!!!   ******");
+
 	console.log(window.location.pathname);
 
 	let pathName = window.location.pathname;
@@ -315,7 +315,7 @@
 						top: ${bottom + document.documentElement.scrollTop}px;
 						left: ${left}px;
 						width: ${right - left}px;
-						height:${document.body.offsetHeight }px;
+						height:${document.body.offsetHeight}px;
 						opacity:0.2;
 						z-index:101;
 						background:#000;
@@ -358,12 +358,7 @@
 
 				}
 
-
 			}
-
-
-
-
 
 
 			var a = document.createElement("a");
@@ -377,6 +372,17 @@
 			else if (Math.round(nombres[i] * coeficient) >= 10 && showInfo == true) { a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "% " + values[i])); }
 			else { a.appendChild(document.createTextNode(".")); a.style.opacity = "0"; }
 			a.setAttribute("id", "Div1");
+			a.style.fontSize = "14px";
+			a.style.marginLeft = "5px";
+
+			var icon = document.createElement('a');
+			var linkText = document.createTextNode("x");
+			icon.appendChild(linkText);
+			icon.style.opacity = "0.5";
+			icon.style.marginRight = "5px";
+			icon.href = "http://example.com";
+			icon.style.cssFloat = "right";
+			li.appendChild(icon);
 
 			li.style.background = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
 			li.style.width = nombres[i] * coeficient + "%";
@@ -385,7 +391,6 @@
 			//document.body.style.marginTop = "30px";
 		}
 	}
-
 
 	// var newArray = [];
 	// var string1 = "";
