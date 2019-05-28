@@ -67,8 +67,22 @@
 	}
 
 	function saveData() {    // save in cookie 
+		//console.log("object:" + JSON.stringify(dataObject));
+		var sortable = [];
+		for (var className in dataObject) {
+			sortable.push([className.toString(), dataObject[className]]);
+		}
+		sortable.sort(function (a, b) {
+			return b[1] - a[1];
+		});
+		var newObject = {};
+		for (let i = 0; i < sortable.length; i++) {
+			newObject[sortable[i][0]] = sortable[i][1];
+		}
+		dataObject = newObject;
+		//console.log("newObject:" + JSON.stringify(newObject));
+		//console.log("object:" + JSON.stringify(dataObject));
 		localStorage.setItem(pathName, JSON.stringify(dataObject));
-		//location.reload();
 	}
 
 	function updateDataObject(newValue) {
@@ -239,23 +253,23 @@
 
 
 				function showGreyFiltre(top, right, bottom, left) {
-					
 
 
-					
-					
+
+
+
 
 					//leftGreySquare
 					setTimeout(function () { drawSquare(); }, 100);
 					function drawSquare() {
 						// left square
-					document.body.innerHTML += `<div class="greySquareFilter" 
+						document.body.innerHTML += `<div class="greySquareFilter" 
 					style="
 						position:absolute;
 						top:0px;
 						left: 0px;
 						width:${left}px;
-						height:${document.body.scrollHeight }px;
+						height:${document.body.scrollHeight}px;
 						opacity:0.2;
 						z-index:100;
 						background:#000;
@@ -263,15 +277,15 @@
 						">
 					</div>`;
 
-					// Right square
-					document.body.innerHTML += `<div class="greySquareFilter"
+						// Right square
+						document.body.innerHTML += `<div class="greySquareFilter"
 					style="
 						position:absolute;
 						top:0px;
 						
 						left: ${right}px;
 						width:100%;
-						height:${document.body.scrollHeight }px;
+						height:${document.body.scrollHeight}px;
 						opacity:0.2;
 						z-index:101;
 						background:#000;
@@ -279,8 +293,8 @@
 						">
 					</div>`;
 
-					// top square
-					document.body.innerHTML += `<div class="greySquareFilter"
+						// top square
+						document.body.innerHTML += `<div class="greySquareFilter"
 					style="
 						position:absolute;
 						top:0px;
@@ -294,8 +308,8 @@
 						">
 					</div>`;
 
-					// bottom square height:${document.body.scrollHeight - bottom}px;
-					document.body.innerHTML += `<div class="greySquareFilter"
+						// bottom square height:${document.body.scrollHeight - bottom}px;
+						document.body.innerHTML += `<div class="greySquareFilter"
 					style="
 						position:absolute;
 						top: ${bottom + document.documentElement.scrollTop}px;
@@ -308,28 +322,28 @@
 						pointer-events: none;
 						">
 					</div>`;
-				
-					
+
+
 
 					}
 
-					
+
 
 					setTimeout(function () { moveToSquare(); }, 500);
 					function moveToSquare() {
-					console.log("top:" + top );
-					console.log("window.innerHeight / 2p:" + window.innerHeight / 2 );
-					console.log("(top - bottom) / 2:" + (top - bottom) / 2 );
-					console.log("window.pageYOffset:" + document.documentElement.scrollTop);
-					console.log("Total bady height: " + document.body.offsetHeight);
-					window.scrollTo(0, top - window.innerHeight / 2 - (top - bottom) / 2 + document.documentElement.scrollTop );
+						console.log("top:" + top);
+						console.log("window.innerHeight / 2p:" + window.innerHeight / 2);
+						console.log("(top - bottom) / 2:" + (top - bottom) / 2);
+						console.log("window.pageYOffset:" + document.documentElement.scrollTop);
+						console.log("Total bady height: " + document.body.offsetHeight);
+						window.scrollTo(0, top - window.innerHeight / 2 - (top - bottom) / 2 + document.documentElement.scrollTop);
 
 					}
 
 
 
 
-					
+
 
 
 					//leftGreySquare
@@ -340,10 +354,6 @@
 						addTopBarreStat(dataObject);
 
 					}
-
-
-
-
 
 				}
 
@@ -362,11 +372,11 @@
 			li.classList.add("liBarreStat");
 			li.style.fontFamily = "Arial, Helvetica, sans-serif";
 			li.style.cssFloat = "left";
-			if(Math.round(nombres[i] * coeficient) >= 10 && showInfo == false){ a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "% ")); } 
-			else if (Math.round(nombres[i] * coeficient) >= 10 && showInfo == true){ a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "% " + values[i])); } 
-			else { a.appendChild(document.createTextNode(".")); a.style.opacity = "0";}
+			if (Math.round(nombres[i] * coeficient) >= 10 && showInfo == false) { a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "% ")); }
+			else if (Math.round(nombres[i] * coeficient) >= 10 && showInfo == true) { a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "% " + values[i])); }
+			else { a.appendChild(document.createTextNode(".")); a.style.opacity = "0"; }
 			a.setAttribute("id", "Div1");
-			
+
 			li.style.background = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
 			li.style.width = nombres[i] * coeficient + "%";
 			li.appendChild(a);
