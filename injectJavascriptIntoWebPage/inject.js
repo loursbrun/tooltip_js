@@ -362,7 +362,8 @@
 			li.classList.add("liBarreStat");
 			li.style.fontFamily = "Arial, Helvetica, sans-serif";
 			li.style.cssFloat = "left";
-			if(Math.round(nombres[i] * coeficient) >= 10){ a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "% " + values[i])); } 
+			if(Math.round(nombres[i] * coeficient) >= 10 && showInfo == false){ a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "% ")); } 
+			else if (Math.round(nombres[i] * coeficient) >= 10 && showInfo == true){ a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "% " + values[i])); } 
 			else { a.appendChild(document.createTextNode(".")); }
 			a.setAttribute("id", "Div1");
 			li.style.background = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
