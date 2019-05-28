@@ -315,7 +315,7 @@
 						top: ${bottom + document.documentElement.scrollTop}px;
 						left: ${left}px;
 						width: ${right - left}px;
-						height:${document.body.offsetHeight - bottom}px;
+						height:${document.body.offsetHeight }px;
 						opacity:0.2;
 						z-index:101;
 						background:#000;
@@ -332,9 +332,10 @@
 					setTimeout(function () { moveToSquare(); }, 500);
 					function moveToSquare() {
 						console.log("top:" + top);
+						console.log("bottom:" + bottom);
 						console.log("window.innerHeight / 2p:" + window.innerHeight / 2);
 						console.log("(top - bottom) / 2:" + (top - bottom) / 2);
-						console.log("window.pageYOffset:" + document.documentElement.scrollTop);
+						console.log("document.documentElement.scrollTop:" + document.documentElement.scrollTop);
 						console.log("Total bady height: " + document.body.offsetHeight);
 						window.scrollTo(0, top - window.innerHeight / 2 - (top - bottom) / 2 + document.documentElement.scrollTop);
 
