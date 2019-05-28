@@ -94,7 +94,7 @@
 			if (eventArgs.target.id) {
 				if (eventArgs.target.id != "delete_btn") {
 					updateDataObject(eventArgs.target.id + "_id");
-					console.log(updateDataObject(eventArgs.target.id + "_id"));
+					//console.log(updateDataObject(eventArgs.target.id + "_id"));
 				}
 			} else
 				if (eventArgs.target.classList) {
@@ -106,8 +106,8 @@
 					const elementArray = document.getElementsByClassName(eventArgs.target.classList);
 					for (let i = 0; i < elementArray.length; i++) {
 						if (elementArray[i].innerHTML == elementInnerTxt && eventArgs.target.classList[0] != "liBarreStat") {
-							console.log(eventArgs.target.classList + "[" + i + "]");
-							console.log("********" + eventArgs.target.classList[0]);
+							// console.log(eventArgs.target.classList + "[" + i + "]");
+							// console.log("********" + eventArgs.target.classList[0]);
 							updateDataObject(eventArgs.target.classList[0] + "_classList_" + i);
 						}
 					}
@@ -179,7 +179,7 @@
 			var li = document.createElement("li");
 
 			//
-			console.log("Hello ! " + values[i]);
+			//console.log("Hello ! " + values[i]);
 			var elementName = values[i];
 
 
@@ -196,25 +196,25 @@
 				if (evt.target.elementNameParam.includes('_classList_')) {
 					var className = evt.target.elementNameParam;
 					var classNameWords = className.split('_classList_');
-					console.log(classNameWords[0]);
-					console.log(parseInt(classNameWords[1]));
+					// console.log(classNameWords[0]);
+					// console.log(parseInt(classNameWords[1]));
 
 
-					console.log(document.getElementsByClassName(classNameWords[0])[parseInt(classNameWords[1])]);
+					//console.log(document.getElementsByClassName(classNameWords[0])[parseInt(classNameWords[1])]);
 					var rect = document.getElementsByClassName(classNameWords[0])[parseInt(classNameWords[1])].getBoundingClientRect();
-					console.log(rect.top, rect.right, rect.bottom, rect.left);
+					//console.log(rect.top, rect.right, rect.bottom, rect.left);
 					showGreyFiltre(rect.top, rect.right, rect.bottom, rect.left);
 
 
 				} else if (evt.target.elementNameParam.includes('_nodeName_')) {
 					var nodeName = evt.target.elementNameParam;
 					var nodeNameWords = nodeName.split('_nodeName_');
-					console.log(nodeNameWords[0]);
-					console.log(parseInt(nodeNameWords[1]));
+					//console.log(nodeNameWords[0]);
+					//console.log(parseInt(nodeNameWords[1]));
 
-					console.log(document.getElementsByTagName(nodeNameWords[0])[parseInt(nodeNameWords[1])]);
+					//console.log(document.getElementsByTagName(nodeNameWords[0])[parseInt(nodeNameWords[1])]);
 					var rect = document.getElementsByTagName(nodeNameWords[0])[parseInt(nodeNameWords[1])].getBoundingClientRect();
-					console.log(rect.top, rect.right, rect.bottom, rect.left);
+					//console.log(rect.top, rect.right, rect.bottom, rect.left);
 					showGreyFiltre(rect.top, rect.right, rect.bottom, rect.left);
 
 
@@ -224,7 +224,7 @@
 					console.log("C'est un ID ! ");
 					var idName = evt.target.elementNameParam;
 					var idNameWords = idName.replace('_id', '');
-					console.log(idNameWords);
+					//console.log(idNameWords);
 
 
 					console.log(document.getElementById(idNameWords));
@@ -239,11 +239,20 @@
 
 
 				function showGreyFiltre(top, right, bottom, left) {
-					// left square
+					
+
+
+					
+					
+
+					//leftGreySquare
+					setTimeout(function () { drawSquare(); }, 100);
+					function drawSquare() {
+						// left square
 					document.body.innerHTML += `<div class="greySquareFilter" 
 					style="
 						position:absolute;
-						top:0;
+						top:0px;
 						left: 0px;
 						width:${left}px;
 						height:${document.body.scrollHeight }px;
@@ -258,7 +267,8 @@
 					document.body.innerHTML += `<div class="greySquareFilter"
 					style="
 						position:absolute;
-						top:0;
+						top:0px;
+						
 						left: ${right}px;
 						width:100%;
 						height:${document.body.scrollHeight }px;
@@ -276,7 +286,7 @@
 						top:0px;
 						left: ${left}px;
 						width: ${right - left}px;
-						height:${top}px;
+						height:${top + document.documentElement.scrollTop}px;
 						opacity:0.2;
 						z-index:101;
 						background:#000;
@@ -284,35 +294,48 @@
 						">
 					</div>`;
 
-					// bottom square
+					// bottom square height:${document.body.scrollHeight - bottom}px;
 					document.body.innerHTML += `<div class="greySquareFilter"
 					style="
 						position:absolute;
-						top: ${bottom}px;
+						top: ${bottom + document.documentElement.scrollTop}px;
 						left: ${left}px;
 						width: ${right - left}px;
-						height:${document.body.scrollHeight - bottom}px;
+						height:${document.body.offsetHeight - bottom}px;
 						opacity:0.2;
 						z-index:101;
 						background:#000;
 						pointer-events: none;
 						">
 					</div>`;
+				
+					
+
+					}
+
+					
+
+					setTimeout(function () { moveToSquare(); }, 500);
+					function moveToSquare() {
+					console.log("top:" + top );
+					console.log("window.innerHeight / 2p:" + window.innerHeight / 2 );
+					console.log("(top - bottom) / 2:" + (top - bottom) / 2 );
+					console.log("window.pageYOffset:" + document.documentElement.scrollTop);
+					console.log("Total bady height: " + document.body.offsetHeight);
+					window.scrollTo(0, top - window.innerHeight / 2 - (top - bottom) / 2 + document.documentElement.scrollTop );
+
+					}
 
 
 
-					window.scrollTo(0, top - window.innerHeight / 2 - (top - bottom) / 2);
+
+					
 
 
 					//leftGreySquare
-					setTimeout(function () { myCallback(); }, 1500);
-
-					function myCallback() {
-						console.log("Delete !!!!");
-						
-
+					setTimeout(function () { deleteSquare(); }, 2000);
+					function deleteSquare() {
 						const elements = document.getElementsByClassName("greySquareFilter");
-
 						while (elements.length > 0) elements[0].remove();
 						addTopBarreStat(dataObject);
 
@@ -339,7 +362,8 @@
 			li.classList.add("liBarreStat");
 			li.style.fontFamily = "Arial, Helvetica, sans-serif";
 			li.style.cssFloat = "left";
-			a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "% " + values[i]));
+			if(Math.round(nombres[i] * coeficient) >= 10){ a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "% " + values[i])); } 
+			else { a.appendChild(document.createTextNode(".")); }
 			a.setAttribute("id", "Div1");
 			li.style.background = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
 			li.style.width = nombres[i] * coeficient + "%";
