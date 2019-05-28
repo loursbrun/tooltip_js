@@ -314,6 +314,7 @@
 						const elements = document.getElementsByClassName("greySquareFilter");
 
 						while (elements.length > 0) elements[0].remove();
+						addTopBarreStat(dataObject);
 
 					}
 
