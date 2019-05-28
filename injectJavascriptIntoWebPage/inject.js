@@ -246,7 +246,7 @@
 						top:0;
 						left: 0px;
 						width:${left}px;
-						height:${document.body.scrollHeight - 20}px;
+						height:${document.body.scrollHeight }px;
 						opacity:0.2;
 						z-index:100;
 						background:#000;
@@ -261,7 +261,7 @@
 						top:0;
 						left: ${right}px;
 						width:100%;
-						height:${document.body.scrollHeight - 20}px;
+						height:${document.body.scrollHeight }px;
 						opacity:0.2;
 						z-index:101;
 						background:#000;
@@ -345,7 +345,7 @@
 			li.style.width = nombres[i] * coeficient + "%";
 			li.appendChild(a);
 			topBarreUl.appendChild(li);
-			document.body.style.marginTop = "30px";
+			//document.body.style.marginTop = "30px";
 		}
 	}
 
