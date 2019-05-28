@@ -192,22 +192,22 @@
 			function findElement(evt) {
 				console.log(evt.target.elementNameParam);
 
-             
+
 				if (evt.target.elementNameParam.includes('_classList_')) {
-					var className = evt.target.elementNameParam  ; 
+					var className = evt.target.elementNameParam;
 					var classNameWords = className.split('_classList_');
 					console.log(classNameWords[0]);
 					console.log(parseInt(classNameWords[1]));
-				
+
 
 					console.log(document.getElementsByClassName(classNameWords[0])[parseInt(classNameWords[1])]);
 					var rect = document.getElementsByClassName(classNameWords[0])[parseInt(classNameWords[1])].getBoundingClientRect();
 					console.log(rect.top, rect.right, rect.bottom, rect.left);
 					showGreyFiltre(rect.top, rect.right, rect.bottom, rect.left);
-					
+
 
 				} else if (evt.target.elementNameParam.includes('_nodeName_')) {
-					var nodeName = evt.target.elementNameParam  ; 
+					var nodeName = evt.target.elementNameParam;
 					var nodeNameWords = nodeName.split('_nodeName_');
 					console.log(nodeNameWords[0]);
 					console.log(parseInt(nodeNameWords[1]));
@@ -217,21 +217,21 @@
 					console.log(rect.top, rect.right, rect.bottom, rect.left);
 					showGreyFiltre(rect.top, rect.right, rect.bottom, rect.left);
 
-					
+
 
 
 				} else if (evt.target.elementNameParam.includes('_id')) {
 					console.log("C'est un ID ! ");
-					var idName = evt.target.elementNameParam  ; 
-					var idNameWords = idName.replace('_id','');
+					var idName = evt.target.elementNameParam;
+					var idNameWords = idName.replace('_id', '');
 					console.log(idNameWords);
 
 
-					 console.log(document.getElementById(idNameWords));
-					 var rect = document.getElementById(idNameWords).getBoundingClientRect();
-					 console.log(rect.top, rect.right, rect.bottom, rect.left);
-					 showGreyFiltre(rect.top, rect.right, rect.bottom, rect.left);
-					
+					console.log(document.getElementById(idNameWords));
+					var rect = document.getElementById(idNameWords).getBoundingClientRect();
+					console.log(rect.top, rect.right, rect.bottom, rect.left);
+					showGreyFiltre(rect.top, rect.right, rect.bottom, rect.left);
+
 
 				}
 
@@ -240,7 +240,7 @@
 
 				function showGreyFiltre(top, right, bottom, left) {
 					// left square
-					document.body.innerHTML +=`<div 
+					document.body.innerHTML += `<div class="greySquareFilter" 
 					style="
 						position:absolute;
 						top:0;
@@ -255,7 +255,7 @@
 					</div>`;
 
 					// Right square
-					document.body.innerHTML +=`<div 
+					document.body.innerHTML += `<div class="greySquareFilter"
 					style="
 						position:absolute;
 						top:0;
@@ -270,7 +270,7 @@
 					</div>`;
 
 					// top square
-					document.body.innerHTML +=`<div 
+					document.body.innerHTML += `<div class="greySquareFilter"
 					style="
 						position:absolute;
 						top:0px;
@@ -285,7 +285,7 @@
 					</div>`;
 
 					// bottom square
-					document.body.innerHTML +=`<div 
+					document.body.innerHTML += `<div class="greySquareFilter"
 					style="
 						position:absolute;
 						top: ${bottom}px;
@@ -298,16 +298,36 @@
 						pointer-events: none;
 						">
 					</div>`;
-	
-	
-	
+
+
+
+					window.scrollTo(0, top - window.innerHeight / 2 - (top - bottom) / 2);
+
+
+					//leftGreySquare
+					setTimeout(function () { myCallback(); }, 1500);
+
+					function myCallback() {
+						console.log("Delete !!!!");
+						
+
+						const elements = document.getElementsByClassName("greySquareFilter");
+
+						while (elements.length > 0) elements[0].remove();
+
+					}
+
+
+
+
+
 				}
 
 
 			}
 
 
-			
+
 
 
 
@@ -337,7 +357,7 @@
 	//     newArray.push(dataObject[property1]);
 	// }
 
-	
+
 
 
 	addTopBarreStat(dataObject);
