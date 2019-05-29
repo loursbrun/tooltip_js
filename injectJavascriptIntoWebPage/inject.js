@@ -35,6 +35,7 @@
 	if (location.search.split('delete=')[1] == "true" && dataObject != {}) {
 		localStorage.removeItem(pathName);
 		localStorage.removeItem("elementsName");
+		document.location.reload(true);
 	}
 
 
@@ -162,6 +163,7 @@
 
 						formDiv.style.backgroundColor = "white";
 						formDiv.setAttribute("id", "formDiv-class");
+						formDiv.setAttribute("class", "form-div-class");
 
 						var inputTitle = document.createElement("a");
 						inputTitle.style.marginTop = window.innerHeight / 2 + "px";
@@ -289,7 +291,8 @@
 							eventArgs.target.classList[0] != "delete-icon-tag" &&
 							eventArgs.target.classList[0] != "element-name-td" &&
 							eventArgs.target.classList[0] != "icon-settings-classname" &&
-							eventArgs.target.classList[0] != "image-settings-classname") {
+							eventArgs.target.classList[0] != "image-settings-classname" &&
+							eventArgs.target.classList[0] != "form-div-class") {
 
 							updateDataObject(eventArgs.target.classList[0] + "_classList_" + i);
 						}
