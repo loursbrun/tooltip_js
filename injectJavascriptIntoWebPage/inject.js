@@ -119,7 +119,7 @@
 					const elementInnerTxt = eventArgs.target.innerHTML;
 					const elementArray = document.getElementsByClassName(eventArgs.target.classList);
 					for (let i = 0; i < elementArray.length; i++) {
-						if (elementArray[i].innerHTML == elementInnerTxt && eventArgs.target.classList[0] != "liBarreStat") {
+						if (elementArray[i].innerHTML == elementInnerTxt && eventArgs.target.classList[0] != "liBarreStat" && eventArgs.target.classList[0] != "delete-icon-tag") {
 							// console.log(eventArgs.target.classList + "[" + i + "]");
 							// console.log("********" + eventArgs.target.classList[0]);
 							updateDataObject(eventArgs.target.classList[0] + "_classList_" + i);
@@ -206,7 +206,7 @@
 			function findElement(evt) {
 				console.log(evt.target.elementNameParam);
 
-
+				// class
 				if (evt.target.elementNameParam.includes('_classList_')) {
 					var className = evt.target.elementNameParam;
 					var classNameWords = className.split('_classList_');
@@ -219,7 +219,7 @@
 					//console.log(rect.top, rect.right, rect.bottom, rect.left);
 					showGreyFiltre(rect.top, rect.right, rect.bottom, rect.left);
 
-
+					// element
 				} else if (evt.target.elementNameParam.includes('_nodeName_')) {
 					var nodeName = evt.target.elementNameParam;
 					var nodeNameWords = nodeName.split('_nodeName_');
@@ -233,7 +233,7 @@
 
 
 
-
+					// id
 				} else if (evt.target.elementNameParam.includes('_id')) {
 					console.log("C'est un ID ! ");
 					var idName = evt.target.elementNameParam;
@@ -253,10 +253,6 @@
 
 
 				function showGreyFiltre(top, right, bottom, left) {
-
-
-
-
 
 
 					//leftGreySquare
@@ -323,8 +319,6 @@
 						">
 					</div>`;
 
-
-
 					}
 
 
@@ -340,10 +334,6 @@
 						window.scrollTo(0, top - window.innerHeight / 2 - (top - bottom) / 2 + document.documentElement.scrollTop);
 
 					}
-
-
-
-
 
 
 
@@ -375,20 +365,34 @@
 			a.style.fontSize = "14px";
 			a.style.marginLeft = "5px";
 
+
+
+
 			var icon = document.createElement('a');
 			var linkText = document.createTextNode("x");
 			icon.appendChild(linkText);
 			icon.style.opacity = "0.5";
 			icon.style.marginRight = "5px";
-			icon.href = "http://example.com";
+			icon.setAttribute("class", "delete-icon-tag");
+
+			
+			var elementName2 = values[i];
+			icon.addEventListener('click', deleteElement, false);
+			icon.elementNameParam = elementName2;
+			function deleteElement(evt) {
+				console.log("delete !!!!!!" + evt.target.elementNameParam);
+			}
+			//icon.href = "http://example.com";
 			icon.style.cssFloat = "right";
 			li.appendChild(icon);
+
+
 
 			li.style.background = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
 			li.style.width = nombres[i] * coeficient + "%";
 			li.appendChild(a);
 			topBarreUl.appendChild(li);
-			//document.body.style.marginTop = "30px";
+			
 		}
 	}
 
