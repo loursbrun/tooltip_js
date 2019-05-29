@@ -381,6 +381,16 @@
 			icon.elementNameParam = elementName2;
 			function deleteElement(evt) {
 				console.log("delete !!!!!!" + evt.target.elementNameParam);
+
+
+				// Supprimer le noeuds 
+				console.log("supp *****");
+				console.log(dataObject);
+				delete dataObject[evt.target.elementNameParam];
+				console.log(dataObject);
+				localStorage.setItem(pathName, JSON.stringify(dataObject));
+
+
 			}
 			//icon.href = "http://example.com";
 			icon.style.cssFloat = "right";
