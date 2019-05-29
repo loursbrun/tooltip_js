@@ -210,7 +210,7 @@
 						buttonDelete.innerHTML = "Delete";
 						buttonDelete.style.position = "absolute";
 						buttonDelete.style.outline = "none";
-						buttonDelete.style.marginLeft = window.innerWidth / 2  + "px";
+						buttonDelete.style.marginLeft = window.innerWidth / 2 + "px";
 						buttonDelete.style.marginTop = window.innerHeight / 2 - 50 + "px";
 						formDiv.appendChild(buttonDelete);
 
@@ -239,7 +239,12 @@
 							alert("Save");
 						});
 						buttonDelete.addEventListener("click", function () {
-							alert("Delete");
+							console.log(dataObject);
+							delete dataObject[eventArgs.target.title];
+							console.log(dataObject);
+							localStorage.setItem(pathName, JSON.stringify(dataObject));
+							formDiv.remove();
+							document.location.reload(true);
 						});
 						buttonClose.addEventListener("click", function () {
 							formDiv.remove();
