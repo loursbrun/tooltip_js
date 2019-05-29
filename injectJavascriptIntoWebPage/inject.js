@@ -1,8 +1,6 @@
-// this is the code which will be injected into a given page...
 
 (function () {
 
-	// just place a div at top right
 	var div = document.createElement('div');
 	div.style.position = 'fixed';
 	div.style.top = 0;
@@ -10,53 +8,37 @@
 	div.style.position = 'absolute';
 	div.textContent = 'Injected!';
 	document.body.appendChild(div);
-
-
-	console.log(window.location.pathname);
-
+	//console.log(window.location.pathname);
 	let pathName = window.location.pathname;
 	let dataObject = {};
 	localStorage.getItem(pathName) ? dataObject = JSON.parse(localStorage.getItem(pathName)) : dataObject = {};
-	console.log(dataObject);
-
-
-
+	//console.log(dataObject);
 	// Cookie for save names 
 	let nameObject = {};
 	localStorage.getItem("elementsName") ? nameObject = JSON.parse(localStorage.getItem("elementsName")) : nameObject = {};
-	console.log(nameObject);
-
-
-
-
-
-	console.log(dataObject);
+	// console.log(nameObject);
+	// console.log(dataObject);
 
 	if (location.search.split('delete=')[1] == "true" && dataObject != {}) {
 		localStorage.removeItem(pathName);
 		localStorage.removeItem("elementsName");
 		document.location.reload(true);
 	}
-
-
-
 	let showInfo = false;
 	if (location.search.split('show=')[1] == "true") {
 		showInfo = true;
 	}
 
-	//console.log(dataObject);
-
 	if (showInfo) {   // windows with statistics clics of elements
 		var output = '';
 		for (var property in dataObject) {
-
 			output += '<tr ><td class="element-name-td" style="display:block; border-bottom: 1px solid #BFBEBE;">' +
-				'<a class="icon-settings-classname" class="icon-settings-classname" style="pointer:cursor"><img class="image-settings-classname" title="' + property + '"  src="https://png.pngtree.com/svg/20160510/35d8eb958b.png" style="width: 16px; margin-bottom: -2px; margin-right: 10px"/></a>' +
+				'<a class="icon-settings-classname" class="icon-settings-classname" style="pointer:cursor"><img class="image-settings-classname" title="' +
+				 property +
+				 '"  src="https://png.pngtree.com/svg/20160510/35d8eb958b.png" style="width: 16px; margin-bottom: -2px; margin-right: 10px"/></a>' +
 				property + '</td><td style=" padding-left:20px">' +
 				dataObject[property] +
 				'</td></tr> ';
-
 		}
 		var myLayer = document.createElement('div');
 		myLayer.id = 'bookingLayer';
@@ -64,7 +46,6 @@
 		myLayer.style.fontSize = "14px";
 		myLayer.style.right = '10px';
 		myLayer.style.top = '10px';
-		//myLayer.style.width = '300px';
 		myLayer.style.height = 'auto';
 		myLayer.style.padding = '10px';
 		myLayer.style.background = '#d6d4d4';
@@ -84,15 +65,7 @@
 		myLayer.innerHTML = htmlString;
 		myLayer.style.zIndex = "100";
 		document.body.appendChild(myLayer);
-
-
-
-
-
-
 	}
-
-
 
 	function saveData() {    // save in cookie 
 		//console.log("object:" + JSON.stringify(dataObject));
@@ -108,8 +81,6 @@
 			newObject[sortable[i][0]] = sortable[i][1];
 		}
 		dataObject = newObject;
-		//console.log("newObject:" + JSON.stringify(newObject));
-		//console.log("object:" + JSON.stringify(dataObject));
 		localStorage.setItem(pathName, JSON.stringify(dataObject));
 	}
 
@@ -119,12 +90,9 @@
 		saveData();
 	}
 
-	// function listen all click and return ID, Classe name , I dex fo table node
 	document.addEventListener("click", function (eventArgs) {
-
 		const elementId = eventArgs.target.id;
 		const elementClassName = eventArgs.target.classList[0];
-
 		if (!elementId && !elementClassName && eventArgs.target.nodeName !== "HTML") {
 			const elementInnerTxt = eventArgs.target.innerHTML;
 			const elementArray = document.getElementsByTagName(eventArgs.target.nodeName);
@@ -142,15 +110,9 @@
 				}
 			} else
 				if (eventArgs.target.classList) {
-
-
-
 					if (eventArgs.target.classList[0] == "image-settings-classname") {
-						console.log("settings");
-
-						console.log(eventArgs.target.title);
-
-
+						// console.log("settings");
+						// console.log(eventArgs.target.title);
 						// add dynamic form to update word
 						var formDiv = document.createElement('div');
 						formDiv.style.position = 'fixed';
@@ -160,12 +122,11 @@
 						formDiv.style.height = "100%";
 						formDiv.style.position = 'absolute';
 						formDiv.style.zIndex = '100';
-
 						formDiv.style.backgroundColor = "white";
-						formDiv.setAttribute("id", "formDiv-class");
 						formDiv.setAttribute("class", "form-div-class");
 
 						var inputTitle = document.createElement("a");
+						inputTitle.setAttribute("class", "form-div-class");
 						inputTitle.style.marginTop = window.innerHeight / 2 + "px";
 						inputTitle.style.borderWidth = " 1px";
 						inputTitle.style.padding = "5px";
@@ -173,13 +134,12 @@
 						inputTitle.style.fontSize = "14px";
 						inputTitle.style.position = "absolute";
 						inputTitle.style.marginTop = window.innerHeight / 2 - 130 + "px";
-
 						inputTitle.style.marginLeft = window.innerWidth / 2 - 100 + "px";
 						inputTitle.appendChild(document.createTextNode("Change element name"));
 						formDiv.appendChild(inputTitle);
 
-
 						var inputTxt = document.createElement("INPUT");
+						inputTxt.setAttribute("class", "form-div-class");
 						inputTxt.setAttribute("value", nameObject[eventArgs.target.title] ? nameObject[eventArgs.target.title] : eventArgs.target.title);
 						inputTxt.name = "member";
 						inputTxt.style.border = "true";
@@ -192,11 +152,9 @@
 						inputTxt.style.marginLeft = window.innerWidth / 2 - 100 + "px";
 						inputTxt.style.marginTop = window.innerHeight / 2 - 100 + "px";
 
-
-
-
-						// 1. Create the button
+						// Save button
 						var buttonSave = document.createElement("button");
+						buttonSave.setAttribute("class", "form-div-class");
 						buttonSave.style.padding = "20px";
 						buttonSave.style.lineHeight = "60px";
 						buttonSave.style.padding = "0 40px";
@@ -210,9 +168,9 @@
 						buttonSave.style.marginTop = window.innerHeight / 2 - 50 + "px";
 						formDiv.appendChild(buttonSave);
 
-
-						// 1. Create the button
+						// Delete button
 						var buttonDelete = document.createElement("button");
+						buttonDelete.setAttribute("class", "form-div-class");
 						buttonDelete.style.padding = "20px";
 						buttonDelete.style.lineHeight = "60px";
 						buttonDelete.style.padding = "0 40px";
@@ -227,8 +185,9 @@
 						formDiv.appendChild(buttonDelete);
 
 
-						// 1. Create the button
+						// Close button
 						var buttonClose = document.createElement("button");
+						buttonClose.setAttribute("class", "form-div-class");
 						buttonClose.style.padding = "20px";
 						buttonClose.style.lineHeight = "60px";
 						buttonClose.style.padding = "0 40px";
@@ -243,7 +202,6 @@
 						document.body.appendChild(formDiv);
 
 						buttonSave.addEventListener("click", function () {
-
 							let nameObject = {};
 							localStorage.getItem("elementsName") ? nameObject = JSON.parse(localStorage.getItem("elementsName")) : nameObject = {};
 							nameObject[eventArgs.target.title] = inputTxt.value;
@@ -263,26 +221,9 @@
 						buttonClose.addEventListener("click", function () {
 							formDiv.remove();
 						});
-
-
-
-
-
-
-
-
 						return;
-
 					}
 
-
-
-
-
-					// console.log(document.getElementsByClassName("cs-nav-item"));
-					// console.log(document.getElementsByClassName("cs-nav-item").length);
-					// console.log(eventArgs.target.innerHTML);
-					// console.log(eventArgs);
 					const elementInnerTxt = eventArgs.target.innerHTML;
 					const elementArray = document.getElementsByClassName(eventArgs.target.classList);
 					for (let i = 0; i < elementArray.length; i++) {
@@ -293,13 +234,9 @@
 							eventArgs.target.classList[0] != "icon-settings-classname" &&
 							eventArgs.target.classList[0] != "image-settings-classname" &&
 							eventArgs.target.classList[0] != "form-div-class") {
-
 							updateDataObject(eventArgs.target.classList[0] + "_classList_" + i);
 						}
 					}
-					//updateDataObject(eventArgs.target.classList[0] + "_name");
-					//console.log(eventArgs.target);
-
 				}
 	});
 
@@ -307,28 +244,15 @@
 
 	// Add barre
 	function addTopBarreStat(array) {
-
-
 		var nombres = [];
 		var values = [];
-
-
 		for (var property1 in array) {
-			//console.log(array[property1]);
 			nombres.push(array[property1]);
 			values.push(property1);
-
 		}
-
 		function compare(x, y) {
 			return x - y;
 		}
-		//var nombres = array;
-		//nombres.sort(compare);
-
-
-
-
 		function compare(x, y) {
 			return y - x;
 		}
@@ -336,7 +260,6 @@
 		const reducer = (accumulator, currentValue) => accumulator + currentValue;
 		let somme = nombres.reduce(reducer);
 		let coeficient = 100 / somme;
-
 
 		var barreTopContainer = document.createElement("ul"); //  <ul id="topBarreUl">
 		barreTopContainer.style.margin = "0";
@@ -348,7 +271,6 @@
 		barreTopContainer.style.width = "100%";
 		barreTopContainer.style.height = "20px";
 		barreTopContainer.style.zIndex = 200;
-
 		document.body.appendChild(barreTopContainer);
 		var topBarreUl = document.createElement("ul"); //  <ul id="topBarreUl">
 		topBarreUl.style.listStyleType = "none";
@@ -356,77 +278,38 @@
 		topBarreUl.style.padding = "0";
 		topBarreUl.style.overflow = "hidden";
 		topBarreUl.style.cursor = "pointer";
-
 		barreTopContainer.appendChild(topBarreUl);
 
 		for (var i = 0; i < nombres.length; i++) {
-
-
 			var li = document.createElement("li");
-
-			//
-			//console.log("Hello ! " + values[i]);
 			var elementName = values[i];
-
-
-
 			li.addEventListener('click', findElement, false);
 			li.elementNameParam = elementName;
 
-
-
 			function findElement(evt) {
-				console.log(evt.target.elementNameParam);
-
-				// class
+				//console.log(evt.target.elementNameParam);
 				if (evt.target.elementNameParam.includes('_classList_')) {
 					var className = evt.target.elementNameParam;
 					var classNameWords = className.split('_classList_');
-					// console.log(classNameWords[0]);
-					// console.log(parseInt(classNameWords[1]));
-
-
-					//console.log(document.getElementsByClassName(classNameWords[0])[parseInt(classNameWords[1])]);
 					var rect = document.getElementsByClassName(classNameWords[0])[parseInt(classNameWords[1])].getBoundingClientRect();
-					//console.log(rect.top, rect.right, rect.bottom, rect.left);
 					showGreyFiltre(rect.top, rect.right, rect.bottom, rect.left);
-
-					// element
 				} else if (evt.target.elementNameParam.includes('_nodeName_')) {
 					var nodeName = evt.target.elementNameParam;
 					var nodeNameWords = nodeName.split('_nodeName_');
-					//console.log(nodeNameWords[0]);
-					//console.log(parseInt(nodeNameWords[1]));
-
-					//console.log(document.getElementsByTagName(nodeNameWords[0])[parseInt(nodeNameWords[1])]);
 					var rect = document.getElementsByTagName(nodeNameWords[0])[parseInt(nodeNameWords[1])].getBoundingClientRect();
-					//console.log(rect.top, rect.right, rect.bottom, rect.left);
 					showGreyFiltre(rect.top, rect.right, rect.bottom, rect.left);
-
-
-
 					// id
 				} else if (evt.target.elementNameParam.includes('_id')) {
 					console.log("C'est un ID ! ");
 					var idName = evt.target.elementNameParam;
 					var idNameWords = idName.replace('_id', '');
-					//console.log(idNameWords);
-
-
 					console.log(document.getElementById(idNameWords));
 					var rect = document.getElementById(idNameWords).getBoundingClientRect();
 					console.log(rect.top, rect.right, rect.bottom, rect.left);
 					showGreyFiltre(rect.top, rect.right, rect.bottom, rect.left);
-
-
 				}
 
-				// console.log(document.getElementsByClassName("cs-nav-item")[2]);
-
-
 				function showGreyFiltre(top, right, bottom, left) {
-
-
 					//leftGreySquare
 					setTimeout(function () { drawSquare(); }, 100);
 					function drawSquare() {
@@ -476,7 +359,7 @@
 						">
 					</div>`;
 
-						// bottom square height:${document.body.scrollHeight - bottom}px;
+						// bottom square 
 						document.body.innerHTML += `<div class="greySquareFilter"
 					style="
 						position:absolute;
@@ -493,8 +376,6 @@
 
 					}
 
-
-
 					setTimeout(function () { moveToSquare(); }, 500);
 					function moveToSquare() {
 						console.log("top:" + top);
@@ -507,19 +388,14 @@
 
 					}
 
-
-
 					//leftGreySquare
 					setTimeout(function () { deleteSquare(); }, 2000);
 					function deleteSquare() {
 						const elements = document.getElementsByClassName("greySquareFilter");
 						while (elements.length > 0) elements[0].remove();
 						addTopBarreStat(dataObject);
-
 					}
-
 				}
-
 			} 
 
 			var a = document.createElement("a");
@@ -540,9 +416,6 @@
 			a.style.fontSize = "14px";
 			a.style.marginLeft = "5px";
 
-
-
-
 			var icon = document.createElement('a');
 			var linkText = document.createTextNode("x");
 			icon.appendChild(linkText);
@@ -550,55 +423,20 @@
 			icon.style.marginRight = "5px";
 			icon.setAttribute("class", "delete-icon-tag");
 
-
 			var elementName2 = values[i];
 			icon.addEventListener('click', deleteElement, false);
 			icon.elementNameParam = elementName2;
 			function deleteElement(evt) {
-				console.log("delete !!!!!!" + evt.target.elementNameParam);
-
-
-				// Supprimer le noeuds 
-				console.log("supp *****");
-				console.log(dataObject);
 				delete dataObject[evt.target.elementNameParam];
-				console.log(dataObject);
 				localStorage.setItem(pathName, JSON.stringify(dataObject));
-
-
 			}
-			//icon.href = "http://example.com";
 			icon.style.cssFloat = "right";
 			li.appendChild(icon);
-
-
-
 			li.style.background = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
 			li.style.width = nombres[i] * coeficient + "%";
 			li.appendChild(a);
 			topBarreUl.appendChild(li);
-
 		}
 	}
-
-	// var newArray = [];
-	// var string1 = "";
-
-	// for (var property1 in dataObject) {
-	//     console.log(dataObject[property1]);
-	//     newArray.push(dataObject[property1]);
-	// }
-
-
-
-
 	addTopBarreStat(dataObject);
-
-
-
-
-
-
-
-
 })();
