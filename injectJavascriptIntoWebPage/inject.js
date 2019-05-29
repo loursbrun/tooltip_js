@@ -40,16 +40,11 @@
 		var output = '';
 		for (var property in dataObject) {
 
-			
-
 			output += '<tr ><td class="element-name-td" style="display:block; border-bottom: 1px solid #BFBEBE;">' +
-				'<a class="icon-settings-classname" class="icon-settings-classname" style="pointer:cursor"><img class="image-settings-classname" title="'+ property +'"  src="https://png.pngtree.com/svg/20160510/35d8eb958b.png" style="width: 16px; margin-bottom: -2px; margin-right: 10px"/></a>' +
+				'<a class="icon-settings-classname" class="icon-settings-classname" style="pointer:cursor"><img class="image-settings-classname" title="' + property + '"  src="https://png.pngtree.com/svg/20160510/35d8eb958b.png" style="width: 16px; margin-bottom: -2px; margin-right: 10px"/></a>' +
 				property + '</td><td style=" padding-left:20px">' +
 				dataObject[property] +
 				'</td></tr> ';
-
-
-
 
 		}
 		var myLayer = document.createElement('div');
@@ -86,7 +81,7 @@
 
 	}
 
-	
+
 
 	function saveData() {    // save in cookie 
 		//console.log("object:" + JSON.stringify(dataObject));
@@ -116,28 +111,8 @@
 	// function listen all click and return ID, Classe name , I dex fo table node
 	document.addEventListener("click", function (eventArgs) {
 
-
-
-		console.log("Clicked !!!!!!!!!!!!!!!");
-
-
-		
-
-
-
-
-
-
-
 		const elementId = eventArgs.target.id;
 		const elementClassName = eventArgs.target.classList[0];
-
-
-
-
-
-
-
 
 		if (!elementId && !elementClassName && eventArgs.target.nodeName !== "HTML") {
 			const elementInnerTxt = eventArgs.target.innerHTML;
@@ -159,13 +134,126 @@
 
 
 
-					if(eventArgs.target.classList[0] == "image-settings-classname"){
+					if (eventArgs.target.classList[0] == "image-settings-classname") {
 						console.log("settings");
 
 						console.log(eventArgs.target.title);
 
+
+						// add dynamic form to update word
+						var formDiv = document.createElement('div');
+						formDiv.style.position = 'fixed';
+						formDiv.style.top = 0;
+						formDiv.style.right = 0;
+						formDiv.style.width = "100%";
+						formDiv.style.height = "100%";
+						formDiv.style.position = 'absolute';
+
+						formDiv.style.backgroundColor = "white";
+						formDiv.setAttribute("id", "formDiv-class");
+
+						var inputTitle = document.createElement("a");
+						inputTitle.style.marginTop = window.innerHeight / 2 + "px";
+						inputTitle.style.borderWidth = " 1px";
+						inputTitle.style.padding = "5px";
+						inputTitle.style.fontFamily = "Arial, Helvetica, sans-serif";
+						inputTitle.style.fontSize = "14px";
+						inputTitle.style.position = "absolute";
+						inputTitle.style.marginTop = window.innerHeight / 2 - 30 + "px";
+
+						inputTitle.style.marginLeft = window.innerWidth / 2 - 100 + "px";
+						inputTitle.appendChild(document.createTextNode("Change node name"));
+						formDiv.appendChild(inputTitle);
+
+
+						var inputTxt = document.createElement("INPUT");
+						inputTxt.setAttribute("value", eventArgs.target.title);
+						inputTxt.name = "member";
+						inputTxt.style.border = "true";
+						inputTxt.style.marginTop = window.innerHeight / 2 - 40 + "px";
+						inputTxt.style.borderStyle = "solid";
+						inputTxt.style.borderWidth = " 1px";
+						inputTxt.style.fontSize = "14px";
+						inputTxt.style.padding = "5px";
+						inputTxt.style.position = "absolute";
+						inputTxt.style.marginLeft = window.innerWidth / 2 - 100 + "px";
+						inputTxt.style.marginTop = window.innerHeight / 2 + "px";
+
+
+
+
+						// 1. Create the button
+						var buttonSave = document.createElement("button");
+						buttonSave.style.padding = "20px";
+						buttonSave.style.lineHeight = "60px";
+						buttonSave.style.padding = "0 40px";
+						buttonSave.style.background = "salmon";
+						buttonSave.style.border = "none";
+						buttonSave.innerHTML = "Save";
+						buttonSave.style.position = "absolute";
+						buttonSave.style.outline = "none";
+						buttonSave.style.marginLeft = window.innerWidth / 2 + "px";
+						buttonSave.style.marginTop = window.innerHeight / 2 + 50 + "px";
+						formDiv.appendChild(buttonSave);
+
+
+						// 1. Create the button
+						var buttonDelete = document.createElement("button");
+						buttonDelete.style.padding = "20px";
+						buttonDelete.style.lineHeight = "60px";
+						buttonDelete.style.padding = "0 40px";
+						buttonDelete.style.background = "#ddffdd";
+						buttonDelete.style.border = "none";
+						buttonDelete.innerHTML = "Delete";
+						buttonDelete.style.position = "absolute";
+						buttonDelete.style.outline = "none";
+						buttonDelete.style.marginLeft = window.innerWidth / 2 - 150 + "px";
+						buttonDelete.style.marginTop = window.innerHeight / 2 + 50 + "px";
+						formDiv.appendChild(buttonDelete);
+
+
+						// 1. Create the button
+						var buttonClose = document.createElement("button");
+						buttonClose.style.padding = "20px";
+						buttonClose.style.lineHeight = "60px";
+						buttonClose.style.padding = "0 40px";
+						buttonClose.style.border = "none";
+						buttonClose.innerHTML = "Close";
+						buttonClose.style.position = "absolute";
+						buttonClose.style.marginLeft = window.innerWidth / 2 - 75 + "px";
+						buttonClose.style.marginTop = window.innerHeight / 2 + 120 + "px";
+						buttonClose.style.outline = "none";
+						formDiv.appendChild(buttonClose);
+
+
+
+
+						formDiv.appendChild(inputTxt);
+
+
+
+						document.body.appendChild(formDiv);
+
+
+						buttonSave.addEventListener("click", function () {
+							alert("Save");
+						});
+						buttonDelete.addEventListener("click", function () {
+							alert("Delete");
+						});
+						buttonClose.addEventListener("click", function () {
+							alert("close");
+						});
+
+
+
+
+
+
+
+
 						return;
-						
+
 					}
 
 
@@ -183,7 +271,7 @@
 							eventArgs.target.classList[0] != "liBarreStat" &&
 							eventArgs.target.classList[0] != "delete-icon-tag" &&
 							eventArgs.target.classList[0] != "element-name-td" &&
-							eventArgs.target.classList[0] != "icon-settings-classname"&&
+							eventArgs.target.classList[0] != "icon-settings-classname" &&
 							eventArgs.target.classList[0] != "image-settings-classname") {
 
 							updateDataObject(eventArgs.target.classList[0] + "_classList_" + i);
