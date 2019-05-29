@@ -178,7 +178,7 @@
 
 
 						var inputTxt = document.createElement("INPUT");
-						inputTxt.setAttribute("value", eventArgs.target.title);
+						inputTxt.setAttribute("value", nameObject[eventArgs.target.title] ? nameObject[eventArgs.target.title] : eventArgs.target.title);
 						inputTxt.name = "member";
 						inputTxt.style.border = "true";
 						inputTxt.style.marginTop = window.innerHeight / 2 - 40 + "px";
