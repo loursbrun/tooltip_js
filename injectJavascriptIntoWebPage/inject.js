@@ -39,7 +39,7 @@
 	if (showInfo) {   // windows with statistics clics of elements
 		var output = '';
 		for (var property in dataObject) {
-			output += '<tr ><td style="border-bottom: 1px solid #BFBEBE;">' + property + '</td><td>' + dataObject[property] + '</td></tr> ';
+			output += '<tr ><td class="element-name-td" style="border-bottom: 1px solid #BFBEBE;">' + property + '</td><td>' + dataObject[property] + '</td></tr> ';
 		}
 		var myLayer = document.createElement('div');
 		myLayer.id = 'bookingLayer';
@@ -50,6 +50,7 @@
 		myLayer.style.height = 'auto';
 		myLayer.style.padding = '10px';
 		myLayer.style.background = '#d6d4d4';
+		myLayer.style.cursor = "pointer";
 		htmlString = ` 
         <table>
             <thead>
@@ -63,6 +64,7 @@
         </table>
         `;
 		myLayer.innerHTML = htmlString;
+		myLayer.style.zIndex = "100";
 		document.body.appendChild(myLayer);
 	}
 
@@ -119,9 +121,12 @@
 					const elementInnerTxt = eventArgs.target.innerHTML;
 					const elementArray = document.getElementsByClassName(eventArgs.target.classList);
 					for (let i = 0; i < elementArray.length; i++) {
-						if (elementArray[i].innerHTML == elementInnerTxt && eventArgs.target.classList[0] != "liBarreStat" && eventArgs.target.classList[0] != "delete-icon-tag") {
-							// console.log(eventArgs.target.classList + "[" + i + "]");
-							// console.log("********" + eventArgs.target.classList[0]);
+						if (elementArray[i].innerHTML == elementInnerTxt &&
+							eventArgs.target.classList[0] != "liBarreStat" &&
+							eventArgs.target.classList[0] != "delete-icon-tag" &&
+							eventArgs.target.classList[0] != "element-name-td")
+							{
+
 							updateDataObject(eventArgs.target.classList[0] + "_classList_" + i);
 						}
 					}
