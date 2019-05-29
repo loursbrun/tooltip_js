@@ -41,62 +41,12 @@
 		for (var property in dataObject) {
 
 			
-			
-
-			// var icon = document.createElement('a');
-			// var linkText = document.createTextNode("x");
-			// icon.appendChild(linkText);
-			// icon.style.opacity = "0.5";
-			// icon.style.marginRight = "5px";
-			// //icon.setAttribute("class", "delete-icon-tag");
-
-
-			// var elementName2 = "kljbjkljblkjb";
-			// icon.addEventListener('click', deleteElement, false);
-			// icon.elementNameParam = elementName2;
-			// function deleteElement(evt) {
-			// 	console.log("delete !!!!!!" + evt.target.elementNameParam);
-
-
-			// 	// // Supprimer le noeuds 
-			// 	// console.log("supp *****");
-			// 	// console.log(dataObject);
-			// 	// delete dataObject[evt.target.elementNameParam];
-			// 	// console.log(dataObject);
-			// 	// localStorage.setItem(pathName, JSON.stringify(dataObject));
-
-
-			// }
-
-			// console.log("ibkbkbkjbkjb" + icon);
-
-
-
-
-
-
-
-
 
 			output += '<tr ><td class="element-name-td" style="display:block; border-bottom: 1px solid #BFBEBE;">' +
-				'<a class="icon-settings-classname" style="pointer:cursor"><img class="image-settings-classname"  src="https://png.pngtree.com/svg/20160510/35d8eb958b.png" style="width: 16px; margin-bottom: -2px; margin-right: 10px"></a>' +
+				'<a class="icon-settings-classname" class="icon-settings-classname" style="pointer:cursor"><img class="image-settings-classname" title="'+ property +'"  src="https://png.pngtree.com/svg/20160510/35d8eb958b.png" style="width: 16px; margin-bottom: -2px; margin-right: 10px"/></a>' +
 				property + '</td><td style=" padding-left:20px">' +
 				dataObject[property] +
 				'</td></tr> ';
-
-
-
-
-			// Settings icon click 
-			var iconSettingsClassname = document.getElementById("icon-settings-classname");
-			var elementName = "test";
-			if (iconSettingsClassname) {
-				iconSettingsClassname.addEventListener('click', deleteElement, false);
-				iconSettingsClassname.elementNameParam = elementName;
-				function deleteElement(evt) {
-					console.log("test icon  !!!!!!" + evt.target.elementNameParam);
-				}
-			}
 
 
 
@@ -136,6 +86,8 @@
 
 	}
 
+	
+
 	function saveData() {    // save in cookie 
 		//console.log("object:" + JSON.stringify(dataObject));
 		var sortable = [];
@@ -163,8 +115,30 @@
 
 	// function listen all click and return ID, Classe name , I dex fo table node
 	document.addEventListener("click", function (eventArgs) {
+
+
+
+		console.log("Clicked !!!!!!!!!!!!!!!");
+
+
+		
+
+
+
+
+
+
+
 		const elementId = eventArgs.target.id;
 		const elementClassName = eventArgs.target.classList[0];
+
+
+
+
+
+
+
+
 		if (!elementId && !elementClassName && eventArgs.target.nodeName !== "HTML") {
 			const elementInnerTxt = eventArgs.target.innerHTML;
 			const elementArray = document.getElementsByTagName(eventArgs.target.nodeName);
@@ -182,6 +156,22 @@
 				}
 			} else
 				if (eventArgs.target.classList) {
+
+
+
+					if(eventArgs.target.classList[0] == "image-settings-classname"){
+						console.log("settings");
+
+						console.log(eventArgs.target.title);
+
+						return;
+						
+					}
+
+
+
+
+
 					// console.log(document.getElementsByClassName("cs-nav-item"));
 					// console.log(document.getElementsByClassName("cs-nav-item").length);
 					// console.log(eventArgs.target.innerHTML);
