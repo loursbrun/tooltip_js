@@ -148,6 +148,7 @@
 						formDiv.style.width = "100%";
 						formDiv.style.height = "100%";
 						formDiv.style.position = 'absolute';
+						formDiv.style.zIndex = '100';
 
 						formDiv.style.backgroundColor = "white";
 						formDiv.setAttribute("id", "formDiv-class");
@@ -159,10 +160,10 @@
 						inputTitle.style.fontFamily = "Arial, Helvetica, sans-serif";
 						inputTitle.style.fontSize = "14px";
 						inputTitle.style.position = "absolute";
-						inputTitle.style.marginTop = window.innerHeight / 2 - 30 + "px";
+						inputTitle.style.marginTop = window.innerHeight / 2 - 130 + "px";
 
 						inputTitle.style.marginLeft = window.innerWidth / 2 - 100 + "px";
-						inputTitle.appendChild(document.createTextNode("Change node name"));
+						inputTitle.appendChild(document.createTextNode("Change element name"));
 						formDiv.appendChild(inputTitle);
 
 
@@ -177,7 +178,7 @@
 						inputTxt.style.padding = "5px";
 						inputTxt.style.position = "absolute";
 						inputTxt.style.marginLeft = window.innerWidth / 2 - 100 + "px";
-						inputTxt.style.marginTop = window.innerHeight / 2 + "px";
+						inputTxt.style.marginTop = window.innerHeight / 2 - 100 + "px";
 
 
 
@@ -187,13 +188,14 @@
 						buttonSave.style.padding = "20px";
 						buttonSave.style.lineHeight = "60px";
 						buttonSave.style.padding = "0 40px";
-						buttonSave.style.background = "salmon";
+						buttonSave.style.background = "#ddffdd";
 						buttonSave.style.border = "none";
 						buttonSave.innerHTML = "Save";
+						buttonSave.style.width = "130px";
 						buttonSave.style.position = "absolute";
 						buttonSave.style.outline = "none";
-						buttonSave.style.marginLeft = window.innerWidth / 2 + "px";
-						buttonSave.style.marginTop = window.innerHeight / 2 + 50 + "px";
+						buttonSave.style.marginLeft = window.innerWidth / 2 - 150 + "px";
+						buttonSave.style.marginTop = window.innerHeight / 2 - 50 + "px";
 						formDiv.appendChild(buttonSave);
 
 
@@ -202,13 +204,14 @@
 						buttonDelete.style.padding = "20px";
 						buttonDelete.style.lineHeight = "60px";
 						buttonDelete.style.padding = "0 40px";
-						buttonDelete.style.background = "#ddffdd";
+						buttonDelete.style.background = "salmon";
+						buttonDelete.style.width = "130px";
 						buttonDelete.style.border = "none";
 						buttonDelete.innerHTML = "Delete";
 						buttonDelete.style.position = "absolute";
 						buttonDelete.style.outline = "none";
-						buttonDelete.style.marginLeft = window.innerWidth / 2 - 150 + "px";
-						buttonDelete.style.marginTop = window.innerHeight / 2 + 50 + "px";
+						buttonDelete.style.marginLeft = window.innerWidth / 2  + "px";
+						buttonDelete.style.marginTop = window.innerHeight / 2 - 50 + "px";
 						formDiv.appendChild(buttonDelete);
 
 
@@ -221,7 +224,7 @@
 						buttonClose.innerHTML = "Close";
 						buttonClose.style.position = "absolute";
 						buttonClose.style.marginLeft = window.innerWidth / 2 - 75 + "px";
-						buttonClose.style.marginTop = window.innerHeight / 2 + 120 + "px";
+						buttonClose.style.marginTop = window.innerHeight / 2 + 20 + "px";
 						buttonClose.style.outline = "none";
 						formDiv.appendChild(buttonClose);
 
@@ -229,9 +232,6 @@
 
 
 						formDiv.appendChild(inputTxt);
-
-
-
 						document.body.appendChild(formDiv);
 
 
@@ -242,7 +242,7 @@
 							alert("Delete");
 						});
 						buttonClose.addEventListener("click", function () {
-							alert("close");
+							formDiv.remove();
 						});
 
 
