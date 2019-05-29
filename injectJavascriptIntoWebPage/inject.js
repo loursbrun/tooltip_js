@@ -39,11 +39,68 @@
 	if (showInfo) {   // windows with statistics clics of elements
 		var output = '';
 		for (var property in dataObject) {
-			output += '<tr ><td class="element-name-td" style="display:block; border-bottom: 1px solid #BFBEBE;">' + 
-			'<a href="https://www.google.com/"><img id="myimg" src="https://png.pngtree.com/svg/20160510/35d8eb958b.png" style="width: 16px; margin-bottom: -2px; margin-right: 10px"></a>' + 
-			property + '</td><td style=" padding-left:20px">' + 
-			dataObject[property] +
-			 '</td></tr> ';
+
+			
+			
+
+			// var icon = document.createElement('a');
+			// var linkText = document.createTextNode("x");
+			// icon.appendChild(linkText);
+			// icon.style.opacity = "0.5";
+			// icon.style.marginRight = "5px";
+			// //icon.setAttribute("class", "delete-icon-tag");
+
+
+			// var elementName2 = "kljbjkljblkjb";
+			// icon.addEventListener('click', deleteElement, false);
+			// icon.elementNameParam = elementName2;
+			// function deleteElement(evt) {
+			// 	console.log("delete !!!!!!" + evt.target.elementNameParam);
+
+
+			// 	// // Supprimer le noeuds 
+			// 	// console.log("supp *****");
+			// 	// console.log(dataObject);
+			// 	// delete dataObject[evt.target.elementNameParam];
+			// 	// console.log(dataObject);
+			// 	// localStorage.setItem(pathName, JSON.stringify(dataObject));
+
+
+			// }
+
+			// console.log("ibkbkbkjbkjb" + icon);
+
+
+
+
+
+
+
+
+
+			output += '<tr ><td class="element-name-td" style="display:block; border-bottom: 1px solid #BFBEBE;">' +
+				'<a class="icon-settings-classname" style="pointer:cursor"><img class="image-settings-classname"  src="https://png.pngtree.com/svg/20160510/35d8eb958b.png" style="width: 16px; margin-bottom: -2px; margin-right: 10px"></a>' +
+				property + '</td><td style=" padding-left:20px">' +
+				dataObject[property] +
+				'</td></tr> ';
+
+
+
+
+			// Settings icon click 
+			var iconSettingsClassname = document.getElementById("icon-settings-classname");
+			var elementName = "test";
+			if (iconSettingsClassname) {
+				iconSettingsClassname.addEventListener('click', deleteElement, false);
+				iconSettingsClassname.elementNameParam = elementName;
+				function deleteElement(evt) {
+					console.log("test icon  !!!!!!" + evt.target.elementNameParam);
+				}
+			}
+
+
+
+
 		}
 		var myLayer = document.createElement('div');
 		myLayer.id = 'bookingLayer';
@@ -71,6 +128,12 @@
 		myLayer.innerHTML = htmlString;
 		myLayer.style.zIndex = "100";
 		document.body.appendChild(myLayer);
+
+
+
+
+
+
 	}
 
 	function saveData() {    // save in cookie 
@@ -129,8 +192,9 @@
 						if (elementArray[i].innerHTML == elementInnerTxt &&
 							eventArgs.target.classList[0] != "liBarreStat" &&
 							eventArgs.target.classList[0] != "delete-icon-tag" &&
-							eventArgs.target.classList[0] != "element-name-td")
-							{
+							eventArgs.target.classList[0] != "element-name-td" &&
+							eventArgs.target.classList[0] != "icon-settings-classname"&&
+							eventArgs.target.classList[0] != "image-settings-classname") {
 
 							updateDataObject(eventArgs.target.classList[0] + "_classList_" + i);
 						}
@@ -385,7 +449,7 @@
 			icon.style.marginRight = "5px";
 			icon.setAttribute("class", "delete-icon-tag");
 
-			
+
 			var elementName2 = values[i];
 			icon.addEventListener('click', deleteElement, false);
 			icon.elementNameParam = elementName2;
@@ -412,7 +476,7 @@
 			li.style.width = nombres[i] * coeficient + "%";
 			li.appendChild(a);
 			topBarreUl.appendChild(li);
-			
+
 		}
 	}
 
