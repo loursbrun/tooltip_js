@@ -39,11 +39,12 @@
 	if (showInfo) {   // windows with statistics clics of elements
 		var output = '';
 		for (var property in dataObject) {
-			output += '<tr ><td class="element-name-td" style="border-bottom: 1px solid #BFBEBE;">' + property + '</td><td>' + dataObject[property] + '</td></tr> ';
+			output += '<tr ><td class="element-name-td" style="display:block; border-bottom: 1px solid #BFBEBE;">' + property + '</td><td style=" padding-left:20px">' + dataObject[property] + '</td></tr> ';
 		}
 		var myLayer = document.createElement('div');
 		myLayer.id = 'bookingLayer';
 		myLayer.style.position = 'absolute';
+		myLayer.style.fontSize = "14px";
 		myLayer.style.right = '10px';
 		myLayer.style.top = '10px';
 		//myLayer.style.width = '300px';
