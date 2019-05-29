@@ -11,20 +11,30 @@
 	div.textContent = 'Injected!';
 	document.body.appendChild(div);
 
-	//alert('inserted self... giggity');
-
 
 	console.log(window.location.pathname);
 
 	let pathName = window.location.pathname;
 	let dataObject = {};
-
 	localStorage.getItem(pathName) ? dataObject = JSON.parse(localStorage.getItem(pathName)) : dataObject = {};
+	console.log(dataObject);
+
+
+
+	// Cookie for save names 
+	let nameObject = {};
+	localStorage.getItem("elementsName") ? nameObject = JSON.parse(localStorage.getItem("elementsName")) : nameObject = {};
+	console.log(nameObject);
+
+
+
+
 
 	console.log(dataObject);
 
 	if (location.search.split('delete=')[1] == "true" && dataObject != {}) {
 		localStorage.removeItem(pathName);
+		localStorage.removeItem("elementsName");
 	}
 
 
@@ -227,16 +237,18 @@
 						buttonClose.style.marginTop = window.innerHeight / 2 + 20 + "px";
 						buttonClose.style.outline = "none";
 						formDiv.appendChild(buttonClose);
-
-
-
-
 						formDiv.appendChild(inputTxt);
 						document.body.appendChild(formDiv);
 
-
 						buttonSave.addEventListener("click", function () {
-							alert("Save");
+
+							let nameObject = {};
+							localStorage.getItem("elementsName") ? nameObject = JSON.parse(localStorage.getItem("elementsName")) : nameObject = {};
+							nameObject[eventArgs.target.title] = inputTxt.value;
+							localStorage.setItem("elementsName", JSON.stringify(nameObject));
+							formDiv.remove();
+							document.location.reload(true);
+
 						});
 						buttonDelete.addEventListener("click", function () {
 							console.log(dataObject);
