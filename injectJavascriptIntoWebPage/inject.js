@@ -39,7 +39,11 @@
 	if (showInfo) {   // windows with statistics clics of elements
 		var output = '';
 		for (var property in dataObject) {
-			output += '<tr ><td class="element-name-td" style="display:block; border-bottom: 1px solid #BFBEBE;">' + property + '</td><td style=" padding-left:20px">' + dataObject[property] + '</td></tr> ';
+			output += '<tr ><td class="element-name-td" style="display:block; border-bottom: 1px solid #BFBEBE;">' + 
+			'<a href="https://www.google.com/"><img id="myimg" src="https://png.pngtree.com/svg/20160510/35d8eb958b.png" style="width: 16px; margin-bottom: -2px; margin-right: 10px"></a>' + 
+			property + '</td><td style=" padding-left:20px">' + 
+			dataObject[property] +
+			 '</td></tr> ';
 		}
 		var myLayer = document.createElement('div');
 		myLayer.id = 'bookingLayer';
