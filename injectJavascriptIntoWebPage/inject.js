@@ -513,12 +513,16 @@
 			a.style.pointerEvents = "none";
 			li.style.color = "white";
 			li.classList.add("liBarreStat");
+			li.style.overflow = "hidden";
+			li.style.whiteSpace = "nowrap";
 			li.style.fontFamily = "Arial, Helvetica, sans-serif";
 			li.style.cssFloat = "left";
 			if (Math.round(nombres[i] * coeficient) >= 10 && showInfo == false) { a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "% ")); }
 			else if (Math.round(nombres[i] * coeficient) >= 10 && showInfo == true) { a.appendChild(document.createTextNode(Math.round(nombres[i] * coeficient) + "% " + values[i])); }
 			else { a.appendChild(document.createTextNode(".")); a.style.opacity = "0"; }
 			a.setAttribute("id", "Div1");
+			a.style.overflow = "hidden";
+			a.style.whiteSpace = "nowrap";
 			a.style.fontSize = "14px";
 			a.style.marginLeft = "5px";
 
